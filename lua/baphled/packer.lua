@@ -57,6 +57,12 @@ return packer.startup(function(use)
     }
   }
 
+  -- Startup screen
+  use({
+    "startup-nvim/startup.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  })
+
   -- Color schemes
   use({
     'rose-pine/neovim',
@@ -66,13 +72,13 @@ return packer.startup(function(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
+    config = function()
+      vim.cmd('colorscheme catppuccin')
+    end
   }
 
   use({
     "EdenEast/nightfox.nvim",
-    config = function()
-      vim.cmd('colorscheme nightfox')
-    end
   })
 
   -- Improved quickfix window
