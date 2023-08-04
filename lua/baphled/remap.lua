@@ -38,33 +38,17 @@ vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
--- Format json
---
--- We constantly have to deal with json files that are not formatted correctly.
---
--- This is a quick way to format them.
-vim.keymap.set('n', '<leader>jt', [[<cmd>%!python -m json.tool<CR><cmd>set filetype=json<CR>gg=G]],
-  { noremap = true, silent = true })
-
 -- Toggle spell checker
 vim.keymap.set("n", "<leader>sp", "<cmd>set spell!<CR>")
 
 -- Disable highlighting
 vim.keymap.set("n", "<cr>", "<cmd>nohlsearch<CR>")
 
+local utils = require("baphled.utils")
+
 -- Take current buffer, open it in a new tab and close the current buffer
 vim.keymap.set("n", "<leader>tb", function()
-  -- Create a new tab with current buffer
-  vim.cmd("tabedit %")
-
-  -- Go to the previous tab
-  vim.cmd("tabprevious")
-
-  -- Delete the current buffer
-  vim.cmd("q")
-
-  -- Go to the new tab
-  vim.cmd("tabnext")
+  utils.move_window_in_tab()
 end)
 
 -- Source neovim config

@@ -197,6 +197,16 @@ return packer.startup(function(use)
   -- File navigation
   use("nvim-tree/nvim-tree.lua")
 
+  -- which-key
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end
+  }
+
   -- Debugging
   use {
     "mfussenegger/nvim-dap",

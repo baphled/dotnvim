@@ -94,5 +94,3 @@ autocmd('BufRead, BufWritePost', {
   pattern = "*",
   callback = load_coverage_if_supported,
 })
-
-vim.keymap.set("n", "<Leader>cs", "<cmd>CoverageSummary<cr>", { noremap = false })

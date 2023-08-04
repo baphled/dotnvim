@@ -23,29 +23,6 @@ lsp.set_sign_icons({
   info = "",
 })
 
-lsp.on_attach(function(client, bufnr)
-  local opts = { buffer = bufnr, remap = false }
-
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>gws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>gd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>gca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>grn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-H>", function() vim.lsp.buf.signature_help() end, opts)
-
-  vim.keymap.set("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
-
-  vim.keymap.set("n", "gd", "<cmd>Trouble lsp_definitions<cr>", opts)
-
-  vim.keymap.set("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
-    opts)
-
-  vim.keymap.set("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
-    opts)
-end)
-
 local lspconfig = require('lspconfig')
 
 require('lspconfig-bundler').setup()

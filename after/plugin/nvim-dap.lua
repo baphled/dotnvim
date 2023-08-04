@@ -3,6 +3,8 @@
 require('dapui').setup()
 require('dap-ruby').setup()
 
+require("telescope").load_extension("dap")
+
 require("neodev").setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })
@@ -69,19 +71,4 @@ dap.adapters.ruby = function(callback, config)
 end
 
 -- Keybindings
-vim.keymap.set("n", "<F4>", "<cmd>lua require('dapui').toggle()<CR>")
-
-vim.keymap.set("n", "<F6>", "<cmd>lua require('dap').step_back()<CR>")
-vim.keymap.set("n", "<F7>", "<cmd>lua require('dap').continue()<CR>")
-vim.keymap.set("n", "<F8>", "<cmd>lua require('dap').step_into()<CR>")
-vim.keymap.set("n", "<F9>", "<cmd>lua require('dap').step_over()<CR>")
-vim.keymap.set("n", "<F10>", "<cmd>lua require('dap').step_out()<CR>")
-
-vim.keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader>B", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-vim.keymap.set("n", "<leader>lp",
-  "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
-vim.keymap.set("n", "<leader>dr", "<cmd>lua require('dap').repl.open()<CR>")
-
--- set debug test
-vim.keymap.set("n", "<leader>dt", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>")
+vim.fn.sign_define('DapBreakpoint', { text = '' })
