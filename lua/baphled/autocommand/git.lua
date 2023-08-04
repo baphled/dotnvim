@@ -1,18 +1,8 @@
-vim.api.nvim_create_augroup("_editing", { clear = true })
-
--- Prevent IndentLine from hiding ``` in markdown files
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = "_editing",
-  pattern = { "markdown" },
-  callback = function()
-    vim.g["indentLine_enabled"] = 0
-    vim.g["markdown_syntax_conceal"] = 0
-  end,
-})
+local Baphled_Fugitive = vim.api.nvim_create_augroup("Baphled_Fugitive", {})
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Enable spell check and word wrap for certain file types
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = "_editing",
   pattern = { "gitcommit", "markdown", "txt" },
   desc = "Enable spell checking and text wrapping for certain filetypes",
   callback = function()
@@ -31,12 +21,25 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "startup" },
-  desc = "Disable some defaults",
+
+-- Closing a git buffer should be easy
+--
+-- Close fugitive buffers with 'q'
+--
+autocmd("BufWinEnter", {
+  group = Baphled_Fugitive,
+  pattern = "*",
   callback = function()
-    -- set local foldmethod to manual
-    vim.opt_local.foldmethod = "manual"
-    vim.opt_local.colorcolumn = "0"
+    if vim.bo.ft ~= "fugitive" and vim.bo.ft ~= "fugitiveblame" then
+      return
+    end
+
+    local bufnr = vim.api.nvim_get_current_buf()
+    local opts = { buffer = bufnr, remap = false }
+
+    -- Close git buffer
+    vim.keymap.set("n", "q", function()
+      vim.cmd("bd!")
+    end, opts)
   end,
 })
