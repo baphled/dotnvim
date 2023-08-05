@@ -207,6 +207,9 @@ return packer.startup(function(use)
     end
   }
 
+  -- Notifications
+  use("rcarriga/nvim-notify")
+
   -- Debugging
   use {
     "mfussenegger/nvim-dap",

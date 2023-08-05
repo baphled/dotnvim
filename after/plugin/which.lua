@@ -125,8 +125,8 @@ local mappings = {
         require("dap").clear_breakpoints()
         require("dapui").toggle({})
         require("dap").terminate()
-        require("vim").api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-        -- require("notify")("Debugger session ended", "warn")
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
+        require("notify")("Debugger session ended", "warn")
       end,
       "Close Debugger"
     }
