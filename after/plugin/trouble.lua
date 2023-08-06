@@ -18,13 +18,13 @@ require("trouble").setup {
   action_keys = {
     close = "q",
     refresh = "r",
-    jump = {"<cr>", "<tab>"},
+    jump = { "<cr>", "<tab>" },
     toggle_mode = "m",
     toggle_preview = "P",
     preview = "p",
-    close_folds = {"zM", "zm"},
-    open_folds = {"zR", "zr"},
-    toggle_fold = {"zA", "za"},
+    close_folds = { "zM", "zm" },
+    open_folds = { "zR", "zr" },
+    toggle_fold = { "zA", "za" },
     hover = "K",
     previous = "k",
     next = "j",
@@ -36,15 +36,3 @@ require("trouble").setup {
   auto_fold = true,
   use_diagnostic_signs = true
 }
-
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
-  {silent = true, noremap = true}
-)
-
-vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
-  {silent = true, noremap = true}
-)
-
-vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
-  {silent = true, noremap = true}
-)

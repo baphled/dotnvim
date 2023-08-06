@@ -30,7 +30,3 @@ require("nvim-tree").setup({
     dotfiles = false,
   },
 })
-
-vim.keymap.set("n", "<leader>nt", ":NvimTreeOpen<CR>")
-vim.keymap.set("n", "<leader>no", ":NvimTreeClose<CR>")
-vim.keymap.set("n", "<leader>np", ":NvimTreeFindFile<CR>")

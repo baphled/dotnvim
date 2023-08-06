@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero').preset("recommended")
+local lsp = require('lsp-zero')
 local lspkind = require('lspkind')
 
 require("luasnip.loaders.from_vscode").lazy_load()
@@ -95,11 +95,27 @@ lspconfig.ruby_lsp.setup({
   capabilities = lsp.capabilities
 })
 
+lsp.preset({
+  float_border = 'rounded',
+  call_servers = 'local',
+  configure_diagnostics = true,
+  setup_servers_on_start = true,
+  set_lsp_keymaps = false,
+  manage_nvim_cmp = {
+    set_sources = 'recommended',
+    set_basic_mappings = true,
+    set_extra_mappings = true,
+    use_luasnip = true,
+    set_format = true,
+    documentation_window = true,
+  },
+})
+
 lsp.setup()
 
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_mappings = {
   -- Disable <Tab> and <S-Tab>, as they conflict with GitHub Copilot
-  -- It is still possible to navigate with Arrow Up and Arrown Down
+  -- It is still possible to navigate with Arrow Up and Arrow Down
   ["<Tab>"] = cmp.config.disable,
   ["<S-Tab>"] = cmp.config.disable,
   ["<Enter>"] = cmp.mapping.confirm({ select = true }),
@@ -134,7 +150,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
       cmp.complete()
     end
   end),
-})
+}
 
 cmp.setup({
   sources = {

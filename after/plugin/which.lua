@@ -1,4 +1,5 @@
-which_key = require("which-key")
+local which_key = require("which-key")
+local utils = require("baphled.utils")
 
 which_key.setup()
 
@@ -12,93 +13,44 @@ local opts = {
 }
 
 local mappings = {
-  ['<leader'] = {
-    t = {
-      name = "toggle",
-      c = { "<cmd>set cursorline!<cr>", "Cursorline" },
-      h = { "<cmd>set hlsearch!<cr>", "Highlight" },
-      l = { "<cmd>set list!<cr>", "List" },
-      n = { "<cmd>set number!<cr>", "Number" },
-      r = { "<cmd>set relativenumber!<cr>", "Relative Number" },
-      s = { "<cmd>set spell!<cr>", "Spell" },
-      w = { "<cmd>set wrap!<cr>", "Wrap" },
+  ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable highlighting" },
+  ['<C-w>i'] = { "<cmd>PackerSync<cr>", "Packer Sync" } ,
+  ['<leader>'] = {
+    ct = { "<cmd>lua require('cloak').toggle()<CR>", "Cloak Toggle" },
+    tc = { "<cmd>set cursorline!<cr>", "Cursorline" },
+    mr = {  "<cmd>CellularAutomaton make_it_rain<CR>", "Make it Rain" },
+    np = { "<cmd>NvimTreeFindFile<cr>", "NvimTree Find File" },
+    nt = { "<cmd>NvimTreeOpen<cr>", "NvimTree" },
+    th = { "<cmd>set hlsearch!<cr>", "Highlight" },
+    tn = { "<cmd>set number!<cr>", "Number" },
+    tr = { "<cmd>set relativenumber!<cr>", "Relative Number" },
+    tb = {
+      function()
+        utils.move_window_in_tab()
+      end,
+      "Move to New Tab"
     },
+    sp = { "<cmd>set spell!<cr>", "Spell" },
+    sv = {  "<cmd>source ~/.config/nvim/init.lua<CR>", "Source Config" },
+    [ '<leader>' ] = {
+      function ()
+      vim.cmd("so")
+    end,
+    "Source Config" },
+    vpp = {  "<cmd>e ~/.config/nvim/lua/baphled/packer.lua<CR>", "Packer Config" },
   },
-  -- Testing
-  t = {
-    name = "Testing",
-    a = {
-      function()
-        -- if we've not saved the file, save it
-        if vim.bo.modified then
-          vim.cmd("w")
-        end
-        require("neotest").run.run({ suite = true })
-      end,
-      "Test Suite",
-    },
-    d = {
-      "<cmd>lua require('neotest').output.open({ enter = true })<cr>",
-      "Display Failure",
-    },
-    c = {
-      s = {
-        "<cmd>CoverageSummary<cr>",
-        "Coverage Summary",
-      },
-    },
-    n = {
-      function()
-        -- if we've not saved the file, save it
-        if vim.bo.modified then
-          vim.cmd("w")
-        end
-        require("neotest").run.run({ nearest = true })
-      end,
-      "Test Nearest",
-    },
-    k = {
-      function()
-        -- if we're running tests, stop them
-        if require("neotest").state.is_running() then
-          require("neotest").run.stop()
-        else
-          -- otherwise, clear the results
-          require("neotest").results.clear()
-        end
-      end,
-      "Watch"
-    },
-    s = {
-      "<cmd>lua require('neotest').summary.toggle()<cr>",
-      "Test Suite",
-    },
-    t = {
-      function()
-        require('neotest').toggle()
-        if vim.bo.modified then
-          vim.cmd("w")
-        end
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
-      "Test File",
-    },
-    w = {
-      function()
-        -- if we've not saved the file, save it
-        if vim.bo.modified then
-          vim.cmd("w")
-        end
-        require("neotest").run.run({ jestCommand = "npx vue-cli-service test:watch" })
-      end,
-      "Watch",
-    },
-  },
+  cmd = { "<cmd>Telescope commands<cr>", "Find Command" },
   -- Debugging
-  d = {
+  debug = {
     name = "debug",
-    b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-    B = { "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", "Set Breakpoint" },
+    b = {
+      "<cmd>lua require('dap').toggle_breakpoint()<cr>",
+      "Toggle Breakpoint"
+    },
+    B = {
+      "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+      "Set Breakpoint"
+    },
     c = {
       function()
         require('dapui').toggle({})
@@ -125,22 +77,23 @@ local mappings = {
         require("dap").clear_breakpoints()
         require("dapui").toggle({})
         require("dap").terminate()
+
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
         require("notify")("Debugger session ended", "warn")
       end,
       "Close Debugger"
     }
   },
-  -- File
+  -- Finder
   f = {
-    name = "file",
+    name = "Finder",
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     g = {
       function()
         require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
       end,
-      "Find String"
+      "Search String"
     },
     o = { "<cmd>Telescope oldfiles<cr>", "Find Old File" },
     s = {
@@ -149,12 +102,6 @@ local mappings = {
       end,
       "Find String"
     },
-  },
-  -- Help
-  hf = {
-    c = { "<cmd>Telescope commands<cr>", "Find Command" },
-    k = { "<cmd>Telescope keymaps<cr>", "Find Keymap" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
   },
   -- Git
   g = {
@@ -210,23 +157,52 @@ local mappings = {
     },
     d = {
       name = "Diff",
+      a = {
+        function()
+          local branch = vim.fn.input('Branch: ')
+          vim.cmd.Git('diff ' .. branch)
+
+          utils.move_window_in_tab()
+        end,
+        "Git Diff Working Branch vs Branch"
+      },
+      b = {
+        function()
+          vim.cmd.Git('diff origin/$(git rev-parse --abbrev-ref HEAD)')
+        end,
+        "Git Diff Working Branch"
+      },
+      c = {
+        function()
+          vim.cmd.Git('diff --cached')
+
+          utils.move_window_in_tab()
+        end,
+        "Git Diff Cached"
+      },
       d = {
         function()
-          local utils = require('baphled.utils')
           vim.cmd.Git('diff')
 
           utils.move_window_in_tab()
         end,
         "Git Diff"
       },
-      c = {
+      g = {
         function()
-          local utils = require('baphled.utils')
-          vim.cmd.Git('diff --cached')
+          vim.cmd.Git('diff origin/$(git rev-parse --abbrev-ref HEAD) origin/main')
 
           utils.move_window_in_tab()
         end,
-        "Git Diff Cached"
+        "Git Diff Working Branch vs Main"
+      },
+      m = {
+        function()
+          vim.cmd.Git('diff origin/main')
+
+          utils.move_window_in_tab()
+        end,
+        "Git Diff main"
       },
     },
     s = {
@@ -234,7 +210,6 @@ local mappings = {
       t = {
         function()
           vim.cmd.Git()
-          -- trigger new tab
         end,
         "Git Status"
       }
@@ -262,7 +237,10 @@ local mappings = {
       },
     },
   },
+  help = { "<cmd>Telescope help_tags<cr>", "help", },
+  keymaps = { "<cmd>Telescope keymaps<cr>", "Find Keymap" },
   -- LSP
+  -- TODO: Remove default LSP mappings
   lsp = {
     name = "LSP",
     a = {
@@ -273,19 +251,25 @@ local mappings = {
     b = {
       name = "Buffer",
       c = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
       h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
       s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
     },
     d = {
       name = "Diagnostics",
-      d = { "<cmd>Telescope document_diagnostics<cr>", "Find Document Diagnostics" },
-      c = {
+      d = {
+        "<cmd>Trouble document_diagnostics<cr>",
+        "Find Document Diagnostics"
+      },
+      l = {
+        "<cmd>Trouble loclist<cr>",
+        "Find Diagnostics"
+      },
+      D = {
         function()
-          vim.lsp.diagnostic.set_loclist({ open_loclist = false })
+          vim.lsp.buf.declaration()
         end,
-        "Close Diagnostics"
+        "Declaration"
       },
       f = {
         function()
@@ -311,24 +295,118 @@ local mappings = {
         end,
         "Open Diagnostics"
       },
-      w = { "<cmd>Telescope workspace_diagnostics<cr>", "Find Workspace Diagnostics" },
-    },
-    f = {
-      name = "Formatting",
-      f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+      w = { "<cmd>Trouble workspace_diagnostics<cr>", "Find Workspace Diagnostics" },
     },
     r = {
       name = "References",
-      d = { "<cmd>Telescope lsp_definitions<cr>", "Find Definition" },
-      i = { "<cmd>Telescope lsp_implementations<cr>", "Find Implementation" },
-      r = { "<cmd>Telescope lsp_references<cr>", "Find References" },
+      d = {
+        function()
+          vim.lsp.buf.declaration()
+        end,
+        "Find Declaration"
+      },
+      D = {
+        "<cmd>Telescope lsp_definitions<cr>",
+        "Find Definition"
+      },
+      i = {
+        function()
+          vim.lsp.buf.implementation()
+        end,
+        "Find Implementation"
+      },
+      r = {
+        "<cmd>Trouble lsp_references<cr>",
+        "Find References"
+      },
     },
     s = {
       name = "Symbols",
       d = { "<cmd>Telescope lsp_document_symbols<cr>", "Find Document Symbols" },
       w = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Find Workspace Symbols" },
     },
-  }
+  },
+  -- Testing
+  t = {
+    name = "Testing",
+    a = {
+      function()
+        -- if we've not saved the file, save it
+        if vim.bo.modified then
+          vim.cmd("w")
+        end
+        require("neotest").run.run({ suite = true })
+      end,
+      "Test Suite",
+    },
+    d = {
+      "<cmd>lua require('neotest').output.open({ enter = true })<cr>",
+      "Display Test Output",
+    },
+    c = {
+      s = {
+        "<cmd>CoverageSummary<cr>",
+        "Coverage Summary",
+      },
+    },
+    n = {
+      function()
+        -- if we've not saved the file, save it
+        if vim.bo.modified then
+          vim.cmd("w")
+        end
+        require("neotest").run.run({ nearest = true })
+      end,
+      "Test Nearest",
+    },
+    k = {
+      function()
+        -- if we're running tests, stop them
+        if require("neotest").state.is_running() then
+          require("neotest").run.stop()
+        else
+          -- otherwise, clear the results
+          require("neotest").results.clear()
+        end
+      end,
+      "Watch"
+    },
+    s = {
+      "<cmd>lua require('neotest').summary.toggle()<cr>",
+      "Test Suite",
+    },
+    t = {
+      function()
+        if vim.bo.modified then
+          vim.cmd("w")
+        end
+        require("neotest").run.run(vim.fn.expand("%"))
+      end,
+      "Test File",
+    },
+    [ "T" ] = {
+      function ()
+        if vim.bo.modified then
+          vim.cmd("w")
+        end
+        require("neotest").run.run({ nearest = true })
+      end,
+      "Test Nearest",
+    },
+    w = {
+      function()
+        -- if we've not saved the file, save it
+        if vim.bo.modified then
+          vim.cmd("w")
+        end
+        require("neotest").run.run({ jestCommand = "npx vue-cli-service test:watch" })
+      end,
+      "Watch",
+    },
+  },
+  loclist = { "<cmd>Telescope loclist<cr>", "Find Loclist" },
+  quickfix = { "<cmd>Telescope quickfix<cr>", "Find Quickfix" },
+  trouble = { "<cmd>TroubleToggle<cr>", "Toggle Trouble" },
 }
 
 which_key.register(mappings, opts)
