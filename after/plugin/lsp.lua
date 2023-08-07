@@ -202,3 +202,22 @@ cmp.setup({
     })
   },
 })
+
+lspconfig["volar"].setup {
+  on_attach = lsp.on_attach,
+  capabilities = lsp.capabilities,
+  filetypes = {
+    "javascript",
+    "vue",
+    "json",
+  },
+  settings = {
+    volar = {
+      codeLens = {
+        references = true,
+        pugTools = true,
+        scriptSetupTools = true,
+      },
+    },
+  },
+}
