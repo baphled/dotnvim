@@ -22,7 +22,7 @@ require("other-nvim").setup({
     },
     {
       pattern = "/tests/unit/(.*).spec.js$",
-      target = "/src/1.js",
+      target = "/src/%1.js",
       context = "src",
     },
     -- VueJS
