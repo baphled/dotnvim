@@ -39,7 +39,7 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'catppuccin',
+    theme = 'auto',
     icons_enabled = true,
     globalstatus = true,
     component_separators = '',
@@ -56,6 +56,22 @@ require('lualine').setup {
       unnamed = '', -- Text to show when the buffer is unnamed
       newfile = '', -- Text to show when the buffer is new
     }
+  },
+  winbar = process_sections {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'filename'},
+  },
+  inactive_winbar = process_sections {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'filename'},
   },
   sections = process_sections {
     lualine_a = {
