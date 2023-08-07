@@ -14,11 +14,11 @@ local opts = {
 
 local mappings = {
   ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable highlighting" },
-  ['<C-w>i'] = { "<cmd>PackerSync<cr>", "Packer Sync" } ,
+  ['<C-w>i'] = { "<cmd>PackerSync<cr>", "Packer Sync" },
   ['<leader>'] = {
     ct = { "<cmd>lua require('cloak').toggle()<CR>", "Cloak Toggle" },
     tc = { "<cmd>set cursorline!<cr>", "Cursorline" },
-    mr = {  "<cmd>CellularAutomaton make_it_rain<CR>", "Make it Rain" },
+    mr = { "<cmd>CellularAutomaton make_it_rain<CR>", "Make it Rain" },
     np = { "<cmd>NvimTreeFindFile<cr>", "NvimTree Find File" },
     nt = { "<cmd>NvimTreeOpen<cr>", "NvimTree" },
     th = { "<cmd>set hlsearch!<cr>", "Highlight" },
@@ -31,13 +31,13 @@ local mappings = {
       "Move to New Tab"
     },
     sp = { "<cmd>set spell!<cr>", "Spell" },
-    sv = {  "<cmd>source ~/.config/nvim/init.lua<CR>", "Source Config" },
-    [ '<leader>' ] = {
-      function ()
-      vim.cmd("so")
-    end,
-    "Source Config" },
-    vpp = {  "<cmd>e ~/.config/nvim/lua/baphled/packer.lua<CR>", "Packer Config" },
+    sv = { "<cmd>source ~/.config/nvim/init.lua<CR>", "Source Config" },
+    ['<leader>'] = {
+      function()
+        vim.cmd("so")
+      end,
+      "Source Config" },
+    vpp = { "<cmd>e ~/.config/nvim/lua/baphled/packer.lua<CR>", "Packer Config" },
   },
   cmd = { "<cmd>Telescope commands<cr>", "Find Command" },
   -- Debugging
@@ -79,6 +79,7 @@ local mappings = {
         require("dap").terminate()
 
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
+
         require("notify")("Debugger session ended", "warn")
       end,
       "Close Debugger"
@@ -334,7 +335,9 @@ local mappings = {
         -- if we've not saved the file, save it
         if vim.bo.modified then
           vim.cmd("w")
+          require("notify")(string.format("Saved %s", vim.fn.expand("%:t")))
         end
+
         require("neotest").run.run({ suite = true })
       end,
       "Test Suite",
@@ -356,6 +359,7 @@ local mappings = {
           vim.cmd("w")
         end
         require("neotest").run.run({ nearest = true })
+        require("notify")("Running nearest test")
       end,
       "Test Nearest",
     },
@@ -364,9 +368,11 @@ local mappings = {
         -- if we're running tests, stop them
         if require("neotest").state.is_running() then
           require("neotest").run.stop()
+          require("notify")("Stopped running tests")
         else
           -- otherwise, clear the results
           require("neotest").results.clear()
+          require("notify")("Cleared test results")
         end
       end,
       "Watch"
@@ -380,18 +386,10 @@ local mappings = {
         if vim.bo.modified then
           vim.cmd("w")
         end
+        require("notify")("Running test in " .. vim.fn.expand("%:t") .. "...")
         require("neotest").run.run(vim.fn.expand("%"))
       end,
       "Test File",
-    },
-    [ "T" ] = {
-      function ()
-        if vim.bo.modified then
-          vim.cmd("w")
-        end
-        require("neotest").run.run({ nearest = true })
-      end,
-      "Test Nearest",
     },
     w = {
       function()
@@ -400,6 +398,7 @@ local mappings = {
           vim.cmd("w")
         end
         require("neotest").run.run({ jestCommand = "npx vue-cli-service test:watch" })
+        require("notify")("Running tests in watch mode")
       end,
       "Watch",
     },
