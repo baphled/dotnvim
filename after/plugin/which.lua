@@ -206,6 +206,30 @@ local mappings = {
         "Git Diff main"
       },
     },
+    p = {
+      "Push",
+      f = {
+        function()
+          require("notify")("Force Pushed to origin", "info")
+          vim.cmd.Git('push --force')
+        end,
+        "Git Push Force"
+      },
+      o = {
+        function()
+          require("notify")("Pushed to origin", "info")
+          vim.cmd.Git('push origin')
+        end,
+        "Git Push Origin"
+      },
+      p = {
+        function()
+          require("notify")("Pushed to origin", "info")
+          vim.cmd.Git('push')
+        end,
+        "Git Push"
+      },
+    },
     s = {
       name = "Status",
       t = {
