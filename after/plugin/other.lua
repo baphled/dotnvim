@@ -17,6 +17,16 @@ require("other-nvim").setup({
     -- javascript
     {
       pattern = "/src/(.*).js$",
+      target = "/test/%1.spec.js",
+      context = "spec",
+    },
+    {
+      pattern = "/test/(.*).spec.js$",
+      target = "/src/%1.js",
+      context = "src",
+    },
+    {
+      pattern = "/src/(.*).js$",
       target = "/tests/unit/%1.spec.js",
       context = "spec",
     },
