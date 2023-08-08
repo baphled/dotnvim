@@ -11,18 +11,6 @@ require("nvim-tree").setup({
       quit_on_open = true,
     }
   },
-  view = {
-    float = {
-      enable = true,
-      open_win_config = {
-        border = "rounded",
-        width = 50,
-        height = 30,
-        row = 10,
-        col = 58,
-      },
-    }
-  },
   renderer = {
     group_empty = true,
   },
