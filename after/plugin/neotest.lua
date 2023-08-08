@@ -13,8 +13,26 @@ require("neotest-rspec")({
   end
 })
 
+-- Project directory
+local file_path = vim.fn.expand("%:p:h")
+
+-- Check whether vue-cli-service is available
+-- If not, then search for jest
+local npm_bin_path = file_path .. "/node_modules/.bin/"
+local vue_cli_available = vim.fn.executable(npm_bin_path .. "vue-cli-service")
+local jest_available = vim.fn.executable(npm_bin_path .. "jest")
+local jestCommand = ""
+
+if vue_cli_available == 1 then
+  jestCommand = "npx vue-cli-service test:unit"
+elseif jest_available == 1 then
+  jestCommand = "npx jest"
+else
+  print("No test runner found")
+end
+
 require("neotest-jest")({
-  jestCommand = "npx vue-cli-service test:unit",
+  jestCommand = jestCommand,
   jestConfig = "jest.config.js",
   env = { CI = true },
   cwd = function(path)
