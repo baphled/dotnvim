@@ -15,6 +15,7 @@ local opts = {
 local mappings = {
   ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable highlighting" },
   ['<C-w>i'] = { "<cmd>PackerSync<cr>", "Packer Sync" },
+  ['<C-p>'] = { "<cmd>NvimTreeToggle<cr>", "File Brower" },
   ['<leader>'] = {
     ct = { "<cmd>lua require('cloak').toggle()<CR>", "Cloak Toggle" },
     tc = { "<cmd>set cursorline!<cr>", "Cursorline" },
