@@ -56,7 +56,7 @@ local mappings = {
     },
     c = {
       function()
-        require('dapui').toggle({})
+        require('dapui').continue()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
       end,
       "Continue"
@@ -68,12 +68,18 @@ local mappings = {
     l = { "<cmd>lua require('dap').run_last()<cr>", "Run Last" },
     s = {
       function()
-        require('dapui').toggle({})
+        require('dapui').open()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
       end,
       "Start"
     },
-    t = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Test" },
+    t = {
+      function()
+        require("dapui").toggle()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
+      end,
+      "Toggle UI"
+    },
     x = {
       function()
         -- Close debugger and clear breakpoints
