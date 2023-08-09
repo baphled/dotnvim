@@ -87,7 +87,11 @@ return packer.startup(function(use)
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("trouble").setup {
-        icons = true,
+        stages = "fade_in_slide_out",
+        icons = {
+          spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+        },
+        background_colour = "#000000",
         use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
         auto_close = true,           -- close the list when you open a file
       }
@@ -212,6 +216,12 @@ return packer.startup(function(use)
 
   -- Notifications
   use("rcarriga/nvim-notify")
+
+  -- Notify Integration
+  use {
+    'mrded/nvim-lsp-notify',
+    requires = { 'rcarriga/nvim-notify' },
+  }
 
   -- Debugging
   use {

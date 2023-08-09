@@ -6,11 +6,19 @@ require("notify").setup({
   background_colour = "#000000",
   -- Icons for the different levels
   icons = {
-    ERROR = "",
-    WARN = "",
-    INFO = "",
-    DEBUG = "",
-    TRACE = "✎",
-    FATAL = "",
+    spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+    ERROR    = "",
+    WARN     = "",
+    INFO     = "",
+    DEBUG    = "",
+    TRACE    = "✎",
+    FATAL    = "",
+  },
+})
+require('lsp-notify').setup({
+  notify = require('notify'),
+  icons = {
+    spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+    done     = '',
   },
 })

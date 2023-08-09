@@ -16,7 +16,10 @@ hi LspDiagnosticsSignError ctermfg=Red guifg=#F70067
 hi LspDiagnosticsSignWarning ctermfg=Yellow guifg=#FFEC63
 hi LspDiagnosticsSignInformation ctermfg=Blue guifg=#00B4F9
 hi LspDiagnosticsSignHint ctermfg=Cyan guifg=#00f1f5
+
 hi LspReferenceText ctermfg=Grey guifg=#8B8B8B
 hi LspReferenceRead ctermfg=Grey guifg=#8B8B8B
 hi LspReferenceWrite ctermfg=Grey guifg=#8B8B8B
+
+hi NotifyBackground ctermbg=White guibg=#FFFFFF
 ]])
