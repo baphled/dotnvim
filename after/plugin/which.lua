@@ -13,6 +13,8 @@ local opts = {
 }
 
 local mappings = {
+  ["v?"] = { "<cmd>Telescope help_tags<cr>", "help", },
+  ["k?"] = { "<cmd>Telescope keymaps<cr>", "Find Keymap" },
   ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable highlighting" },
   ['<C-w>i'] = { "<cmd>PackerSync<cr>", "Packer Sync" },
   ['<C-p>'] = { "<cmd>NvimTreeToggle<cr>", "File Browser" },
@@ -170,7 +172,9 @@ local mappings = {
       },
       b = {
         function()
-          vim.cmd.Git('diff origin/$(git rev-parse --abbrev-ref HEAD)')
+          vim.cmd.Git("diff -- origin/$(git rev-parse --abbrev-ref HEAD)")
+
+          utils.move_window_in_tab()
         end,
         "Git Diff Working Branch"
       },
@@ -192,7 +196,7 @@ local mappings = {
       },
       g = {
         function()
-          vim.cmd.Git('diff origin/$(git rev-parse --abbrev-ref HEAD) origin/main')
+          vim.cmd.Git("diff origin/$(git rev-parse --abbrev-ref HEAD)")
 
           utils.move_window_in_tab()
         end,
@@ -211,22 +215,25 @@ local mappings = {
       "Push",
       f = {
         function()
-          require("notify")("Force Pushed to origin", "info")
+          require("notify")("Force Pushing to origin", "info")
           vim.cmd.Git('push --force')
+          require("notify")("Force Pushed to origin", "info")
         end,
         "Git Push Force"
       },
       o = {
         function()
-          require("notify")("Pushed to origin", "info")
+          require("notify")("Pushing to origin", "info")
           vim.cmd.Git('push origin')
+          require("notify")("Pushed to origin", "info")
         end,
         "Git Push Origin"
       },
       p = {
         function()
-          require("notify")("Pushed to origin", "info")
+          require("notify")("Pushing to origin", "info")
           vim.cmd.Git('push')
+          require("notify")("Pushed to origin", "info")
         end,
         "Git Push"
       },
@@ -250,6 +257,7 @@ local mappings = {
       },
       i = {
         function()
+          require("notify")("Starting interactive Rebase", "info")
           local branch = vim.fn.input('Rebase Branch: ')
           vim.cmd.Git('rebase -i ' .. branch)
         end,
@@ -263,20 +271,16 @@ local mappings = {
       },
     },
   },
-  help = { "<cmd>Telescope help_tags<cr>", "help", },
-  keymaps = { "<cmd>Telescope keymaps<cr>", "Find Keymap" },
   -- LSP
   -- TODO: Remove default LSP mappings
   lsp = {
     name = "LSP",
     a = {
       name = "Actions",
-      a = { "<cmd>Telescope lsp_code_actions<cr>", "Find Code Actions" },
-      r = { "<cmd>Telescope lsp_range_code_actions<cr>", "Find Range Code Actions" },
+      r = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Find Code Actions" },
     },
     b = {
       name = "Buffer",
-      c = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
       h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
       s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
@@ -302,24 +306,6 @@ local mappings = {
           vim.diagnostic.open_float()
         end,
         "Open Diagnostics Float"
-      },
-      j = {
-        function()
-          vim.diagnostic.goto_next()
-        end,
-        "Next Diagnostic"
-      },
-      k = {
-        function()
-          vim.diagnostic.goto_prev()
-        end,
-        "Previous Diagnostic"
-      },
-      o = {
-        function()
-          vim.lsp.diagnostic.set_loclist({ open_loclist = true })
-        end,
-        "Open Diagnostics"
       },
       w = { "<cmd>Trouble workspace_diagnostics<cr>", "Find Workspace Diagnostics" },
     },
