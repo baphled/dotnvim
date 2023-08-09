@@ -83,7 +83,7 @@ local mappings = {
 
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
 
-        require("notify")("Debugger session ended", "warn")
+        vim.notify("Debugger session ended", "info")
       end,
       "Close Debugger"
     }
@@ -144,6 +144,14 @@ local mappings = {
           vim.cmd.Git('checkout -- %')
         end,
         "Git Checkout File"
+      },
+      o = {
+        function()
+          vim.notify("Checking out unstaged commits", "info", { title = "Git" })
+          vim.cmd.Git('checkout -- .')
+          vim.notify("Commits checked out", "success", { title = "Git" })
+        end,
+        "Git Checkout All"
       },
       r = {
         function()
@@ -215,25 +223,25 @@ local mappings = {
       "Push",
       f = {
         function()
-          require("notify")("Force Pushing to origin", "info")
+          vim.notify("Force Pushing to origin", "info")
           vim.cmd.Git('push --force')
-          require("notify")("Force Pushed to origin", "info")
+          vim.notify("Force Pushed to origin", "info")
         end,
         "Git Push Force"
       },
       o = {
         function()
-          require("notify")("Pushing to origin", "info")
+          vim.notify("Pushing to origin", "info")
           vim.cmd.Git('push origin')
-          require("notify")("Pushed to origin", "info")
+          vim.notify("Pushed to origin", "info")
         end,
         "Git Push Origin"
       },
       p = {
         function()
-          require("notify")("Pushing to origin", "info")
+          vim.notify("Pushing to origin", "info")
           vim.cmd.Git('push')
-          require("notify")("Pushed to origin", "info")
+          vim.notify("Pushed to origin", "info")
         end,
         "Git Push"
       },
@@ -252,14 +260,19 @@ local mappings = {
       a = {
         function()
           vim.cmd.Git('rebase --abort')
+
+          vim.notify("Rebase Aborted", "warn")
         end,
         "Rebase Abort"
       },
       i = {
         function()
-          require("notify")("Starting interactive Rebase", "info")
+          vim.notify("Starting interactive Rebase", "info")
+
           local branch = vim.fn.input('Rebase Branch: ')
           vim.cmd.Git('rebase -i ' .. branch)
+
+          vim.notify("Interactive Rebase Ended", "done")
         end,
         "interactive Rebase"
       },
@@ -346,7 +359,6 @@ local mappings = {
         -- if we've not saved the file, save it
         if vim.bo.modified then
           vim.cmd("w")
-          require("notify")(string.format("Saved %s", vim.fn.expand("%:t")))
         end
 
         require("neotest").run.run({ suite = true })
@@ -370,7 +382,6 @@ local mappings = {
           vim.cmd("w")
         end
         require("neotest").run.run({ nearest = true })
-        require("notify")("Running nearest test")
       end,
       "Test Nearest",
     },
@@ -379,11 +390,11 @@ local mappings = {
         -- if we're running tests, stop them
         if require("neotest").state.is_running() then
           require("neotest").run.stop()
-          require("notify")("Stopped running tests")
+          vim.notify("Stopped running tests")
         else
           -- otherwise, clear the results
           require("neotest").results.clear()
-          require("notify")("Cleared test results")
+          vim.notify("Cleared test results")
         end
       end,
       "Watch"
@@ -397,7 +408,6 @@ local mappings = {
         if vim.bo.modified then
           vim.cmd("w")
         end
-        require("notify")("Running test in " .. vim.fn.expand("%:t") .. "...")
         require("neotest").run.run(vim.fn.expand("%"))
       end,
       "Test File",
@@ -409,7 +419,6 @@ local mappings = {
           vim.cmd("w")
         end
         require("neotest").run.run({ jestCommand = "npx vue-cli-service test:watch" })
-        require("notify")("Running tests in watch mode")
       end,
       "Watch",
     },
