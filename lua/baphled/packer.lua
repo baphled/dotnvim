@@ -140,6 +140,9 @@ return packer.startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons' }
   }
 
+  use { 'stevearc/dressing.nvim' }
+
+
   use { 'norcalli/nvim-colorizer.lua' }
 
   -- LSP and Autocompletion
