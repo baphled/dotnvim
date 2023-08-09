@@ -22,3 +22,5 @@ require('lsp-notify').setup({
     done     = '',
   },
 })
+
+vim.notify = require("notify")
