@@ -70,5 +70,16 @@ dap.adapters.ruby = function(callback, config)
   }
 end
 
+local debugger_path = os.getenv("HOME") .. ".local/share/nvim/mason/packages/dart-debug-adapter/extension/out/dist/debug.js"
+
+dap.adapters.dart = {
+  type = "executable",
+  command = "node",
+  args = { debugger_path, "flutter" },
+}
+
+dap.configurations.dart = {
+}
+
 -- Keybindings
 vim.fn.sign_define('DapBreakpoint', { text = '' })
