@@ -14,7 +14,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 vim.opt.undofile = true
 
 -- search settings
@@ -49,7 +49,7 @@ vim.cmd [[ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") 
 
 -- Spell checking
 vim.opt.spelllang = "en_gb"
-vim.opt.spellfile = os.getenv("HOME") .. "/.vim/spell/en.utf-8.add"
+vim.opt.spellfile = os.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add"
 vim.opt.spell = true
 
 vim.opt.numberwidth = 4
