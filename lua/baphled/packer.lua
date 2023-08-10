@@ -34,7 +34,24 @@ return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  -- Enhanced searching
+  -- Core Enhancements
+
+  -- Highlighting
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end, }
+
+  use("nvim-treesitter/nvim-treesitter-context");
+
+  -- text objects
+  use("tpope/vim-surround")
+  use("kana/vim-textobj-user")
+  use("michaeljsmith/vim-indent-object")
+
+  --- Enhanced searching
   use {
     'nvim-telescope/telescope.nvim',
     -- or                            , branch = '0.1.x',
@@ -49,31 +66,7 @@ return packer.startup(function(use)
     }
   }
 
-  -- Startup screen
-  use({
-    "startup-nvim/startup.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-  })
-
-  -- Color schemes
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-  })
-
-  use {
-    "catppuccin/nvim",
-    as = "catppuccin",
-    config = function()
-      vim.cmd('colorscheme catppuccin')
-    end
-  }
-
-  use({
-    "EdenEast/nightfox.nvim",
-  })
-
-  -- Improved quickfix window
+  ---- Improved quickfix window
   use({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -90,37 +83,79 @@ return packer.startup(function(use)
     end
   })
 
-  -- navigation and file management
-
-  -- Navigation AST
-  use("nvim-treesitter/playground")
-
-  -- Navigation
-  use("theprimeagen/harpoon")
-
-  -- The Refactoring library based off the Refactoring book by Martin Fowler
-  use("theprimeagen/refactoring.nvim")
-
   -- Undo Tree
   --
   -- Used to navigate undo history
   use("mbbill/undotree")
 
-  -- Git
-  --
-  -- Doesn't really need to be explained
-  use("tpope/vim-fugitive")
+  -- UI
 
-  use {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",       -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",      -- optional
-    },
+  --- Startup screen
+  use({
+    "startup-nvim/startup.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  })
+
+  --- Used to handle our statusline
+  use { 'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' }
   }
 
-  -- Markdown Preview
+  --- Notifications
+  use { 'stevearc/dressing.nvim' }
+
+  --- Colour schemes
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      vim.cmd('colorscheme catppuccin')
+    end
+  }
+
+  --- File navigation
+  use("nvim-tree/nvim-tree.lua")
+
+  --- which-key
+  --
+  -- Used to centralise key bindings
+  --
+  -- Also used to show key bindings in real-time
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end
+  }
+
+  --- Notify Integration
+
+  ---- Notifications
+  use("rcarriga/nvim-notify")
+
+  -- PDE
+
+  --- Colour highlighting
+  use { 'norcalli/nvim-colorizer.lua' }
+
+  -- AI powered autocompletion
+  use("github/copilot.vim")
+
+  --- Used to hide environment variables
+  use("laytan/cloak.nvim")
+
+  --- Switching between files quickly
+  use("rgroli/other.nvim")
+
+  --- The Refactoring library based off the Refactoring book by Martin Fowler
+  use("theprimeagen/refactoring.nvim")
+
+  --- Navigation AST
+  use("nvim-treesitter/playground")
+
+  --- Markdown Preview
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -128,29 +163,21 @@ return packer.startup(function(use)
     ft = { "markdown" },
   }
 
-  -- Highlighting
+  --- Git
+
+  -- Doesn't really need to be explained
+  use("tpope/vim-fugitive")
+
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end, }
-
-  use("nvim-treesitter/nvim-treesitter-context");
-
-  -- UI
-  --
-  -- Used to handle our statusline
-  use { 'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' }
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+    },
   }
 
-  use { 'stevearc/dressing.nvim' }
-
-
-  use { 'norcalli/nvim-colorizer.lua' }
-
-  -- LSP and Autocompletion
+  --- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -167,6 +194,7 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lua' },
 
+      --- Beautification of the autocomplete menu
       { "onsails/lspkind.nvim" },
 
       -- Snippets
@@ -174,81 +202,14 @@ return packer.startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
-  use {
-    'akinsho/flutter-tools.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
-  }
 
-  use { 'mihyaeru21/nvim-lspconfig-bundler', requires = 'neovim/nvim-lspconfig' }
-
-  -- AI powered autocompletion
-  use("github/copilot.vim")
-
-  -- Silly little visual games
-  use("eandrju/cellular-automaton.nvim")
-
-  -- Used to hide environment variables
-  use("laytan/cloak.nvim")
-
-  -- text objects
-  use("tpope/vim-surround")
-  use("kana/vim-textobj-user")
-  use("michaeljsmith/vim-indent-object")
-
-  -- Switching between files quickly
-  use("rgroli/other.nvim")
-
-  -- Ruby
-  use("bronson/vim-ruby-block-conv")
-  use("ecomba/vim-ruby-refactoring")
-  use { "nelstrom/vim-textobj-rubyblock", requires = "kana/vim-textobj-user" }
-
-  -- Rails
-  use("tpope/vim-rails")
-
-  -- File navigation
-  use("nvim-tree/nvim-tree.lua")
-
-  -- which-key
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup()
-    end
-  }
-
-  -- Notifications
-  use("rcarriga/nvim-notify")
-
-  -- Notify Integration
+  ---- Notifications
   use {
     'mrded/nvim-lsp-notify',
     requires = { 'rcarriga/nvim-notify' },
   }
 
-  -- Debugging
-  use {
-    "mfussenegger/nvim-dap",
-    requires = {
-      "nvim-telescope/telescope.nvim",
-      "folke/neodev.nvim"
-    }
-  }
-  -- DAP telescope integration
-  use { "nvim-telescope/telescope-dap.nvim", requires = { "mfussenegger/nvim-dap" } }
-  -- Virtual text for DAP
-  use { "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } }
-  -- DAP UI
-  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-  -- Ruby debugging
-  use("suketa/nvim-dap-ruby")
-
-  -- Testing
+  ---- Testing
   use({
     "nvim-neotest/neotest",
     requires = {
@@ -266,9 +227,56 @@ return packer.startup(function(use)
     end
   })
 
-  -- Code Coverage
+  ---- Code Coverage
   use({
     "andythigpen/nvim-coverage",
     requires = "nvim-lua/plenary.nvim",
   })
+
+  --- Language Specific
+
+  ---- Dart
+  use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+  }
+
+  ---- Ruby
+  use { 'mihyaeru21/nvim-lspconfig-bundler', requires = 'neovim/nvim-lspconfig' }
+  use("bronson/vim-ruby-block-conv")
+  use("ecomba/vim-ruby-refactoring")
+  use { "nelstrom/vim-textobj-rubyblock", requires = "kana/vim-textobj-user" }
+
+  ---- Rails
+  use("tpope/vim-rails")
+
+  --- Debugging (DAP)
+  use {
+    "mfussenegger/nvim-dap",
+    requires = {
+      "nvim-telescope/telescope.nvim",
+      "folke/neodev.nvim"
+    }
+  }
+
+  --- Telescope integration
+  use { "nvim-telescope/telescope-dap.nvim", requires = { "mfussenegger/nvim-dap" } }
+
+  --- Virtual text
+  use { "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } }
+
+  --- UI
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
+  ---- Language Specific
+
+  use("suketa/nvim-dap-ruby")
+
+  --- Novelty
+
+  ---- Silly little visual games
+  use("eandrju/cellular-automaton.nvim")
 end)
