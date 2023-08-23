@@ -221,3 +221,5 @@ lspconfig["volar"].setup {
     },
   },
 }
+
+lsp.format_on_save()
