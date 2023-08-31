@@ -18,6 +18,7 @@ local mappings = {
   ["<F9>"] = { "<cmd>lua require('dap').step_into()<cr>", "DAP Step Into" },
   ["<F10>"] = { "<cmd>lua require('dap').step_out()<cr>", "DAP Step Out" },
   ["<C-k>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+  ["<C-b>"] = { "<cmd>%bd|e#<cr>", "Clear Buffers" },
   ["C-D"] = {
     function()
       require('dap').continue()
