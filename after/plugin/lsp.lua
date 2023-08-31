@@ -66,7 +66,7 @@ if not configs.ruby_lsp then
     "codeActions",
   }
 
-  configs.ruby_lsp = {
+  configs.ruby_ls = {
     default_config = {
       cmd = { "bundle", "exec", "ruby-lsp" },
       filetypes = { "ruby" },
@@ -80,7 +80,7 @@ if not configs.ruby_lsp then
       FormatRuby = {
         function()
           vim.lsp.buf.format({
-            name = "ruby_lsp",
+            name = "ruby_ls",
             async = true,
           })
         end,
@@ -90,7 +90,7 @@ if not configs.ruby_lsp then
   }
 end
 
-lspconfig.ruby_lsp.setup({
+lspconfig.ruby_ls.setup({
   on_attach = lsp.on_attach,
   capabilities = lsp.capabilities
 })
