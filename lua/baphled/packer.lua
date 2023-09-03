@@ -262,6 +262,9 @@ return packer.startup(function(use)
     }
   }
 
+  --- ENV
+  use("tpope/vim-dotenv")
+
   --- Database
   use {
     "kristijanhusak/vim-dadbod-ui",
