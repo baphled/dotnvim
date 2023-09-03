@@ -55,21 +55,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- ruby DAP
---
--- Need to override the default ruby adapter to use rdbg correctly
-dap.adapters.ruby = function(callback, config)
-  callback {
-    type = "server",
-    host = "127.0.0.1",
-    port = "${port}",
-    executable = {
-      command = "bundle",
-      args = { "exec", "rdbg", "--open", "--port", "${port}", "-c", "--", config.command, config.script },
-    },
-  }
-end
-
 local debugger_path = os.getenv("HOME") .. ".local/share/nvim/mason/packages/dart-debug-adapter/extension/out/dist/debug.js"
 
 dap.adapters.dart = {
