@@ -62,6 +62,9 @@ the project anytime a plug-in updates.
 * vim-textobj-rubyblock
 * vim-rails
 * NvimTree
+* which-key
+* nvim-notify
+* vim-dadbod
 
 Some of these plug-ins have been brought in from my old configuration, with
 others totally replace a large amount plug-ins I used previously.
@@ -79,7 +82,17 @@ I've intentionally split my configuration into a few logically sections.
 
 ## Autocommand
 
+Vim and neovim both allow us to define commands that can be automatically called
+dependant of some pre-defined hooks. Instead of having these spread across our
+setup, we tend to create an autocommand lua file to is specific to the operation
+we want to automate.
+
 ## Colours
+
+Overrides the default colours with our own custom settings.
+
+For the most part, there's no _real_ need to have to override the colours used
+within neovim, but if/when this is necessary we're able to do this here.
 
 ## Motions
 
