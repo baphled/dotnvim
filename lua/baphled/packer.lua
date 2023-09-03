@@ -262,6 +262,15 @@ return packer.startup(function(use)
     }
   }
 
+  --- Database
+  use {
+    "kristijanhusak/vim-dadbod-ui",
+    requires = {
+      "tpope/vim-dadbod",
+      "kristijanhusak/vim-dadbod-completion",
+    }
+  }
+
   --- Telescope integration
   use { "nvim-telescope/telescope-dap.nvim", requires = { "mfussenegger/nvim-dap" } }
 

@@ -185,10 +185,11 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = true, -- show text along icon
       menu = ({
-        buffer = "[buf]",
-        nvim_lsp = "[LSP]",
         luasnip = "[Snip]",
-        nvim_lua = "[Lua]",
+        nvim_lsp = "[LSP]",
+        vim_dadbod_completion = "[DB]",
+        buffer = "[buf]",
+        nvim_lua = "[API]",
         path = "[path]",
       }),
       maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
