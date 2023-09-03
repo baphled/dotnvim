@@ -1,5 +1,7 @@
 # PDE Configuration
 
+![Screenshot 2023-08-03 18:54:37](https://github.com/baphled/dotnvim/assets/37376/4dbfc542-0f54-4827-b9ac-a0e7bfec7ccf)
+
 My NeoVim configuration settings, used for my day-to-day work and productivity.
 
 This effectively makes my [dotvim](https://github.com/baphled/dotvim)
