@@ -269,13 +269,13 @@ local mappings = {
         r = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Find Code Actions" },
       },
     },
-    g = {
-      function()
-        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-      end,
-      "Find String"
-    },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    g = {
+      function ()
+        builtin.grep_string({ search = vim.fn.input("Grep For > ") })
+      end,
+      "Find Grep"
+    },
     i = {
       function()
         vim.lsp.buf.implementation()
@@ -292,6 +292,12 @@ local mappings = {
       "Find References"
     },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
+    w = {
+      function()
+        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+      end,
+      "Find String"
+    },
     x = { "<cmd>Telescope commands<cr>", "Find Command" },
   },
   g = {
