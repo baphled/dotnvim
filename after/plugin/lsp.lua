@@ -17,10 +17,10 @@ local cmp = require('cmp')
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
 lsp.set_sign_icons({
-  error = "",
-  warn = "",
-  hint = "",
-  info = "",
+  error = " ",
+  warn = " ",
+  hint = " ",
+  info = " ",
 })
 
 local lspconfig = require('lspconfig')
