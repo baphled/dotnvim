@@ -14,13 +14,13 @@ require("notify").setup({
     TRACE    = "✎",
     FATAL    = "",
   },
-})
-require('lsp-notify').setup({
-  notify = require('notify'),
-  icons = {
-    spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
-    done     = '',
+  time_formats = {
+    notification_history = "%FT%T",
+    notification = "%T",
   },
 })
 
 vim.notify = require("notify")
+
+require('lsp-notify').setup({
+})

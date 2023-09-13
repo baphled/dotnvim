@@ -130,11 +130,6 @@ return packer.startup(function(use)
     end
   }
 
-  --- Notify Integration
-
-  ---- Notifications
-  use("rcarriga/nvim-notify")
-
   -- PDE
 
   --- Colour highlighting
@@ -207,6 +202,12 @@ return packer.startup(function(use)
   use {
     'mrded/nvim-lsp-notify',
     requires = { 'rcarriga/nvim-notify' },
+    config = function()
+      require('lsp-notify').setup({
+        notify = require('notify'),
+      })
+    end,
+    supports_replace = true,
   }
 
   ---- Testing
