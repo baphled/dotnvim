@@ -8,6 +8,8 @@ lsp.ensure_installed({
   'clangd',
   'arduino_language_server',
   'solargraph',
+  'lua_ls',
+  'ruby_ls',
 })
 
 -- Fix Undefined global 'vim'
@@ -58,17 +60,15 @@ local util = require("lspconfig.util")
 
 if not configs.ruby_lsp then
   local enabled_features = {
-    "documentHighlights",
     "documentSymbols",
     "foldingRanges",
     "selectionRanges",
-    "semanticHighlighting",
     "codeActions",
   }
 
   configs.ruby_ls = {
     default_config = {
-      cmd = { "bundle", "exec", "ruby-lsp" },
+      cmd = { "ruby-lsp" },
       filetypes = { "ruby" },
       root_dir = util.root_pattern("Gemfile", ".git"),
       init_options = {
@@ -94,6 +94,22 @@ lspconfig.ruby_ls.setup({
   on_attach = lsp.on_attach,
   capabilities = lsp.capabilities
 })
+
+lspconfig.lua_ls.setup({
+  on_attach = lsp.on_attach,
+  capabilities = lsp.capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
+})
+
 
 lsp.preset({
   float_border = 'rounded',
