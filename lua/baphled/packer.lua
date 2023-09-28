@@ -42,7 +42,8 @@ return packer.startup(function(use)
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
-    end, }
+    end,
+  }
 
   use("nvim-treesitter/nvim-treesitter-context");
 
@@ -199,16 +200,7 @@ return packer.startup(function(use)
   }
 
   ---- Notifications
-  use {
-    'mrded/nvim-lsp-notify',
-    requires = { 'rcarriga/nvim-notify' },
-    config = function()
-      require('lsp-notify').setup({
-        notify = require('notify'),
-      })
-    end,
-    supports_replace = true,
-  }
+  use { 'rcarriga/nvim-notify' }
 
   ---- Testing
   use({
