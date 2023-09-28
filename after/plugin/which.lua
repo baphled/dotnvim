@@ -1,7 +1,23 @@
+local builtin = require('telescope.builtin')
 local which_key = require("which-key")
 local utils = require("baphled.utils")
 
 which_key.setup()
+
+which_key.register({
+  ["<C-h>"] = {
+    function()
+      vim.lsp.buf.signature_help()
+    end,
+    "Signature Help"
+  },
+}, {
+  mode = "i",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = false,
+})
 
 local opts = {
   mode = "n",
@@ -17,8 +33,8 @@ local mappings = {
   ["<F8>"] = { "<cmd>lua require('dap').step_over()<cr>", "DAP Step Over" },
   ["<F9>"] = { "<cmd>lua require('dap').step_into()<cr>", "DAP Step Into" },
   ["<F10>"] = { "<cmd>lua require('dap').step_out()<cr>", "DAP Step Out" },
-  ["<C-k>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
   ["<C-b>"] = { "<cmd>%bd|e#<cr>", "Clear Buffers" },
+  ["<C-k>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
   ["C-D"] = {
     function()
       require('dap').continue()
@@ -272,7 +288,7 @@ local mappings = {
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     g = {
       function ()
-        builtin.grep_string({ search = vim.fn.input("Grep For > ") })
+        builtin.grep_string({ search = vim.fn.input("Grep > ") })
       end,
       "Find Grep"
     },
@@ -291,7 +307,6 @@ local mappings = {
       "<cmd>Trouble lsp_references<cr>",
       "Find References"
     },
-    s = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
     w = {
       function()
         require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
