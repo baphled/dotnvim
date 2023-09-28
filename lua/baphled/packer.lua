@@ -173,6 +173,17 @@ return packer.startup(function(use)
     },
   }
 
+  --- documentation
+
+  --- Markdown
+  use({
+    'jakewvincent/mkdnflow.nvim',
+    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    config = function()
+      require('mkdnflow').setup()
+    end
+  })
+
   --- LSP
   use {
     'VonHeikemen/lsp-zero.nvim',
