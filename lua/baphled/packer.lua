@@ -175,6 +175,10 @@ return packer.startup(function(use)
 
   --- documentation
 
+  use {
+    'godlygeek/tabular',
+  }
+
   --- Markdown
   use({
     'jakewvincent/mkdnflow.nvim',
