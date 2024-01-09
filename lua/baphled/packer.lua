@@ -56,14 +56,12 @@ return packer.startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     -- or                            , branch = '0.1.x',
-    requires = {
-      {
-        'nvim-lua/plenary.nvim',
-        "sindrets/diffview.nvim",
-        'nvim-telescope/telescope-fzy-native.nvim',
-        'nvim-telescope/telescope-media-files.nvim',
-        "nvim-tree/nvim-web-devicons"
-      }
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      "sindrets/diffview.nvim",
+      'nvim-telescope/telescope-fzy-native.nvim',
+      'nvim-telescope/telescope-media-files.nvim',
+      "nvim-tree/nvim-web-devicons"
     }
   }
 

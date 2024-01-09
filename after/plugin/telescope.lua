@@ -1,4 +1,3 @@
-local builtin = require('telescope.builtin')
 local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
 
