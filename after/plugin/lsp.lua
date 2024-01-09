@@ -1,9 +1,9 @@
-local lsp = require('lsp-zero')
+local lsp_zero = require('lsp-zero')
 local lspkind = require('lspkind')
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-lsp.ensure_installed({
+lsp_zero.ensure_installed({
   'rust_analyzer',
   'clangd',
   'arduino_language_server',
@@ -13,12 +13,12 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+lsp_zero.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
 
-lsp.set_sign_icons({
+lsp_zero.set_sign_icons({
   error = " ",
   warn = " ",
   hint = " ",
@@ -42,7 +42,7 @@ local capabilities = vim.tbl_deep_extend("force",
 )
 
 lspconfig.solargraph.setup({
-  on_attach = lsp.on_attach,
+  on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
   settings = {
     solargraph = {
@@ -97,12 +97,12 @@ if not configs.ruby_lsp then
 end
 
 lspconfig.ruby_ls.setup({
-  on_attach = lsp.on_attach,
+  on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
-  on_attach = lsp.on_attach,
+  on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -117,7 +117,7 @@ lspconfig.lua_ls.setup({
 })
 
 
-lsp.preset({
+lsp_zero.preset({
   float_border = 'rounded',
   call_servers = 'local',
   configure_diagnostics = true,
@@ -133,7 +133,7 @@ lsp.preset({
   },
 })
 
-lsp.setup()
+lsp_zero.setup()
 
 local cmp_mappings = {
   -- Disable <Tab> and <S-Tab>, as they conflict with GitHub Copilot
@@ -227,7 +227,7 @@ cmp.setup({
 })
 
 lspconfig["volar"].setup {
-  on_attach = lsp.on_attach,
+  on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
   filetypes = {
     "javascript",
@@ -245,4 +245,4 @@ lspconfig["volar"].setup {
   },
 }
 
-lsp.format_on_save()
+lsp_zero.format_on_save()
