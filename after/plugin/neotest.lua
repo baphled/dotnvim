@@ -24,7 +24,7 @@ local jest_available = vim.fn.executable(npm_bin_path .. "jest")
 local jestCommand = ""
 
 if vue_cli_available == 1 then
-  jestCommand = "npx vue-cli-service test:unit"
+  jestCommand = "npx vue-cli-service test:unit --detectOpenHandles"
 elseif jest_available == 1 then
   jestCommand = "npx jest"
 else
