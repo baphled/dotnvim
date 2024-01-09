@@ -33,8 +33,17 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
+local configs = require("lspconfig.configs")
+local util = require("lspconfig.util")
+
+local capabilities = vim.tbl_deep_extend("force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
 lspconfig.solargraph.setup({
   on_attach = lsp.on_attach,
+  capabilities = capabilities,
   settings = {
     solargraph = {
       ignore = {
@@ -54,9 +63,6 @@ lspconfig.solargraph.setup({
     }
   }
 })
-
-local configs = require("lspconfig.configs")
-local util = require("lspconfig.util")
 
 if not configs.ruby_lsp then
   local enabled_features = {
@@ -92,12 +98,12 @@ end
 
 lspconfig.ruby_ls.setup({
   on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities
+  capabilities = capabilities,
 })
 
 lspconfig.lua_ls.setup({
   on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
@@ -222,7 +228,7 @@ cmp.setup({
 
 lspconfig["volar"].setup {
   on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = capabilities,
   filetypes = {
     "javascript",
     "vue",
