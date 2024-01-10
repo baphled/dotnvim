@@ -95,6 +95,15 @@ return packer.startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   })
 
+  ---
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  })
+
   --- Used to handle our statusline
   use { 'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons' }
@@ -243,6 +252,9 @@ return packer.startup(function(use)
     requires = {
       "olimorris/neotest-rspec",
       "nvim-neotest/neotest-jest",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
