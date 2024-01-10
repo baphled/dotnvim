@@ -51,6 +51,11 @@ return packer.startup(function(use)
   use("tpope/vim-surround")
   use("kana/vim-textobj-user")
   use("michaeljsmith/vim-indent-object")
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
 
   --- Enhanced searching
   use {
