@@ -14,6 +14,16 @@ require("other-nvim").setup({
       target = "lib/%1.rb",
       context = "src",
     },
+    {
+      pattern = "Gemfile$",
+      target = "Gemfile.lock",
+      context = "lock",
+    },
+    {
+      pattern = "Gemfile.lock$",
+      target = "Gemfile",
+      context = "src",
+    },
     -- javascript
     {
       pattern = "/src/(.*).js$",
@@ -33,6 +43,17 @@ require("other-nvim").setup({
     {
       pattern = "/tests/unit/(.*).spec.js$",
       target = "/src/%1.js",
+      context = "src",
+    },
+
+    {
+      pattern = "package.json$",
+      target = "package-lock.json",
+      context = "lock",
+    },
+    {
+      pattern = "package-lock.json$",
+      target = "package.json",
       context = "src",
     },
     -- VueJS
