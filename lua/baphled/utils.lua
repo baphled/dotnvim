@@ -3,7 +3,7 @@ _M = {}
 -- Move the current window to a new tab
 -- and close the current buffer
 --
-function move_window_in_tab()
+local function move_window_in_tab()
   -- Create a new tab with current buffer
   vim.cmd("tabedit %")
 
