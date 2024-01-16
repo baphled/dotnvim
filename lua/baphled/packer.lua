@@ -127,7 +127,16 @@ return packer.startup(function(use)
   }
 
   --- File navigation
+
+  -- File tree
   use("nvim-tree/nvim-tree.lua")
+
+  -- File mapping
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } }
+  }
 
   --- which-key
   --
