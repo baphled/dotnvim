@@ -14,7 +14,13 @@ local telescope_mappings = {
   f = {
     name = "Telescope",
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    f = { function()
+      require("telescope.builtin").find_files({
+        find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+      })
+    end,
+      "Find File"
+    },
     h = { "<cmd>Telescope help_tags<cr>", "help", },
     g = {
       function()
