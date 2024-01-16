@@ -18,3 +18,5 @@ local cloak_mapping = {
     },
   },
 }
+
+which_key.register(cloak_mapping, normal_opts)
