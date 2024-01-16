@@ -5,6 +5,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 lsp_zero.ensure_installed({
   'rust_analyzer',
+  'cssls',
   'clangd',
   'arduino_language_server',
   'solargraph',
@@ -40,6 +41,11 @@ local capabilities = vim.tbl_deep_extend("force",
   vim.lsp.protocol.make_client_capabilities(),
   require('cmp_nvim_lsp').default_capabilities()
 )
+
+lspconfig.cssls.setup({
+  on_attach = lsp_zero.on_attach,
+  capabilities = capabilities,
+})
 
 lspconfig.solargraph.setup({
   on_attach = lsp_zero.on_attach,
