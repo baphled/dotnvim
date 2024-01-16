@@ -73,6 +73,16 @@ require("other-nvim").setup({
       target = "/src/%1.stories.js",
       context = "story",
     },
+    {
+      pattern = "/src/(.*).stories.js",
+      target = "/src/%1.vue",
+      context = "src",
+    },
+    {
+      pattern = "/src/(.*).stories.js$",
+      target = "/tests/unit/%1.spec.js",
+      context = "spec",
+    },
   }
 })
 
