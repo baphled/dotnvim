@@ -271,14 +271,6 @@ return packer.startup(function(use)
       "nvim-treesitter/nvim-treesitter"
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-rspec"),
-          require('neotest-jest'),
-        }
-      })
-    end
   })
 
   ---- Code Coverage

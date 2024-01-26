@@ -26,7 +26,7 @@ local jestCommand = ""
 if vue_cli_available == 1 then
   jestCommand = "npx vue-cli-service test:unit --detectOpenHandles"
 elseif jest_available == 1 then
-  jestCommand = "npx jest"
+  jestCommand = "npx jest --detectOpenHandles"
 else
   print("No test runner found")
 end
@@ -38,4 +38,12 @@ require("neotest-jest")({
   cwd = function(path)
     return vim.fn.getcwd()
   end,
+
+})
+
+require("neotest").setup({
+  adapters = {
+    require("neotest-rspec"),
+    require('neotest-jest'),
+  },
 })
