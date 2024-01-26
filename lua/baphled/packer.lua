@@ -332,6 +332,12 @@ return packer.startup(function(use)
   ---- Language Specific
 
   use("suketa/nvim-dap-ruby")
+  use("mxsdev/nvim-dap-vscode-js")
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+  }
 
   --- Novelty
 
