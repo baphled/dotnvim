@@ -12,6 +12,7 @@ lsp_zero.ensure_installed({
   'lua_ls',
   'ruby_ls',
   'tsserver',
+  'volar',
 })
 
 -- Fix Undefined global 'vim'
@@ -114,6 +115,16 @@ lspconfig.ruby_ls.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
 })
+
+lspconfig.volar.setup {
+  on_attach = lsp_zero.on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "javascript",
+    "vue",
+    "json",
+  },
+}
 
 lspconfig.lua_ls.setup({
   on_attach = lsp_zero.on_attach,
@@ -239,24 +250,5 @@ cmp.setup({
     })
   },
 })
-
-lspconfig["volar"].setup {
-  on_attach = lsp_zero.on_attach,
-  capabilities = capabilities,
-  filetypes = {
-    "javascript",
-    "vue",
-    "json",
-  },
-  settings = {
-    volar = {
-      codeLens = {
-        references = true,
-        pugTools = true,
-        scriptSetupTools = true,
-      },
-    },
-  },
-}
 
 lsp_zero.format_on_save()
