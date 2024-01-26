@@ -45,7 +45,16 @@ require("other-nvim").setup({
       target = "/src/%1.js",
       context = "src",
     },
-
+    {
+      pattern = "/src/(.*).js$",
+      target = "/test/%1.spec.js",
+      context = "spec",
+    },
+    {
+      pattern = "/test/(.*).spec.js$",
+      target = "/src/%1.js",
+      context = "src",
+    },
     {
       pattern = "package.json$",
       target = "package-lock.json",
@@ -55,6 +64,47 @@ require("other-nvim").setup({
       pattern = "package-lock.json$",
       target = "package.json",
       context = "src",
+    },
+    -- TypeScript
+    {
+      pattern = "/src/(.*)/(.*).(ts)$",
+      target = "/src/%1/__tests__/%2.spec.js",
+      context = "spec",
+    },
+    {
+      pattern = "/src/(.*).(ts)$",
+      target = "/src/%1.test.ts",
+      context = "spec",
+    },
+    {
+      pattern = "/src/(.*).(ts)$",
+      target = "/src/%1.test.js",
+      context = "spec",
+    },
+    {
+      pattern = "/src/(.*)/(.*).(ts)$",
+      target = "/src/%1/__tests__/%2.test.js",
+      context = "spec",
+    },
+    {
+      pattern = "/src/(.*)/__tests__/(.*).spec.js$",
+      target = "/src/%1/%2.ts",
+      context = "src",
+    },
+    {
+      pattern = "/src/(.*)/__tests__/(.*).test.js$",
+      target = "/src/%1/%2.ts",
+      context = "src",
+    },
+    {
+      pattern = "/src/(.*).test.(ts)$",
+      target = "/src/%1.ts",
+      context = "spec",
+    },
+    {
+      pattern = "/src/(.*).test.(js)$",
+      target = "/src/%1.ts",
+      context = "spec",
     },
     -- VueJS
     {
