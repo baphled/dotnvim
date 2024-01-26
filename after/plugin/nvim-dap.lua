@@ -1,6 +1,73 @@
 -- Only require if dap is attached
 
-require('dapui').setup()
+require('dapui').setup({
+  controls = {
+    element = "repl",
+    enabled = true,
+    icons = {
+      disconnect = "",
+      pause = "",
+      play = "",
+      run_last = "",
+      step_back = "",
+      step_into = "",
+      step_out = "",
+      step_over = "",
+      terminate = ""
+    }
+  },
+  element_mappings = {},
+  expand_lines = true,
+  floating = {
+    border = "single",
+    mappings = {
+      close = { "q", "<Esc>" }
+    }
+  },
+  force_buffers = true,
+  icons = {
+    collapsed = "",
+    current_frame = "",
+    expanded = ""
+  },
+  layouts = { {
+    elements = { {
+      id = "scopes",
+      size = 0.25
+    }, {
+      id = "breakpoints",
+      size = 0.25
+    }, {
+      id = "stacks",
+      size = 0.25
+    }, {
+      id = "watches",
+      size = 0.25
+    } },
+    position = "left",
+    size = 40
+  }, {
+    elements = { {
+      id = "repl",
+      size = 1.0
+    } },
+    position = "bottom",
+    size = 10
+  } },
+  mappings = {
+    edit = "e",
+    expand = { "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    repl = "r",
+    toggle = "t"
+  },
+  render = {
+    indent = 1,
+    max_value_lines = 100
+  }
+})
+
 require('dap-ruby').setup()
 
 require("telescope").load_extension("dap")
@@ -13,11 +80,11 @@ require("nvim-dap-virtual-text").setup({
   enabled = true,                     -- enable this plugin (the default)
   enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
   highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-  highlight_new_as_changed = true,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+  highlight_new_as_changed = true,    -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
   show_stop_reason = true,            -- show stop reason when stopped for exceptions
-  commented = true,                  -- prefix virtual text with comment string
+  commented = true,                   -- prefix virtual text with comment string
   only_first_definition = true,       -- only show virtual text at first definition (if there are multiple)
-  all_references = true,             -- show virtual text on all all references of the variable (not only definitions)
+  all_references = true,              -- show virtual text on all all references of the variable (not only definitions)
   clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
   --- A callback that determines how a variable is displayed or whether it should be omitted
   --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
