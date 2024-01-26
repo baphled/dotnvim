@@ -11,6 +11,7 @@ lsp_zero.ensure_installed({
   'solargraph',
   'lua_ls',
   'ruby_ls',
+  'tsserver',
 })
 
 -- Fix Undefined global 'vim'
@@ -45,6 +46,13 @@ local capabilities = vim.tbl_deep_extend("force",
 lspconfig.cssls.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
+})
+
+lspconfig.tsserver.setup({
+  on_attach = lsp_zero.on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+
 })
 
 lspconfig.solargraph.setup({
