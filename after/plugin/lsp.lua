@@ -259,44 +259,6 @@ lsp_zero.preset({
   },
 })
 
-local cmp_mappings = {
-  -- Disable <Tab> and <S-Tab>, as they conflict with GitHub Copilot
-  -- It is still possible to navigate with Arrow Up and Arrow Down
-  ['<Tab>'] = cmp.config.disable,
-  ['<S-Tab>'] = cmp.config.disable,
-  ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-  ['<C-Space>'] = function()
-    if cmp.visible() then
-      cmp.close()
-    else
-      cmp.complete()
-    end
-  end,
-  ['<Esc>'] = cmp.mapping(function()
-    if cmp.visible() then
-      cmp.close()
-    else
-      cmp.complete()
-    end
-    vim.cmd('stopinsert')
-  end),
-  ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-  ['<C-d>'] = cmp.mapping.scroll_docs(4),
-  ['<C-p>'] = cmp.mapping(function()
-    if cmp.visible() then
-      cmp.select_prev_item(cmp_select_opts)
-    else
-      cmp.complete()
-    end
-  end),
-  ['<C-n>'] = cmp.mapping(function()
-    if cmp.visible() then
-      cmp.select_next_item(cmp_select_opts)
-    else
-      cmp.complete()
-    end
-  end),
-}
 
 cmp.setup({
   sources = {
@@ -320,7 +282,44 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body)
     end,
   },
-  mapping = cmp_mappings,
+  mapping = cmp.mapping.preset.insert({
+    -- Disable <Tab> and <S-Tab>, as they conflict with GitHub Copilot
+    -- It is still possible to navigate with Arrow Up and Arrow Down
+    ['<Tab>'] = cmp.config.disable,
+    ['<S-Tab>'] = cmp.config.disable,
+    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+    end,
+    ['<Esc>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+      vim.cmd('stopinsert')
+    end),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-p>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item(cmp_select_opts)
+      else
+        cmp.complete()
+      end
+    end),
+    ['<C-n>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_next_item(cmp_select_opts)
+      else
+        cmp.complete()
+      end
+    end),
+  }),
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
