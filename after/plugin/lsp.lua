@@ -12,7 +12,8 @@ lsp_zero.ensure_installed({
   'lua_ls',
   'ruby_ls',
   'tsserver',
-  'volar',
+  'eslint',
+  'vuels',
 })
 
 -- Fix Undefined global 'vim'
@@ -53,7 +54,29 @@ lspconfig.tsserver.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-
+  typescript = {
+    inlayHints = {
+      includeInlayParameterNameHints = "literal",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = false,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
+  },
+  javascript = {
+    inlayHints = {
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    },
+  },
+  root_dir = function() return vim.loop.cwd() end -- run lsp for javascript in any directory
 })
 
 lspconfig.solargraph.setup({
@@ -116,15 +139,92 @@ lspconfig.ruby_ls.setup({
   capabilities = capabilities,
 })
 
-lspconfig.volar.setup {
+lspconfig.vuels.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
-  filetypes = {
-    "javascript",
-    "vue",
-    "json",
+  filetypes = { "vue", "javascript" },
+  init_options = {
+    config = {
+      css = {},
+      emmet = {},
+      html = {
+        suggest = {}
+      },
+      javascript = {
+        format = {
+        }
+      },
+      stylusSupremacy = {},
+      typescript = {
+        format = {}
+      },
+      vetur = {
+        completion = {
+          autoImport = true,
+          tagCasing = "kebab",
+          useScaffoldSnippets = true
+        },
+        format = {
+          enable = false,
+          defaultFormatter = {
+            js = "none",
+            ts = "none"
+          },
+          defaultFormatterOptions = {},
+          scriptInitialIndent = false,
+          styleInitialIndent = false
+        },
+        validation = {
+          script = true,
+          style = true,
+          template = true
+        }
+      }
+    }
   },
-}
+})
+
+lspconfig.eslint.setup({
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+  capabilities = capabilities,
+  settings = {
+    codeAction = {
+      disableRuleComment = {
+        enable = true,
+        location = "separateLine"
+      },
+      showDocumentation = {
+        enable = true
+      }
+    },
+    codeActionOnSave = {
+      enable = false,
+      mode = "all"
+    },
+    experimental = {
+      useFlatConfig = false
+    },
+    format = true,
+    nodePath = "",
+    onIgnoredFiles = "off",
+    problems = {
+      shortenToSingleLine = false
+    },
+    quiet = false,
+    rulesCustomizations = {},
+    run = "onType",
+    useESLintClass = true,
+    validate = "on",
+    workingDirectory = {
+      mode = "location"
+    }
+  }
+})
 
 lspconfig.lua_ls.setup({
   on_attach = lsp_zero.on_attach,
@@ -139,6 +239,7 @@ lspconfig.lua_ls.setup({
       },
     },
   },
+  root_dir = function() return vim.loop.cwd() end -- run lsp for javascript in any directory
 })
 
 
@@ -158,15 +259,13 @@ lsp_zero.preset({
   },
 })
 
-lsp_zero.setup()
-
 local cmp_mappings = {
   -- Disable <Tab> and <S-Tab>, as they conflict with GitHub Copilot
   -- It is still possible to navigate with Arrow Up and Arrow Down
-  ["<Tab>"] = cmp.config.disable,
-  ["<S-Tab>"] = cmp.config.disable,
-  ["<Enter>"] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = function()
+  ['<Tab>'] = cmp.config.disable,
+  ['<S-Tab>'] = cmp.config.disable,
+  ['<Enter>'] = cmp.mapping.confirm({ select = true }),
+  ['<C-Space>'] = function()
     if cmp.visible() then
       cmp.close()
     else
@@ -250,5 +349,7 @@ cmp.setup({
     })
   },
 })
+
+lsp_zero.setup()
 
 lsp_zero.format_on_save()
