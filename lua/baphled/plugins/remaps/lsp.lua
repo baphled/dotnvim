@@ -38,7 +38,10 @@ local lsp_normal_mappings = {
   ['<leader>'] = {
     f = {
       function()
-        vim.lsp.buf.format()
+        vim.lsp.buf.format({
+          async = true,
+          save_after_format = true,
+        })
       end,
       "Format"
     },
