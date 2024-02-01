@@ -53,7 +53,7 @@ lspconfig.cssls.setup({
 lspconfig.tsserver.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
   typescript = {
     inlayHints = {
       includeInlayParameterNameHints = "literal",
