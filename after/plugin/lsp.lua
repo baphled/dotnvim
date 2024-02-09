@@ -242,6 +242,12 @@ lspconfig.lua_ls.setup({
   root_dir = function() return vim.loop.cwd() end -- run lsp for javascript in any directory
 })
 
+lspconfig.clangd.setup({
+  capabilities = capabilities,
+  on_attach = lsp_zero.on_attach,
+  checkUpdate = true,
+  filetypes = { "c", "cpp", "cuda", "proto" },
+})
 
 lsp_zero.preset({
   float_border = 'rounded',
