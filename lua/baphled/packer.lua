@@ -267,6 +267,7 @@ return packer.startup(function(use)
       "olimorris/neotest-rspec",
       "nvim-neotest/neotest-jest",
       "nvim-lua/plenary.nvim",
+      "nvim-neotest/nvim-nio",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter"
     },
