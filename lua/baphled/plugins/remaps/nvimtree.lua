@@ -13,7 +13,7 @@ local normal_opts = {
 local nvimtree_mapping = {
   ['<C-p>'] = { "<cmd>NvimTreeToggle<CR>", "File Browser" },
   ['<leader>'] = {
-    np = { "<cmd>NvimTreeFindFile<CR>", "NvimTree Find File" },
+    np = { "<cmd>NvimTreeFindFile!<CR>", "NvimTree Find File" },
     nt = { "<cmd>NvimTreeOpen<CR>", "NvimTree" },
   }
 }
