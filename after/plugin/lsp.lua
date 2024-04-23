@@ -14,6 +14,7 @@ lsp_zero.ensure_installed({
   'tsserver',
   'eslint',
   'vuels',
+  'volar',
 })
 
 lsp_zero.on_attach(function(_, _)
@@ -53,27 +54,57 @@ lspconfig.cssls.setup({
   capabilities = capabilities,
 })
 
+lspconfig.volar.setup({
+  on_attach = lsp_zero.on_attach,
+  capabilities = capabilities,
+  filetypes = { "vue" },
+})
+
 lspconfig.tsserver.setup({
   on_attach = lsp_zero.on_attach,
   capabilities = capabilities,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
   typescript = {
+    codeActions = {
+      organizeImports = true,
+    },
+    codeLens = {
+      references = true,
+      rename = true,
+      organizeImports = true,
+    },
+    updateImportsOnFileMove = {
+      enabled = 'always',
+    },
     inlayHints = {
-      includeInlayParameterNameHints = "literal",
-      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayParameterNameHints = "all",
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
       includeInlayFunctionParameterTypeHints = true,
-      includeInlayVariableTypeHints = false,
+      includeInlayVariableTypeHints = true,
+      includeInlayVariableTypeHintsWhenTypeMatchesName = true,
       includeInlayPropertyDeclarationTypeHints = true,
       includeInlayFunctionLikeReturnTypeHints = true,
       includeInlayEnumMemberValueHints = true,
     },
   },
   javascript = {
+    codeActions = {
+      organizeImports = true,
+    },
+    codeLens = {
+      references = true,
+      rename = true,
+      organizeImports = true,
+    },
+    updateImportsOnFileMove = {
+      enabled = 'always',
+    },
     inlayHints = {
       includeInlayParameterNameHints = "all",
-      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
       includeInlayFunctionParameterTypeHints = true,
       includeInlayVariableTypeHints = true,
+      includeInlayVariableTypeHintsWhenTypeMatchesName = true,
       includeInlayPropertyDeclarationTypeHints = true,
       includeInlayFunctionLikeReturnTypeHints = true,
       includeInlayEnumMemberValueHints = true,
@@ -224,7 +255,7 @@ lspconfig.eslint.setup({
     quiet = false,
     rulesCustomizations = {},
     run = "onType",
-    useESLintClass = true,
+    useESLintClass = false,
     validate = "on",
     workingDirectory = {
       mode = "location"
