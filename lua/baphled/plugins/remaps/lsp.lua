@@ -47,7 +47,7 @@ local lsp_normal_mappings = {
     },
   },
   g = {
-    d = {
+    f = {
       "<cmd>Telescope lsp_definitions<cr>", "Find Definition"
     },
     D = {

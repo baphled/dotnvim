@@ -16,6 +16,9 @@ lsp_zero.ensure_installed({
   'vuels',
 })
 
+lsp_zero.on_attach(function(_, _)
+end)
+
 -- Fix Undefined global 'vim'
 lsp_zero.nvim_workspace()
 
