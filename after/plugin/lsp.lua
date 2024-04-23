@@ -342,8 +342,8 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = true, -- show text along icon
       menu = ({
-        luasnip = "[Snip]",
         nvim_lsp = "[LSP]",
+        luasnip = "[Snip]",
         vim_dadbod_completion = "[DB]",
         buffer = "[buf]",
         nvim_lua = "[API]",
@@ -354,7 +354,7 @@ cmp.setup({
 
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-      before = function(entry, vim_item)
+      before = function(_, vim_item)
         return vim_item
       end
     })
