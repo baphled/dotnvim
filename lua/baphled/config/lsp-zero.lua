@@ -3,25 +3,25 @@ local lspkind = require('lspkind')
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-lsp_zero.ensure_installed({
-  'rust_analyzer',
-  'cssls',
-  'clangd',
-  'arduino_language_server',
-  'solargraph',
-  'lua_ls',
-  'ruby_ls',
-  'tsserver',
-  'eslint',
-  'vuels',
-  'volar',
-})
+require("mason").setup {
+  ensure_installed = {
+    'rust_analyzer',
+    'cssls',
+    'clangd',
+    'arduino_language_server',
+    'solargraph',
+    'lua_ls',
+    'ruby_ls',
+    'tsserver',
+    'eslint',
+    'vuels',
+    'volar',
+  },
+  handlers = { lsp_zero.default_setup }
+}
 
 lsp_zero.on_attach(function(_, _)
 end)
-
--- Fix Undefined global 'vim'
-lsp_zero.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
@@ -110,7 +110,7 @@ lspconfig.tsserver.setup({
       includeInlayEnumMemberValueHints = true,
     },
   },
-  root_dir = function() return vim.loop.cwd() end -- run lsp for javascript in any directory
+  root_dir = function() return vim.loop.cwd() end       -- run lsp for javascript in any directory
 })
 
 lspconfig.solargraph.setup({
@@ -276,7 +276,7 @@ lspconfig.lua_ls.setup({
       },
     },
   },
-  root_dir = function() return vim.loop.cwd() end -- run lsp for javascript in any directory
+  root_dir = function() return vim.loop.cwd() end       -- run lsp for javascript in any directory
 })
 
 lspconfig.clangd.setup({
@@ -371,7 +371,7 @@ cmp.setup({
     fields = { 'abbr', 'menu', 'kind' },
     -- mix format with lspkind icons and cmp kind labels
     format = lspkind.cmp_format({
-      with_text = true, -- show text along icon
+      with_text = true,       -- show text along icon
       menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snip]",
@@ -380,8 +380,8 @@ cmp.setup({
         nvim_lua = "[API]",
         path = "[path]",
       }),
-      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      maxwidth = 50,               -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...',       -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))

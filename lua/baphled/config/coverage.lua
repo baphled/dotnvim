@@ -89,7 +89,7 @@ end
 -- This is useful when you have a test runner that generates
 -- coverage files in the current directory
 --
-autocmd('BufRead, BufWritePost', {
+autocmd({'BufRead', 'BufWritePost'}, {
   group = CoverageGroup,
   pattern = "*",
   callback = load_coverage_if_supported,

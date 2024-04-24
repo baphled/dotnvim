@@ -1,8 +1,9 @@
 require("baphled.set")
 require("baphled.remap")
 require("baphled.motions")
-require("baphled.packer")
 require("baphled.autocommand")
+
+require("baphled.plugins")
 
 local augroup = vim.api.nvim_create_augroup
 local BaphledGroup = augroup('baphled', {})

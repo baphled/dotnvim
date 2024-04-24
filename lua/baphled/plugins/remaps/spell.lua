@@ -15,6 +15,12 @@ local spell_mapping = {
       p = { "<cmd>set spell!<cr>", "Spell" },
     },
   },
+  ['['] = {
+    s = { "<cmd>normal! ]s<cr>", "Next misspelled word" },
+  },
+  [']'] = {
+    s = { "<cmd>normal! [s<cr>", "Previous misspelled word" },
+  },
 }
 
 which_key.register(spell_mapping, normal_opts)

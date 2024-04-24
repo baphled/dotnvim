@@ -1,8 +1,12 @@
 -- customise the trouble plugin
 
 require("trouble").setup {
+  stages = "fade_in_slide_out",
+  icons = {
+    spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
+  },
+  background_colour = "#000000",
   height = 10,
-  icons = true,
   mode = "document_diagnostics",
   include_declaration = {
     "definitions",

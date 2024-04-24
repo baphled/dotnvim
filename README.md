@@ -40,7 +40,7 @@ One of the real pleasures here is that we finally get to leverage Lua for
 further customisation along with not having to worry about eternally updating
 the project anytime a plug-in updates.
 
-* Packer
+* Lazy
 * Telescope
 * Rose-Pine
 * Trouble
@@ -78,7 +78,7 @@ I've intentionally split my configuration into a few logically sections.
 * Autocommand
 * Colours
 * Motions
-* Packer
+* Plugins
 * Remap
 * Set
 
@@ -111,14 +111,19 @@ This is where I customise NeoVim to some sane defaults. Again, I've come
 accustom to some settings so defining them here makes my experiences with my
 text editor as close to my original Vim configuration as possible.
 
-## Packer
-
-This is one of the main changes to my setup.
+## Lazy
 
 Previously, I used git sub-modules to handle the Vim plug-ins I used. There was
 Plug, but I didn't like that much either. Packer, on the other hand is a really
 nice solutions. So we've embraced this and use this file for defining and
 setting up our NeoVim plug-ins.
+
+We initially went with `packer` for our plug-in management, but we've since
+moved to `lazy` as it's a much more elegant solution. This affords us the
+ability to lazy load our plug-ins, which is a huge win for us as we're able to
+speed up our start-up times. It also allows us to have more control over our
+which versions of our plug-ins we're using, which means that we're able to
+control the stability of our setup.
 
 # Plug-ins
 

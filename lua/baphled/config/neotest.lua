@@ -3,16 +3,6 @@ require("neodev").setup({
   library = { plugins = { "neotest" }, types = true },
 })
 
-require("neotest-rspec")({
-  rspec_cmd = function()
-    return vim.tbl_flatten({
-      "bundle",
-      "exec",
-      "rspec",
-    })
-  end
-})
-
 -- Project directory
 local file_path = vim.fn.expand("%:p:h")
 
@@ -43,7 +33,15 @@ require("neotest-jest")({
 
 require("neotest").setup({
   adapters = {
-    require("neotest-rspec"),
+    require("neotest-rspec")({
+      rspec_cmd = function()
+        return vim.tbl_flatten({
+          "bundle",
+          "exec",
+          "rspec",
+        })
+      end
+    }),
     require('neotest-jest'),
   },
 })
