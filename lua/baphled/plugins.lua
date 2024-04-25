@@ -168,7 +168,12 @@ require("lazy").setup {
   -- PDE
 
   --- Colour highlighting
-  { 'norcalli/nvim-colorizer.lua' },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require("baphled.config.colorizer")
+    end
+  },
 
   -- AI powered autocompletion
   {
