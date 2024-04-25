@@ -21,16 +21,6 @@ else
   print("No test runner found")
 end
 
-require("neotest-jest")({
-  jestCommand = jestCommand,
-  jestConfig = "jest.config.js",
-  env = { CI = true },
-  cwd = function(path)
-    return vim.fn.getcwd()
-  end,
-
-})
-
 require("neotest").setup({
   adapters = {
     require("neotest-rspec")({
@@ -40,8 +30,15 @@ require("neotest").setup({
           "exec",
           "rspec",
         })
-      end
+      end,
     }),
-    require('neotest-jest'),
+    require('neotest-jest')({
+      jestCommand = jestCommand,
+      jestConfig = "jest.config.js",
+      env = { CI = true },
+      cwd = function(path)
+        return vim.fn.getcwd()
+      end,
+    }),
   },
 })
