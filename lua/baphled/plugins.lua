@@ -125,7 +125,8 @@ require("lazy").setup {
     "catppuccin/nvim",
     as = "catppuccin",
     config = function()
-      vim.cmd('colorscheme catppuccin')
+      require("baphled.config.colors/catppuccin")
+      require("baphled.config.colors")
     end
   },
 
