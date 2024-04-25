@@ -140,10 +140,6 @@ if not configs.ruby_lsp then
   local enabled_features = {
     "documentHighlights",
     "documentSymbols",
-    "foldingRanges",
-    "selectionRanges",
-    "semanticHighlighting",
-    "formatting",
     "codeActions",
   }
 
