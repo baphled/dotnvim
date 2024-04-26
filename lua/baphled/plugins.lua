@@ -131,6 +131,15 @@ require("lazy").setup {
   },
 
   --- File navigation
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("baphled.config.oil")
+    end
+  },
 
   -- File tree
   {

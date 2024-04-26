@@ -6,6 +6,7 @@ require("baphled.plugins.remaps.lazy")
 require("baphled.plugins.remaps.neotest")
 require("baphled.plugins.remaps.dap")
 require("baphled.plugins.remaps.nvimtree")
+require("baphled.plugins.remaps.oil")
 
 require("baphled.plugins.remaps.common")
 require("baphled.plugins.remaps.tab")
