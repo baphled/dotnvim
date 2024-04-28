@@ -78,7 +78,7 @@ I've intentionally split my configuration into a few logically sections.
 * Autocommand
 * Colours
 * Motions
-* Plugins
+* Config
 * Remap
 * Set
 
@@ -125,9 +125,7 @@ speed up our start-up times. It also allows us to have more control over our
 which versions of our plug-ins we're using, which means that we're able to
 control the stability of our setup.
 
-# Plug-ins
-
-`after/plug-in`
+# Configs
 
 This is where we define the custom configuration for each of our plug-ins. From
 here, we're able to further extend our plug-ins to our will.

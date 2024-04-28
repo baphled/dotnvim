@@ -1,4 +1,4 @@
-require("baphled.plugins.remaps")
+require("baphled.config.which-key.init")
 
 local which_key = require("which-key")
 
