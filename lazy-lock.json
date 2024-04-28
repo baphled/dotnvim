@@ -74,5 +74,6 @@
   "vim-textobj-rubyblock": { "branch": "master", "commit": "2b882e2cc2599078f75e6e88cd268192bf7b27bf" },
   "vim-textobj-user": { "branch": "master", "commit": "41a675ddbeefd6a93664a4dc52f302fe3086a933" },
   "vscode-js-debug": { "branch": "main", "commit": "2152210dc7c3933e2b4ef7c72d72cf2fef765760" },
-  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
+  "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
+  "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" }
 }

@@ -120,6 +120,22 @@ require("lazy").setup {
     end
   },
 
+  -- Fuzzy find commands, search and help
+  {
+		"gelguy/wilder.nvim",
+		keys = {
+			":",
+			"/",
+			"?",
+		},
+		dependencies = {
+			"catppuccin/nvim",
+		},
+		config = function()
+      require("baphled.config.wilder")
+		end,
+	},
+
   --- Colour schemes
   {
     "catppuccin/nvim",
