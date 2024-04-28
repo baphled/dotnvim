@@ -247,6 +247,12 @@ require("lazy").setup {
 
   --- documentation
 
+  --- Comments
+  {
+    "tpope/vim-commentary",
+    event = 'VeryLazy',
+  },
+
   --- CSV
   {
     'cameron-wags/rainbow_csv.nvim',
