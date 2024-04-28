@@ -43,3 +43,16 @@ autocmd("BufWinEnter", {
     end, opts)
   end,
 })
+
+-- Display git signs when we enter a buffer
+autocmd("BufRead", {
+  group = Baphled_Fugitive,
+  pattern = "*",
+  callback = function()
+    if vim.bo.ft ~= "fugitive" and vim.bo.ft ~= "fugitiveblame" then
+      return
+    end
+
+    vim.cmd("Gitsigns toggle_current_line_blame")
+  end,
+})
