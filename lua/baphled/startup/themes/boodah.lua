@@ -32,7 +32,7 @@ local settings = {
       { " Find File", "Telescope find_files", "<leader>ff" },
       { " Find Word", "Telescope live_grep", "<leader>lg" },
       { " Branches", "Telescope git_branches", "<C-g>" },
-      { " File Browser", "NvimTreeOpen", "<leader>nt" },
+      { " File Browser", "Oil --float", "<leader>nt" },
       { " New File", "lua require'startup'.new_file()", "<leader>nf" },
     },
     highlight = "String",
