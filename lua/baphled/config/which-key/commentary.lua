@@ -9,13 +9,12 @@ local normal_opts = {
   nowait = false,
 }
 
-local spell_mapping = {
-  ['<leader>'] = {
-    s = {
-      p = { "<cmd>set spell!<cr>", "Spell" },
+local commentary_mapping = {
+  ["<leader>"] = {
+    ["/"] = {
+      "<cmd>Commentary<CR>", "Comment Toggle",
     },
   },
 }
 
-which_key.register(spell_mapping, normal_opts)
-
+which_key.register(commentary_mapping, normal_opts)

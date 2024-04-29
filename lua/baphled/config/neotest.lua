@@ -3,16 +3,6 @@ require("neodev").setup({
   library = { plugins = { "neotest" }, types = true },
 })
 
-require("neotest-rspec")({
-  rspec_cmd = function()
-    return vim.tbl_flatten({
-      "bundle",
-      "exec",
-      "rspec",
-    })
-  end
-})
-
 -- Project directory
 local file_path = vim.fn.expand("%:p:h")
 
@@ -31,19 +21,24 @@ else
   print("No test runner found")
 end
 
-require("neotest-jest")({
-  jestCommand = jestCommand,
-  jestConfig = "jest.config.js",
-  env = { CI = true },
-  cwd = function(path)
-    return vim.fn.getcwd()
-  end,
-
-})
-
 require("neotest").setup({
   adapters = {
-    require("neotest-rspec"),
-    require('neotest-jest'),
+    require("neotest-rspec")({
+      rspec_cmd = function()
+        return vim.tbl_flatten({
+          "bundle",
+          "exec",
+          "rspec",
+        })
+      end,
+    }),
+    require('neotest-jest')({
+      jestCommand = jestCommand,
+      jestConfig = "jest.config.js",
+      env = { CI = true },
+      cwd = function(path)
+        return vim.fn.getcwd()
+      end,
+    }),
   },
 })
