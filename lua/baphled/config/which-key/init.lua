@@ -7,6 +7,7 @@ require("baphled.config/which-key.neotest")
 require("baphled.config/which-key.dap")
 require("baphled.config/which-key.nvimtree")
 require("baphled.config/which-key.oil")
+require("baphled.config/which-key.commentary")
 
 require("baphled.config/which-key.common")
 require("baphled.config/which-key.tab")
