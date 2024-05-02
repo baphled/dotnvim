@@ -22,6 +22,15 @@ local CoverageGroup = augroup('Coverage', {})
 --
 local split_mime_type = function(mime_type)
   local _main_type, sub_type = string.match(mime_type, "(%a+)/(.*)")
+
+  if string == nil then
+    return
+  end
+
+  if sub_type == nil then
+    return
+  end
+
   local language = string.gsub(sub_type, "^x%-", "")
 
   return language
