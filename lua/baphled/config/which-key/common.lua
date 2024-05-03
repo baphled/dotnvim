@@ -46,6 +46,13 @@ local paste_mappings = {
   },
 }
 
+local disable_mapping = {
+  ["<Left>"] = { "<Nop>", "Disable Left" },
+  ["<Right>"] = { "<Nop>", "Disable Right" },
+  ["<Up>"] = { "<Nop>", "Disable Up" },
+  ["<Down>"] = { "<Nop>", "Disable Down" },
+}
+
 local copy_line_mapping = {
   ["<leader>"] = {
     Y = { '"+Y', "Copy Line to System Clipboard" },
@@ -78,6 +85,9 @@ local common_mapping = {
 }
 
 which_key.register(common_mapping, normal_opts)
+
+which_key.register(disable_mapping, normal_opts)
+which_key.register(disable_mapping, visual_opts)
 
 which_key.register(delete_mapping, normal_opts)
 which_key.register(delete_mapping, visual_opts)
