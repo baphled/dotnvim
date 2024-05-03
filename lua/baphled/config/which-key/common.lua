@@ -46,6 +46,18 @@ local paste_mappings = {
   },
 }
 
+local copy_line_mapping = {
+  ["<leader>"] = {
+    Y = { '"+Y', "Copy Line to System Clipboard" },
+  },
+}
+
+local copy_mapping = {
+  ["<leader>"] = {
+    y = { '"+y', "System to Clipboard" },
+  },
+}
+
 local common_mapping = {
   ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable Highlighting" },
   ['<leader>'] = {
@@ -67,10 +79,10 @@ local common_mapping = {
 
 which_key.register(common_mapping, normal_opts)
 
-which_key.register(edit_mapping, normal_opts)
-which_key.register(edit_mapping, visual_opts)
-
 which_key.register(delete_mapping, normal_opts)
 which_key.register(delete_mapping, visual_opts)
+
+which_key.register(copy_mapping, normal_opts)
+which_key.register(copy_line_mapping, visual_opts)
 
 which_key.register(paste_mappings, ex_opts)
