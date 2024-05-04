@@ -35,8 +35,8 @@ local delete_mapping = {
 
 local edit_mapping = {
   ["<leader>"] = {
-    Y = { '[["+Y]]', "Copy Line to System Clipboard" },
-    y = { '[["+y]]', "System to Clipboard" },
+    Y = { [["+Y]], "Copy Line to System Clipboard" },
+    y = { [["+y]], "System to Clipboard" },
   },
 }
 
@@ -92,7 +92,8 @@ which_key.register(disable_mapping, visual_opts)
 which_key.register(delete_mapping, normal_opts)
 which_key.register(delete_mapping, visual_opts)
 
+which_key.register(copy_mapping, visual_opts)
 which_key.register(copy_mapping, normal_opts)
-which_key.register(copy_line_mapping, visual_opts)
+which_key.register(copy_line_mapping, normal_opts)
 
 which_key.register(paste_mappings, ex_opts)
