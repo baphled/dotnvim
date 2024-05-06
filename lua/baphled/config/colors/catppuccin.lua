@@ -33,16 +33,40 @@ require("catppuccin").setup({
   custom_highlights = {},
   integrations = {
     cmp = true,
-    gitsigns = true,
-    nvimtree = true,
-    treesitter = true,
-    notify = true,
-    mini = false,
-    lsp_trouble = true,
-    telescope = true,
     dap = {
-      enabled = true,
       enable_ui = true, -- enable nvim-dap-ui
-    }
+      enabled = true,
+    },
+    dap_ui = true,
+    gitsigns = true,
+    lsp_trouble = true,
+    harpoon = true,
+    markdown = true,
+    mason = true,
+    neotest = true,
+    notify = true,
+    native_lsp = {
+      enabled = true,
+      virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+      },
+      underlines = {
+        errors = { "underline" },
+        hints = { "underline" },
+        warnings = { "underline" },
+        information = { "underline" },
+      },
+      inlay_hints = {
+        background = true,
+      },
+    },
+    nvimtree = true,
+    telescope = true,
+    treesitter = true,
+    treesitter_context = true,
+    which_key = true,
   },
 })

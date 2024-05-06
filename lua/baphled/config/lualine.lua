@@ -39,7 +39,7 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'auto',
+    theme = 'catppuccin',
     icons_enabled = true,
     globalstatus = true,
     component_separators = '',
