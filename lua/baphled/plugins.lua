@@ -101,6 +101,14 @@ require("lazy").setup({
       end
     },
 
+    {
+      'akinsho/bufferline.nvim',
+      requires = 'nvim-tree/nvim-web-devicons',
+      config = function()
+        require("baphled.config.bufferline")
+      end
+    },
+
     --- Used to handle our statusline
     {
       'nvim-lualine/lualine.nvim',
