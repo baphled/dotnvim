@@ -332,6 +332,7 @@ require("lazy").setup({
     },
 
     --- LSP
+
     {
       'VonHeikemen/lsp-zero.nvim',
       dependencies = {
@@ -358,6 +359,16 @@ require("lazy").setup({
       event = 'VeryLazy',
       config = function()
         require("baphled.config.lsp-zero")
+      end
+    },
+
+
+    ---- Mason
+    {
+      'williamboman/mason.nvim',
+      lazy = true,
+      config = function()
+        require("baphled.config.mason")
       end
     },
 
