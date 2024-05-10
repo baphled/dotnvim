@@ -5,5 +5,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     -- set local foldmethod to manual
     vim.opt_local.foldmethod = "manual"
     vim.opt_local.colorcolumn = "0"
+
+    -- disable spell checking
+    vim.cmd "set spell!"
   end,
 })
