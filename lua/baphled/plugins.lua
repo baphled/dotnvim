@@ -387,6 +387,7 @@ require("lazy").setup({
       dependencies = {
         "olimorris/neotest-rspec",
         "nvim-neotest/neotest-jest",
+        "alfaix/neotest-gtest",
         "nvim-lua/plenary.nvim",
         "nvim-neotest/nvim-nio",
         "antoinemadec/FixCursorHold.nvim",
