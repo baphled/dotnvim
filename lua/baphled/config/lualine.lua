@@ -1,20 +1,8 @@
 local colors = {
-  red = '#ca1243',
-  grey = '#a0a1a7',
   black = '#383a42',
   white = '#f3f3f3',
-  light_green = '#83a598',
-  orange = '#fe8019',
-  yellow = '#ffec63',
-  green = '#8ec07c',
   blue = '#89b4fa',
 }
-
-function isRecording ()
-  local reg = vim.fn.reg_recording()
-  if reg == "" then return "" end -- not recording
-  return "recording @" .. reg
-end
 
 local empty = require('lualine.component'):extend()
 function empty:draw(default_highlight)
