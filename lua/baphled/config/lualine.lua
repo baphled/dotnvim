@@ -10,6 +10,12 @@ local colors = {
   blue = '#89b4fa',
 }
 
+function isRecording ()
+  local reg = vim.fn.reg_recording()
+  if reg == "" then return "" end -- not recording
+  return "recording @" .. reg
+end
+
 local empty = require('lualine.component'):extend()
 function empty:draw(default_highlight)
   self.status = ''
@@ -96,6 +102,14 @@ require('lualine').setup {
       },
     },
     lualine_b = {
+      {
+        function()
+          local reg = vim.fn.reg_recording()
+          if reg == "" then return "" end -- not recording
+          return "recording @" .. reg
+        end,
+        color = { fg = colors.white, bg = colors.black },
+      },
       {
         'mode',
         icons_enabled = true, -- displays encoding icon if set to true
