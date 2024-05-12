@@ -61,3 +61,5 @@ vim.g.loaded_netrwPlugin = 1
 -- Set timeout (used by which-key)
 vim.o.timeout = true
 vim.o.timeoutlen = 300
+
+vim.o.conceallevel = 2
