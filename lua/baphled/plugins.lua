@@ -266,13 +266,28 @@ require("lazy").setup({
     },
 
     {
+      "vhyrro/luarocks.nvim",
+      priority = 1001, -- this plugin needs to run before anything else
+      opts = {
+        rocks = { "magick" },
+      },
+    },
+    {
+      "3rd/image.nvim",
+      dependencies = { "luarocks.nvim" },
+      config = function()
+        require("baphled.config.image")
+      end
+    },
+
+    {
       "epwalsh/obsidian.nvim",
-      version = "*",  -- recommended, use latest release instead of latest commit
+      version = "*", -- recommended, use latest release instead of latest commit
       lazy = true,
       -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
       event = {
-      --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-      --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
         "BufNewFile " .. vim.fn.expand "~" .. "/vaults/**/*.md",
         "BufReadPre " .. vim.fn.expand "~" .. "/vaults/**/*.md",
       },
