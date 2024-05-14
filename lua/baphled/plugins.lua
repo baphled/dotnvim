@@ -358,14 +358,6 @@ require("lazy").setup({
       lazy = true
     },
 
-    --- Markdown
-    {
-      'jakewvincent/mkdnflow.nvim',
-      config = function()
-        require('mkdnflow').setup()
-      end
-    },
-
     --- LSP
 
     {
