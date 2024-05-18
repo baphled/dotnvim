@@ -9,5 +9,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.g["indentLine_enabled"] = 0
     vim.g["markdown_syntax_conceal"] = 0
+    vim.cmd [[autocmd FileType markdown set colorcolumn=80 tw=80 nowrap]]
   end,
 })

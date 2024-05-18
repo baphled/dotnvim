@@ -8,32 +8,19 @@ require("obsidian").setup({
   workspaces = {
     {
       name = "personal",
-      path = "~/vaults/personal",
-    },
-    {
-      name = "work",
-      path = "~/vaults/work",
-      -- Optional, override certain settings.
-      overrides = {
-        notes_subdir = "notes",
-      },
+      path = "~/vaults/baphled",
     },
   },
 
-  -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
-  -- 'workspaces'. For example:
-  -- dir = "~/vaults/work",
-
   -- Optional, if you keep notes in a specific subdirectory of your vault.
-  notes_subdir = "notes",
-
+  notes_subdir = "Zettelkasten",
   -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
   -- levels defined by "vim.log.levels.*".
   log_level = vim.log.levels.INFO,
 
   daily_notes = {
     -- Optional, if you keep daily notes in a separate directory.
-    folder = "notes/dailies",
+    folder = "Zettelkasten",
     -- Optional, if you want to change the date format for the ID of daily notes.
     date_format = "%Y-%m-%d",
     -- Optional, if you want to change the date format of the default alias of daily notes.
@@ -126,7 +113,7 @@ require("obsidian").setup({
   end,
 
   -- Either 'wiki' or 'markdown'.
-  preferred_link_style = "wiki",
+  preferred_link_style = "markdown",
 
   -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
   ---@return string

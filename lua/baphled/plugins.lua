@@ -27,7 +27,7 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter-context",
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
-      event = 'VeryLazy',
+      priority = 1001, -- this plugin needs to run before anything else
       build = ":TSUpdate",
       config = function()
         require("baphled.config.treesitter")
@@ -257,6 +257,19 @@ require("lazy").setup({
       end
     },
 
+    {
+      "folke/zen-mode.nvim",
+      config = function()
+        require("baphled.config.zen-mode")
+      end
+    },
+
+    {
+      'jakewvincent/mkdnflow.nvim',
+      config = function()
+        require('mkdnflow').setup()
+      end
+    },
     --- Markdown Preview
     {
       "iamcco/markdown-preview.nvim",
@@ -274,6 +287,7 @@ require("lazy").setup({
     },
     {
       "3rd/image.nvim",
+      version = "*", -- recommended, use latest release instead of latest commit
       dependencies = { "luarocks.nvim" },
       config = function()
         require("baphled.config.image")
@@ -283,14 +297,7 @@ require("lazy").setup({
     {
       "epwalsh/obsidian.nvim",
       version = "*", -- recommended, use latest release instead of latest commit
-      lazy = true,
-      -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-      event = {
-        --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-        --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-        "BufNewFile " .. vim.fn.expand "~" .. "/vaults/**/*.md",
-        "BufReadPre " .. vim.fn.expand "~" .. "/vaults/**/*.md",
-      },
+      ft = { "markdown" },
       dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
@@ -353,11 +360,6 @@ require("lazy").setup({
       }
     },
 
-    {
-      'godlygeek/tabular',
-      lazy = true
-    },
-
     --- LSP
 
     {
@@ -375,6 +377,7 @@ require("lazy").setup({
         { 'saadparwaiz1/cmp_luasnip' },
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-emoji' },
 
         --- Beautification of the autocomplete menu
         { "onsails/lspkind.nvim" },
