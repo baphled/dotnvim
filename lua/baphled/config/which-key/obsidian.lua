@@ -20,6 +20,11 @@ local obsidian_mapping = {
       s = { "<cmd>ObsidianSearch<CR>", "Obsidian Search" },
       f = { "<cmd>ObsidianFollowLink<CR>", "Obsidian Follow Links" },
     },
+  },
+  f = {
+    name = "Obsidian",
+    n = { "<cmd>ObsidianQuickSwitch<CR>", "Find Obsidian Notes"
+  },
   }
 }
 
