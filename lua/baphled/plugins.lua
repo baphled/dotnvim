@@ -297,7 +297,6 @@ require("lazy").setup({
     {
       "epwalsh/obsidian.nvim",
       version = "*", -- recommended, use latest release instead of latest commit
-      ft = { "markdown" },
       dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
