@@ -10,6 +10,10 @@ require("obsidian").setup({
       name = "personal",
       path = "~/vaults/baphled",
     },
+    {
+      name = "n-vyro.io",
+      path = "~/vaults/n-vyro.io",
+    }
   },
 
   -- Optional, if you keep notes in a specific subdirectory of your vault.
