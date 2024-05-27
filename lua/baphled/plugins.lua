@@ -23,10 +23,6 @@ require("lazy").setup({
     -- Highlighting
     {
       'nvim-treesitter/nvim-treesitter',
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter-context",
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      },
       priority = 1001, -- this plugin needs to run before anything else
       build = ":TSUpdate",
       config = function()
@@ -103,7 +99,7 @@ require("lazy").setup({
 
     {
       'akinsho/bufferline.nvim',
-      requires = 'nvim-tree/nvim-web-devicons',
+      dependencies = 'nvim-tree/nvim-web-devicons',
       config = function()
         require("baphled.config.bufferline")
       end
@@ -161,7 +157,6 @@ require("lazy").setup({
     --- Colour schemes
     {
       "catppuccin/nvim",
-      as = "catppuccin",
       config = function()
         require("baphled.config.colors/catppuccin")
         require("baphled.config.colors")
