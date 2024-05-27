@@ -19,7 +19,7 @@ cmp.setup({
       },
     },
     { name = "path" },
-    { name = "emoji" },
+    { name = "emoji", insert = true },
     { name = "neorg" },
     { name = "orgmode" },
   },
