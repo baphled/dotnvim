@@ -11,7 +11,7 @@ local normal_opts = {
 
 local oil_mapping = {
   ['<leader>'] = {
-    nt = { "<cmd>Oil --float<CR>", "Open Current Directory" },
+    np = { "<cmd>Oil --float<CR>", "Open Current Directory" },
   }
 }
 

@@ -14,17 +14,17 @@ local obsidian_mapping = {
     o = {
       name = "Obsidian",
       d = { "<cmd>ObsidianDailies<CR>", "Obsidian Dailies" },
+      f = { "<cmd>ObsidianFollowLink<CR>", "Obsidian Follow Links" },
       l = { "<cmd>ObsidianLinks<CR>", "Obsidian Links" },
       n = { "<cmd>ObsidianNew<CR>", "Obsidian New" },
-      t = { "<cmd>ObsidianTags<CR>", "Obsidian Tags" },
       s = { "<cmd>ObsidianSearch<CR>", "Obsidian Search" },
-      f = { "<cmd>ObsidianFollowLink<CR>", "Obsidian Follow Links" },
+    t = { "<cmd>ObsidianTemplate<CR>", "Use Obsidian Template" },
     },
   },
   f = {
     name = "Obsidian",
-    n = { "<cmd>ObsidianQuickSwitch<CR>", "Find Obsidian Notes"
-  },
+    n = { "<cmd>ObsidianQuickSwitch<CR>", "Find Obsidian Notes" },
+    t = { "<cmd>ObsidianTags<CR>", "Obsidian Tags" },
   }
 }
 
