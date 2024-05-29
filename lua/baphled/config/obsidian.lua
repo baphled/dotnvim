@@ -78,7 +78,7 @@ require("obsidian").setup({
   note_id_func = function(title)
     -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
     -- In this case a note with the title 'My new note' will be given an ID that looks
-    -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+    -- like '202405101140-my-new-note', and therefore the file name '202405101140-my-new-note.md'
     local suffix = ""
     if title ~= nil then
       -- If title is given, transform it into valid file name.
@@ -89,7 +89,7 @@ require("obsidian").setup({
         suffix = suffix .. string.char(math.random(65, 90))
       end
     end
-    return tostring(os.time()) .. "-" .. suffix
+    return tostring(os.date("%Y%m%d%H%M")) .. "-" .. suffix
   end,
 
   -- Optional, customize how note file names are generated given the ID, target directory, and title.
