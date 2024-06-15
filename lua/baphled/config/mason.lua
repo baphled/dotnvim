@@ -209,7 +209,21 @@ require('mason-lspconfig').setup({
         },
       })
     end,
+
+    pyright = function()
+      require("lspconfig")["pyright"].setup({
+        on_attach = lsp_zero.on_attach,
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportUnusedExpression = "none",
+              },
+            },
+          },
+        },
+      })
+    end
   }
 })
-
-

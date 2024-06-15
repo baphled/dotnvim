@@ -535,6 +535,39 @@ require("lazy").setup({
       run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
     },
 
+    ---- AI
+
+
+    {
+      "benlubas/molten-nvim",
+      dependencies = { "3rd/image.nvim" },
+      build = ":UpdateRemotePlugins",
+      config = function()
+        require("baphled.config.molten")
+      end
+    },
+    {
+      "quarto-dev/quarto-nvim",
+      dependencies = {
+        'jmbuhr/otter.nvim',
+      },
+      config = function()
+        require("baphled.config.quarto")
+      end
+    },
+    {
+      "GCBallesteros/jupytext.nvim",
+      config = function()
+        require("baphled.config.jupytext")
+      end
+    },
+    {
+      "nvimtools/hydra.nvim",
+      config = function()
+        require("baphled.config.hydra")
+      end
+    },
+
     --- Novelty
 
     ---- Silly little visual games

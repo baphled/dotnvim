@@ -18,3 +18,6 @@ require("baphled.config/which-key.session")
 require("baphled.config/which-key.harpoon")
 require("baphled.config/which-key.spectre")
 require("baphled.config/which-key.obsidian")
+
+require("baphled.config/which-key.molten")
+require("baphled.config/which-key.quarto")

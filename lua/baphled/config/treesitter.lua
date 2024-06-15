@@ -88,6 +88,7 @@ local opts = {
         -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
         ["]S"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
         ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+        ["]b"] = { query = "@code_cell.inner", desc = "next code block" },
       },
       goto_next_end = {
         ["]M"] = "@function.outer",
@@ -96,6 +97,8 @@ local opts = {
       goto_previous_start = {
         ["[m"] = "@function.outer",
         ["[["] = "@class.outer",
+        ["[b"] = { query = "@code_cell.inner", desc = "previous code block" },
+
       },
       goto_previous_end = {
         ["[M"] = "@function.outer",
@@ -109,6 +112,27 @@ local opts = {
       },
       goto_previous = {
         ["[d"] = "@conditional.outer",
+      },
+      select = {
+        enable = true,
+        lookahead = true, -- you can change this if you want
+        keymaps = {
+          --- ... other keymaps
+          ["ib"] = { query = "@code_cell.inner", desc = "in block" },
+          ["ab"] = { query = "@code_cell.outer", desc = "around block" },
+        },
+      },
+      swap = { -- Swap only works with code blocks that are under the same
+        -- markdown header
+        enable = true,
+        swap_next = {
+          --- ... other keymap
+          ["<leader>sbl"] = "@code_cell.outer",
+        },
+        swap_previous = {
+          --- ... other keymap
+          ["<leader>sbh"] = "@code_cell.outer",
+        }
       }
     },
   },
