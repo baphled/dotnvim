@@ -32,6 +32,10 @@ local normal_molten_mappings = {
       "<cmd>MoltenReevaluateCell<CR>",
       "evaluate cell"
     },
+    ["ml"] = {
+      "<cmd>MoltenEvaluateLine<CR>",
+      "evaluate line"
+    },
     ["mh"] = {
       "<cmd>MoltenHideOutput<cr>",
       "close output window"
