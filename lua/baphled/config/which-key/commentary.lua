@@ -1,20 +1,12 @@
 local which_key = require("which-key")
 
-local normal_opts = {
+which_key.add({
   mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local commentary_mapping = {
-  ["<leader>"] = {
-    ["/"] = {
-      "<cmd>Commentary<CR>", "Comment Toggle",
-    },
+  {
+    "<leader>/",
+    "<cmd>Commentary<CR>",
+    desc = "Comment Toggle",
+    nowait = false,
+    remap = false
   },
-}
-
-which_key.register(commentary_mapping, normal_opts)
+})

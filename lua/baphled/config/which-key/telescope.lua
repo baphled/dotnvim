@@ -1,57 +1,46 @@
 local which_key = require("which-key")
 local builtin = require('telescope.builtin')
 
-local normal_opts = {
+which_key.add({
   mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
   noremap = true,
   nowait = false,
-}
-
-local telescope_mappings = {
-  f = {
-    name = "Telescope",
-    b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-    f = { function()
+  { "f",  group = "Find" },
+  { "fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+  {
+    "ff",
+    function()
       require("telescope.builtin").find_files({
         find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
       })
     end,
-      "Find File"
-    },
-    h = { "<cmd>Telescope help_tags<cr>", "help", },
-    g = {
-      function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") })
-      end,
-      "Find Grep"
-    },
-    i = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      "Find Implementation"
-    },
-    k = { "<cmd>Telescope keymaps<cr>", "Find Keymap" },
-    l = {
-      "<cmd>Trouble loclist<cr>",
-      "Find Diagnostics"
-    },
-    o = { "<cmd>Telescope oldfiles<cr>", "Find Old File" },
-    r = {
-      "<cmd>Trouble lsp_references<cr>",
-      "Find References"
-    },
-    w = {
-      function()
-        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-      end,
-      "Find String"
-    },
-    x = { "<cmd>Telescope commands<cr>", "Find Command" },
+    desc = "Find File"
   },
-}
-
-which_key.register(telescope_mappings, normal_opts)
+  {
+    "fg",
+    function()
+      builtin.grep_string({ search = vim.fn.input("Grep > ") })
+    end,
+    desc = "Find Grep"
+  },
+  { "fh", "<cmd>Telescope help_tags<cr>",    desc = "help" },
+  {
+    "fi",
+    function()
+      vim.lsp.buf.implementation()
+    end,
+    desc = "Find Implementation"
+  },
+  { "fk", "<cmd>Telescope keymaps<cr>",      desc = "Find Keymap" },
+  { "fl", "<cmd>Trouble loclist<cr>",        desc = "Find Diagnostics" },
+  { "fo", "<cmd>Telescope oldfiles<cr>",     desc = "Find Old File" },
+  { "fr", "<cmd>Trouble lsp_references<cr>", desc = "Find References" },
+  {
+    "fw",
+    function()
+      require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+    end,
+    desc = "Find String"
+  },
+  { "fx", "<cmd>Telescope commands<cr>", desc = "Find Command" }
+})

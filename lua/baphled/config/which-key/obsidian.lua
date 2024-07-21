@@ -1,31 +1,66 @@
 local which_key = require("which-key")
 
-local normal_opts = {
-  mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local obsidian_mapping = {
-  ["<leader>"] = {
-    o = {
-      name = "Obsidian",
-      d = { "<cmd>ObsidianDailies<CR>", "Obsidian Dailies" },
-      f = { "<cmd>ObsidianFollowLink<CR>", "Obsidian Follow Links" },
-      l = { "<cmd>ObsidianLinks<CR>", "Obsidian Links" },
-      n = { "<cmd>ObsidianNew<CR>", "Obsidian New" },
-      s = { "<cmd>ObsidianSearch<CR>", "Obsidian Search" },
-    t = { "<cmd>ObsidianTemplate<CR>", "Use Obsidian Template" },
-    },
+which_key.add({
+  {
+    "<leader>o",
+    group = "Obsidian",
+    nowait = false,
+    remap = false
   },
-  f = {
-    name = "Obsidian",
-    n = { "<cmd>ObsidianQuickSwitch<CR>", "Find Obsidian Notes" },
-    t = { "<cmd>ObsidianTags<CR>", "Obsidian Tags" },
-  }
-}
-
-which_key.register(obsidian_mapping, normal_opts)
+  {
+    "<leader>od",
+    "<cmd>ObsidianDailies<CR>",
+    desc = "Obsidian Dailies",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<leader>of",
+    "<cmd>ObsidianFollowLink<CR>",
+    desc = "Obsidian Follow Links",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<leader>ol",
+    "<cmd>ObsidianLinks<CR>",
+    desc = "Obsidian Links",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<leader>on",
+    "<cmd>ObsidianNew<CR>",
+    desc = "Obsidian New",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<leader>os",
+    "<cmd>ObsidianSearch<CR>",
+    desc = "Obsidian Search",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<leader>ot",
+    "<cmd>ObsidianTemplate<CR>",
+    desc = "Use Obsidian Template",
+    nowait = false,
+    remap = false
+  },
+  {
+    "fn",
+    "<cmd>ObsidianQuickSwitch<CR>",
+    desc = "Find Obsidian Notes",
+    nowait = false,
+    remap = false
+  },
+  {
+    "ft",
+    "<cmd>ObsidianTags<CR>",
+    desc = "Obsidian Tags",
+    nowait = false,
+    remap = false
+  },
+})

@@ -1,27 +1,28 @@
 local which_key = require("which-key")
 
-local normal_opts = {
-  mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local spell_mapping = {
-  ['<leader>'] = {
-    s = {
-      p = { "<cmd>set spell!<cr>", "Spell" },
-    },
+which_key.add({
+  {
+    "<leader>sp",
+    "<cmd>set spell!<cr>",
+    desc = "Spell",
+    nowait = false,
+    mode = "n",
+    remap = false
   },
-  ['['] = {
-    s = { "<cmd>normal! ]s<cr>", "Next misspelled word" },
+  {
+    "]s",
+    "<cmd>normal! ]s<cr>",
+    desc = "Next misspelled word",
+    nowait = false,
+    mode = "n",
+    remap = false
   },
-  [']'] = {
-    s = { "<cmd>normal! [s<cr>", "Previous misspelled word" },
+  {
+    "[s",
+    "<cmd>normal! [s<cr>",
+    desc = "Previous misspelled word",
+    mode = "n",
+    nowait = false,
+    remap = false
   },
-}
-
-which_key.register(spell_mapping, normal_opts)
-
+})

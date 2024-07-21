@@ -1,24 +1,18 @@
 local which_key = require("which-key")
 
-local normal_opts = {
-  mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local spectre_mapping = {
-  ['<leader>'] = {
-    s = {
-      t = { "<cmd>lua require('spectre').toggle()<CR>", "Spectre Toggle" }
-    },
+which_key.add({
+  {
+    "<leader>st",
+    "<cmd>lua require('spectre').toggle()<CR>",
+    desc = "Spectre Toggle",
+    nowait = false,
+    remap = false
   },
-
-  s = {
-    w = { "<cmd>lua require('spectre').open_visual({ select_word = true })<CR>", "Search current word" },
-  }
-}
-
-which_key.register(spectre_mapping, normal_opts)
+  {
+    "<leader>sw",
+    "<cmd>lua require('spectre').open_visual({ select_word = true })<CR>",
+    desc = "Search current word",
+    nowait = false,
+    remap = false
+  },
+})

@@ -1,99 +1,113 @@
 local which_key = require("which-key")
 
-local normal_opts = {
-  mode = "n",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local visual_opts = {
-  mode = "v",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local ex_opts = {
-  mode = "x",
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = false,
-}
-
-local delete_mapping = {
-  ["<leader>"] = {
-    d = { '"_d', "Delete Line" },
+which_key.add({
+  {
+    "<leader>Y",
+    [["+Y]],
+    desc = "Copy Line to System Clipboard"
   },
-}
-
-local edit_mapping = {
-  ["<leader>"] = {
-    Y = { [["+Y]], "Copy Line to System Clipboard" },
-    y = { [["+y]], "System to Clipboard" },
+  {
+    "<leader>y",
+    [["+y]],
+    desc = "System to Clipboard"
   },
-}
-
-local paste_mappings = {
-  ["<leader>"] = {
-    p = { '"_dP', "Paste and retain previous register" },
+  {
+    "<leader>p",
+    '"_dP',
+    desc = "Paste and retain previous register"
   },
-}
-
-local disable_mapping = {
-  ["<Left>"] = { "<Nop>", "Disable Left" },
-  ["<Right>"] = { "<Nop>", "Disable Right" },
-  ["<Up>"] = { "<Nop>", "Disable Up" },
-  ["<Down>"] = { "<Nop>", "Disable Down" },
-}
-
-local copy_line_mapping = {
-  ["<leader>"] = {
-    Y = { '"+Y', "Copy Line to System Clipboard" },
+  {
+    "<leader>d",
+    '"_d',
+    desc = "Delete Line"
   },
-}
-
-local copy_mapping = {
-  ["<leader>"] = {
-    y = { '"+y', "System to Clipboard" },
+  {
+    "<Down>",
+    "<Nop>",
+    desc = "Disable Down",
+    nowait = false,
+    remap = false,
+    mode = { "n", "v" }
   },
-}
-
-local common_mapping = {
-  ["<cr>"] = { "<cmd>nohlsearch<CR>", "Disable Highlighting" },
-  ['<leader>'] = {
-    s = {
-      s = {
-        [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-        "Search and Replace",
-      }
-    },
-    t = {
-      name = "Line Numbers",
-      c = { "<cmd>set cursorline!<CR>", "Cursorline" },
-      h = { "<cmd>set hlsearch!<CR>", "Highlight" },
-      n = { "<cmd>set number!<CR>", "Number" },
-      r = { "<cmd>set relativenumber!<CR>", "Relative Number" },
-    },
+  {
+    "<Left>",
+    "<Nop>",
+    desc = "Disable Left",
+    nowait = false,
+    remap = false,
+    mode = { "n", "v" }
   },
-}
+  {
+    "<Right>",
+    "<Nop>",
+    desc = "Disable Right",
+    nowait = false,
+    remap = false,
+    mode = { "n", "v" }
+  },
+  {
+    "<Up>",
+    "<Nop>",
+    desc = "Disable Up",
+    nowait = false,
+    remap = false,
+    mode = { "n", "v" }
+  },
+  {
+    "<leader>ss",
+    ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+    desc = "Search and Replace",
+    nowait = false,
+    remap = false
+  },
+})
 
-which_key.register(common_mapping, normal_opts)
-
-which_key.register(disable_mapping, normal_opts)
-which_key.register(disable_mapping, visual_opts)
-
-which_key.register(delete_mapping, normal_opts)
-which_key.register(delete_mapping, visual_opts)
-
-which_key.register(copy_mapping, visual_opts)
-which_key.register(copy_mapping, normal_opts)
-which_key.register(copy_line_mapping, normal_opts)
-
-which_key.register(paste_mappings, ex_opts)
+which_key.add({
+  {
+    "<cr>",
+    "<cmd>nohlsearch<CR>",
+    desc = "Disable Highlighting",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+  {
+    "<leader>t",
+    group = "Line Numbers",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+  {
+    "<leader>tc",
+    "<cmd>set cursorline!<CR>",
+    desc = "Cursorline",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+  {
+    "<leader>th",
+    "<cmd>set hlsearch!<CR>",
+    desc = "Highlight",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+  {
+    "<leader>tn",
+    "<cmd>set number!<CR>",
+    desc = "Number",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+  {
+    "<leader>tr",
+    "<cmd>set relativenumber!<CR>",
+    desc = "Relative Number",
+    nowait = false,
+    remap = false,
+    mode = "n",
+  },
+})
