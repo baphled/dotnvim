@@ -378,11 +378,6 @@ require("lazy").setup({
     {
       'VonHeikemen/lsp-zero.nvim',
       dependencies = {
-        -- LSP Support
-        { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-buffer' },
@@ -405,13 +400,18 @@ require("lazy").setup({
       end
     },
 
-
     ---- Mason
     {
       'williamboman/mason.nvim',
-      lazy = true,
+      dependencies = {
+        -- LSP Support
+        { 'neovim/nvim-lspconfig' },
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
+      },
       config = function()
         require("baphled.config.mason")
+        require("baphled.config.lsp-zero")
       end
     },
 

@@ -1,21 +1,19 @@
 local lsp_zero = require('lsp-zero')
-local util = require("lspconfig.util")
 
 lsp_zero.on_attach(function(_, _)
 end)
-
-lsp_zero.set_sign_icons({
-  error = " ",
-  warn = " ",
-  hint = " ",
-  info = " ",
-})
 
 vim.diagnostic.config({
   virtual_text = true
 })
 
-lsp_zero.preset({
+lsp_zero.extend_lspconfig({
+  sign_text = {
+    error = " ",
+    warn = " ",
+    hint = " ",
+    info = " ",
+  },
   float_border = 'rounded',
   call_servers = 'local',
   configure_diagnostics = true,
