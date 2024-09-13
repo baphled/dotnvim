@@ -15,7 +15,7 @@ hydra({
         color = "pink",
         invoke_on_body = true,
         hint = {
-            border = "rounded", -- you can change the border if you want
+          float_opts = { border = "rounded" },
         },
     },
     mode = { "n" },
