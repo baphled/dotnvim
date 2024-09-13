@@ -4,16 +4,19 @@ which_key.add({
   {
     "<leader>Y",
     [["+Y]],
+    mode = { "v" },
     desc = "Copy Line to System Clipboard"
   },
   {
     "<leader>y",
     [["+y]],
-    desc = "System to Clipboard"
+    desc = "System to Clipboard",
+    mode = { "n" }
   },
   {
     "<leader>p",
     '"_dP',
+    mode = { "n", "v" },
     desc = "Paste and retain previous register"
   },
   {
