@@ -1,5 +1,6 @@
 require("baphled.config/which-key.lsp")
 require("baphled.config/which-key.git")
+require("baphled.config/which-key.gitsigns")
 require("baphled.config/which-key.telescope")
 require("baphled.config/which-key.trouble")
 require("baphled.config/which-key.lazy")
