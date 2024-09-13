@@ -24,7 +24,7 @@ require('mason-lspconfig').setup({
     'ruby_lsp',
     'rust_analyzer',
     'solargraph',
-    'tsserver',
+    'ts_ls',
     'volar',
     'vuels',
   },
@@ -120,8 +120,8 @@ require('mason-lspconfig').setup({
     end,
 
     --- TypeScript
-    tsserver = function()
-      require('lspconfig').tsserver.setup({
+    ts_ls = function()
+      require('lspconfig').ts_ls.setup({
         on_attach = lsp_zero.on_attach,
         capabilities = capabilities,
         filetypes = { "typescript", "typescriptreact" },
