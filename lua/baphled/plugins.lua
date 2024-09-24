@@ -333,19 +333,6 @@ require("lazy").setup({
       end,
     },
 
-    {
-      "NeogitOrg/neogit",
-      dependencies = {
-        "nvim-lua/plenary.nvim",         -- required
-        "nvim-telescope/telescope.nvim", -- optional
-        "sindrets/diffview.nvim",        -- optional
-      },
-      event = 'VeryLazy',
-      config = function()
-        require("baphled.config.neogit")
-      end
-    },
-
     --- documentation
 
     --- Comments
