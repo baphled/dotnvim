@@ -65,6 +65,26 @@ require('mason-lspconfig').setup({
       })
     end,
 
+    rubocop = function()
+      require('lspconfig').rubocop.setup({
+        commands = {
+          RubocopAutocorrect = {
+            function()
+              vim.lsp.buf.execute_command({
+                command = "rubocop",
+                arguments = {
+                  "--auto-correct",
+                  vim.api.nvim_buf_get_name(0),
+                },
+                title = "",
+              })
+            end,
+            description = "Rubocop autocorrect",
+          },
+        },
+      })
+    end,
+
     ruby_lsp = function()
       require('lspconfig').ruby_lsp.setup({
         on_attach = lsp_zero.on_attach,
