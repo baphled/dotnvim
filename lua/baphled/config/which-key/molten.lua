@@ -2,7 +2,11 @@ local which_key = require("which-key")
 
 which_key.add({
   {
-    "<leader>e",
+    "<leader>m",
+      name = "Molten",
+  },
+  {
+    "<leader>me",
     "<cmd>MoltenEvaluateOperator<cr>",
     desc = "evaluate operator",
     nowait = false,

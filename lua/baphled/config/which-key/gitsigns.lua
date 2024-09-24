@@ -9,57 +9,61 @@ end
 
 which_key.add({
   {
-    '<leader>hs',
+    '<leader>g',
+    group = 'Git',
+  },
+  {
+    '<leader>gs',
     gitsigns.stage_hunk,
     desc = 'Git Stage Hunk',
   },
   {
-    '<leader>hr',
+    '<leader>gr',
     gitsigns.reset_hunk,
     desc = 'Git Reset Hunk',
   },
   {
-    '<leader>hS',
+    '<leader>gS',
     gitsigns.stage_buffer,
     desc = 'Git Stage Buffer',
   },
   {
-    '<leader>hu',
+    '<leader>gu',
     gitsigns.undo_stage_hunk,
     desc = 'Git Undo Stage Hunk',
   },
   {
-    '<leader>hR',
+    '<leader>gR',
     gitsigns.reset_buffer,
     desc = 'Git Reset Buffer',
   },
   {
-    '<leader>hp',
+    '<leader>gp',
     gitsigns.preview_hunk,
     desc = 'Git Preview Hunk',
   },
   {
-    '<leader>hb',
+    '<leader>gb',
     function() gitsigns.blame_line { full = true } end,
     desc = 'Git Blame Line',
   },
   {
-    '<leader>tb',
+    '<leader>gb',
     gitsigns.toggle_current_line_blame,
     desc = 'Git Toggle Current Line Blame',
   },
   {
-    '<leader>hd',
+    '<leader>gd',
     gitsigns.diffthis,
     desc = 'Git Diff This',
   },
   {
-    '<leader>hD',
+    '<leader>gD',
     function() gitsigns.diffthis('~') end,
     desc = 'Git Diff This (Ignore Whitespace)',
   },
   {
-    '<leader>td',
+    '<leader>gtd',
     gitsigns.toggle_deleted,
     desc = 'Git Toggle Deleted',
   },

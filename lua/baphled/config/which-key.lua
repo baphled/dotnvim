@@ -6,4 +6,10 @@ which_key.setup({
   win = {
     border = "rounded",
   },
+  triggers = {
+    { "<auto>", mode = "nixsotc" },
+    { "<leader>", mode = "nixsotc" },
+    { "t", mode = "n" },
+    { "g", mode = "n" },
+  },
 })

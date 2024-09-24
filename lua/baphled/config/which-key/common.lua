@@ -57,15 +57,16 @@ which_key.add({
     mode = { "n", "v" }
   },
   {
+    "<leader>s",
+    group = "Search & Replace",
+  },
+  {
     "<leader>ss",
     ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
     desc = "Search and Replace",
     nowait = false,
     remap = false
   },
-})
-
-which_key.add({
   {
     "<cr>",
     "<cmd>nohlsearch<CR>",
@@ -75,14 +76,18 @@ which_key.add({
     mode = "n",
   },
   {
-    "<leader>t",
+    "<leader>l",
+    group = "Lines",
+  },
+  {
+    "<leader>ln",
     group = "Line Numbers",
     nowait = false,
     remap = false,
     mode = "n",
   },
   {
-    "<leader>tc",
+    "<leader>lc",
     "<cmd>set cursorline!<CR>",
     desc = "Cursorline",
     nowait = false,
@@ -90,7 +95,7 @@ which_key.add({
     mode = "n",
   },
   {
-    "<leader>th",
+    "<leader>lh",
     "<cmd>set hlsearch!<CR>",
     desc = "Highlight",
     nowait = false,
@@ -98,7 +103,7 @@ which_key.add({
     mode = "n",
   },
   {
-    "<leader>tn",
+    "<leader>ln",
     "<cmd>set number!<CR>",
     desc = "Number",
     nowait = false,
@@ -106,7 +111,7 @@ which_key.add({
     mode = "n",
   },
   {
-    "<leader>tr",
+    "<leader>lr",
     "<cmd>set relativenumber!<CR>",
     desc = "Relative Number",
     nowait = false,

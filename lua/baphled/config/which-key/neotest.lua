@@ -1,11 +1,10 @@
 local which_key = require("which-key")
+local neotest = require("neotest")
 
 which_key.add({
   {
     "t",
-    group = "Testing",
-    nowait = false,
-    remap = false
+    group = "Test",
   },
   {
     "ta",
@@ -23,40 +22,32 @@ which_key.add({
   },
   {
     "tc",
-    group = "Coverage",
-    nowait = false,
-    remap = false
+    group = "Test Coverage",
   },
   {
     "tcs",
     "<cmd>CoverageSummary<cr>",
     desc = "Coverage Summary",
-    nowait = false,
-    remap = false
   },
   {
     "td",
     "<cmd>lua require('neotest').output.open({ enter = true })<cr>",
     desc = "Display Test Output",
-    nowait = false,
-    remap = false
   },
   {
     "tk",
     function()
       -- if we're running tests, stop them
-      if require("neotest").state.is_running() then
-        require("neotest").run.stop()
+      if neotest.state.is_running() then
+        neotest.run.stop()
         vim.notify("Stopped running tests")
       else
         -- otherwise, clear the results
-        require("neotest").results.clear()
+        neotest.results.clear()
         vim.notify("Cleared test results")
       end
     end,
-    desc = "Watch",
-    nowait = false,
-    remap = false
+    desc = "Test Kill",
   },
   {
     "tn",
@@ -65,18 +56,14 @@ which_key.add({
       if vim.bo.modified then
         vim.cmd("w")
       end
-      require("neotest").run.run({ nearest = true })
+      neotest.run.run({ nearest = true })
     end,
     desc = "Test Nearest",
-    nowait = false,
-    remap = false
   },
   {
     "ts",
     "<cmd>lua require('neotest').summary.toggle()<cr>",
     desc = "Test Suite",
-    nowait = false,
-    remap = false
   },
   {
     "tt",
@@ -84,11 +71,9 @@ which_key.add({
       if vim.bo.modified then
         vim.cmd("w")
       end
-      require("neotest").run.run(vim.fn.expand("%"))
+      neotest.run.run(vim.fn.expand("%"))
     end,
     desc = "Test File",
-    nowait = false,
-    remap = false
   },
   {
     "tw",
@@ -97,10 +82,8 @@ which_key.add({
       if vim.bo.modified then
         vim.cmd("w")
       end
-      require("neotest").run.run({ jestCommand = "npx vue-cli-service test:unit --watch" })
+      neotest.run.run({ jestCommand = "npx vue-cli-service test:unit --watch" })
     end,
-    desc = "Watch",
-    nowait = false,
-    remap = false
+    desc = "Test Watch",
   },
 })

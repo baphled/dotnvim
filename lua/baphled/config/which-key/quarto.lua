@@ -3,7 +3,11 @@ local runner = require("quarto.runner")
 
 which_key.add({
   {
-    "<leader>RA",
+    "<leader>r",
+    group = "quarto",
+  },
+  {
+    "<leader>rA",
     function()
       runner.run_all(true)
     end,

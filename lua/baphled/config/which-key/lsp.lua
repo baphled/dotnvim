@@ -1,7 +1,10 @@
 local which_key = require("which-key")
 
 which_key.add({
-  group = "LSP",
+  {
+    "g",
+    group = "LSP",
+  },
   {
     "<C-h>",
     "<cmd>lua vim.lsp.buf.signature_help()<cr>",
