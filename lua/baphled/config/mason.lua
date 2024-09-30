@@ -26,7 +26,6 @@ require('mason-lspconfig').setup({
     'solargraph',
     'ts_ls',
     'volar',
-    'vuels',
   },
   handlers = {
     function(server_name)
@@ -104,11 +103,11 @@ require('mason-lspconfig').setup({
     end,
 
     --- Vue
-    vuels = function()
-      require('lspconfig').vuels.setup({
+    volar = function()
+      require('lspconfig').volar.setup({
         on_attach = lsp_zero.on_attach,
         capabilities = capabilities,
-        filetypes = { "vue", "javascript" },
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
         init_options = {
           config = {
             vetur = {
