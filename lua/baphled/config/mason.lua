@@ -9,6 +9,10 @@ local capabilities = vim.tbl_deep_extend("force",
   require('cmp_nvim_lsp').default_capabilities()
 )
 
+local mason_registry = require("mason-registry")
+local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() ..
+"/node_modules/@vue/language-server"
+
 require('mason-lspconfig').setup({
   ensure_installed = {
     'arduino_language_server',
@@ -107,32 +111,9 @@ require('mason-lspconfig').setup({
       require('lspconfig').volar.setup({
         on_attach = lsp_zero.on_attach,
         capabilities = capabilities,
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
         init_options = {
-          config = {
-            vetur = {
-              completion = {
-                autoImport = true,
-                tagCasing = "kebab",
-              },
-              useWorkspaceDependencies = true,
-              validation = {
-                template = true,
-                style = true,
-                script = true,
-              },
-              format = {
-                defaultFormatter = {
-                  js = "prettier",
-                  ts = "prettier",
-                },
-              },
-              script = {
-                indent = {
-                  base = 0,
-                },
-              },
-            },
+          vue = {
+            hybridMode = false,
           },
         },
       })
@@ -143,20 +124,19 @@ require('mason-lspconfig').setup({
       require('lspconfig').ts_ls.setup({
         on_attach = lsp_zero.on_attach,
         capabilities = capabilities,
-        filetypes = { "typescript", "typescriptreact" },
         init_options = {
-          preferences = {
-            importModuleSpecifierPreference = "relative",
-          },
-          format = {
-            enable = true,
-            options = {
-              tabSize = 2,
-              insertSpaces = true,
-              singleQuote = true,
-              trailingComma = "all",
+          plugins = {
+            {
+              name = "@vue/typescript-plugin",
+              location = vue_language_server_path,
+              languages = { "typescript", "vue" },
             },
           },
+        },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "vue",
         },
       })
     end,
