@@ -13,7 +13,11 @@ require("obsidian").setup({
     {
       name = "n-vyro.io",
       path = "~/vaults/n-vyro.io",
-    }
+    },
+    {
+      name = "Oliver-Colledge",
+      path = "~/vaults/Oliver-Colledge",
+    },
   },
 
   -- Optional, if you keep notes in a specific subdirectory of your vault.
@@ -142,7 +146,8 @@ require("obsidian").setup({
     date_format = "%Y-%m-%d",
     time_format = "%H:%M",
     -- A map for custom variables, the key should be the variable and the value a function
-    substitutions = {},
+    substitutions = {
+    },
   },
 
   -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
