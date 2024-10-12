@@ -50,6 +50,13 @@ which_key.add({
     remap = false
   },
   {
+    "<leader>ont",
+    "<cmd>ObsidianNewTemplate<CR>",
+    desc = "New From Obsidian Template",
+    nowait = false,
+    remap = false
+  },
+  {
     "fn",
     "<cmd>ObsidianQuickSwitch<CR>",
     desc = "Find Obsidian Notes",
