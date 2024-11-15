@@ -15,8 +15,8 @@ require("obsidian").setup({
       path = "~/vaults/n-vyro.io",
     },
     {
-      name = "Oliver-Colledge",
-      path = "~/vaults/Oliver-Colledge",
+      name = "Colledge",
+      path = "~/vaults/Colledge",
     },
   },
 
