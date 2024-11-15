@@ -68,6 +68,20 @@ which_key.add({
     remap = false
   },
   {
+    "tl",
+    "<cmd>:-tabmove<CR>",
+    desc = "Move Tab Left",
+    nowait = false,
+    remap = false,
+  },
+  {
+    "tr",
+    "<cmd>:+tabmove<CR>",
+    desc = "Move Tab Right",
+    nowait = false,
+    remap = false,
+  },
+  {
     "<cr>",
     "<cmd>nohlsearch<CR>",
     desc = "Disable Highlighting",
