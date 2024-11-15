@@ -51,7 +51,7 @@ which_key.add({
   },
   {
     "<leader>ont",
-    "<cmd>ObsidianNewTemplate<CR>",
+    "<cmd>ObsidianNewFromTemplate<CR>",
     desc = "New From Obsidian Template",
     nowait = false,
     remap = false
