@@ -22,3 +22,6 @@ require("baphled.config.which-key.obsidian")
 
 require("baphled.config.which-key.molten")
 require("baphled.config.which-key.quarto")
+
+
+require("baphled.config.which-key.codecompanion")

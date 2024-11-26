@@ -213,17 +213,16 @@ require("lazy").setup({
 
     -- AI
     {
-      "jackMort/ChatGPT.nvim",
-      event = "VeryLazy",
-      config = function()
-        require("baphled.config.chatgpt")
-      end,
+      "olimorris/codecompanion.nvim",
       dependencies = {
-        "MunifTanjim/nui.nvim",
         "nvim-lua/plenary.nvim",
-        "folke/trouble.nvim",
-        "nvim-telescope/telescope.nvim"
-      }
+        "nvim-treesitter/nvim-treesitter",
+        -- The following are optional:
+        { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
+      },
+      config = function()
+        require("baphled.config.codecompanion")
+      end
     },
 
     -- PDE
