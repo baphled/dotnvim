@@ -32,6 +32,7 @@ which_key.add({
     desc = "Find Implementation"
   },
   { "fk", "<cmd>Telescope keymaps<cr>",      desc = "Find Keymap" },
+  { "fj", "<cmd>Telescope jumplist<cr>",     desc = "Find Jump" },
   { "fl", "<cmd>Trouble loclist<cr>",        desc = "Find Diagnostics" },
   { "fo", "<cmd>Telescope oldfiles<cr>",     desc = "Find Old File" },
   { "fr", "<cmd>Trouble lsp_references<cr>", desc = "Find References" },
