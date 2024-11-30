@@ -36,7 +36,8 @@ require('lualine').setup {
     theme = 'catppuccin',
     icons_enabled = true,
     globalstatus = true,
-    component_separators = '',
+    component_separators = { right = '' } or { left = '' },
+    section_separators = { right = '' } or { left = '' },
     buffers_color = {
       -- Same values as the general color option can be used here.
       active = 'lualine_{section}_normal',     -- Color for active buffer.
@@ -158,5 +159,14 @@ require('lualine').setup {
         color = { fg = colors.white, bg = colors.black },
       },
     },
+  },
+
+  inactive_sections = process_sections {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {'filename'},
   },
 }
