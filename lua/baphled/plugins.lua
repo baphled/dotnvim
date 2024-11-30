@@ -67,10 +67,7 @@ require("lazy").setup({
     -- Used to navigate undo history
     {
       "mbbill/undotree",
-      event = 'VeryLazy',
-      config = function()
-        require("baphled.config.undotree")
-      end
+      event = 'VeryLazy'
     },
 
     -- UI
