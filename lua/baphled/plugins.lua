@@ -453,9 +453,6 @@ require("lazy").setup({
       dependencies = 'neovim/nvim-lspconfig',
       lazy = true
     },
-    { "bronson/vim-ruby-block-conv",    lazy = true },
-    { "ecomba/vim-ruby-refactoring",    lazy = true },
-    { "nelstrom/vim-textobj-rubyblock", lazy = true, dependencies = "kana/vim-textobj-user" },
 
     ---- Rails
     { "tpope/vim-rails",                lazy = true },
@@ -521,8 +518,7 @@ require("lazy").setup({
       run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
     },
 
-    ---- AI
-
+    ---- Jupyter Notepad
 
     {
       "benlubas/molten-nvim",
