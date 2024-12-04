@@ -10,6 +10,7 @@ which_key.setup({
     { "<auto>", mode = "nixsotc" },
     { "<leader>", mode = "nixsotc" },
     { "t", mode = "n" },
+    { "f", mode = "n" },
     { "g", mode = "n" },
   },
 })
