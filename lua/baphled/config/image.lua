@@ -4,20 +4,11 @@ require("image").setup({
   integrations = {
     markdown = {
       enabled = true,
-      clear_in_insert_mode = true,
-      download_remote_images = true,
-      only_render_image_at_cursor = true,
-      tmux_show_only_in_active_window = true,
-      filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-    },
-    neorg = {
-      enabled = true,
       clear_in_insert_mode = false,
       download_remote_images = true,
       only_render_image_at_cursor = false,
       tmux_show_only_in_active_window = true,
       filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-      filetypes = { "norg" },
     },
     html = {
       enabled = false,
