@@ -25,11 +25,11 @@ require("neotest").setup({
   adapters = {
     require("neotest-rspec")({
       rspec_cmd = function()
-        return vim.tbl_flatten({
+        return vim.iter({
           "bundle",
           "exec",
           "rspec",
-        })
+        }):flatten():totable()
       end,
     }),
     require('neotest-jest')({
