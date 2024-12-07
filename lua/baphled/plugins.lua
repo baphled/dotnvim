@@ -52,7 +52,6 @@ require("lazy").setup({
             -- all notifications are stored in history
             level = vim.log.levels.TRACE,
             icons = {
-              spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
               error = "",
               warn  = "",
               info  = "",
@@ -110,16 +109,6 @@ require("lazy").setup({
                 width = 60,
                 padding = 1,
               },
-            },
-            {
-              icon = " ",
-              desc = "Git",
-              key = "g",
-              action = function()
-                Snacks.lazygit()
-              end,
-              padding = 1,
-              ttl = 5 * 60,
             },
             {
               pane = 2,
@@ -247,7 +236,6 @@ require("lazy").setup({
       "folke/noice.nvim",
       dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
       },
       event = 'VeryLazy',
       config = function()
@@ -563,15 +551,6 @@ require("lazy").setup({
       config = function()
         require("baphled.config.mason")
         require("baphled.config.lsp-zero")
-      end
-    },
-
-    ---- Notifications
-    {
-      'rcarriga/nvim-notify',
-      event = 'VeryLazy',
-      config = function()
-        require("baphled.config.notify")
       end
     },
 
