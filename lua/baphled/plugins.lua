@@ -17,8 +17,84 @@ local firenvim_not_active = function()
   return not vim.g.started_by_firenvim
 end
 
+local function determine_theme()
+  local startup_theme = "startup.evil"
+
+  if string.find(vim.fn.getcwd(), "n-vyro") then
+    startup_theme = "chafa ~/.config/wallpaper/n-vyro-square.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+  else
+    startup_theme = "chafa ~/.config/wallpaper/boodah-avatar.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+  end
+
+  return startup_theme
+end
+
 require("lazy").setup({
     -- Core Enhancements
+
+    {
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+      opts = {
+        bigfile = { enabled = true },
+        notifier = { enabled = true },
+        quickfile = { enabled = true },
+        statuscolumn = { enabled = true },
+        lazygit = { configure = true },
+        words = { enabled = true },
+        styles = {
+          wo = { wrap = true },
+        },
+        dashboard = {
+          enabled = true,
+          sections = {
+            {
+              {
+                section = "terminal",
+                cmd = determine_theme(),
+                height = 20,
+                width = 60,
+                padding = 1,
+              },
+            },
+            {
+              pane = 2,
+              section = "terminal",
+              cmd = "colorscript -e square",
+              height = 5,
+              padding = 1,
+            },
+            { section = "keys", gap = 1, padding = 1 },
+            { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+            { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+            {
+              pane = 2,
+              icon = " ",
+              title = "Git Status",
+              section = "terminal",
+              enabled = function()
+                return Snacks.git.get_root() ~= nil
+              end,
+              cmd = "hub status --short --branch --renames",
+              height = 5,
+              padding = 1,
+              ttl = 5 * 60,
+              indent = 3,
+            },
+            { section = "startup" },
+          },
+        }
+      },
+      init = function()
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "VeryLazy",
+          callback = function()
+            vim.opt_local.foldenable = false
+          end,
+        })
+      end,
+    },
 
     -- Highlighting
     {
@@ -67,19 +143,10 @@ require("lazy").setup({
     -- Used to navigate undo history
     {
       "mbbill/undotree",
-      event = 'VeryLazy'
+      event = 'VeryLazy',
     },
 
     -- UI
-
-    --- Startup screen
-    {
-      "startup-nvim/startup.nvim",
-      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-      config = function()
-        require("baphled.config.startup")
-      end
-    },
 
     ---
     {
@@ -316,6 +383,13 @@ require("lazy").setup({
     },
 
     --- Git
+    {
+      "kdheepak/lazygit.nvim",
+      -- optional for floating window border decoration
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+    },
 
     -- Doesn't really need to be explained
     { "tpope/vim-fugitive" },
@@ -359,6 +433,7 @@ require("lazy").setup({
 
     {
       'VonHeikemen/lsp-zero.nvim',
+      branch = "v4.x",
       dependencies = {
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
@@ -455,7 +530,7 @@ require("lazy").setup({
     },
 
     ---- Rails
-    { "tpope/vim-rails",                lazy = true },
+    { "tpope/vim-rails",   lazy = true },
 
     --- Debugging (DAP)
     {

@@ -44,12 +44,7 @@ which_key.add({
   },
   {
     '<leader>gb',
-    function() gitsigns.blame_line { full = true } end,
-    desc = 'Git Blame Line',
-  },
-  {
-    '<leader>gb',
-    gitsigns.toggle_current_line_blame,
+    gitsigns.toggle_blame,
     desc = 'Git Toggle Current Line Blame',
   },
   {
