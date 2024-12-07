@@ -13,6 +13,7 @@ require("baphled.config.which-key.commentary")
 require("baphled.config.which-key.zen")
 
 require("baphled.config.which-key.common")
+require("baphled.config.which-key.snacks")
 require("baphled.config.which-key.tab")
 require("baphled.config.which-key.spell")
 require("baphled.config.which-key.cloak")
