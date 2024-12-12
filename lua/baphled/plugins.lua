@@ -247,6 +247,18 @@ require("lazy").setup({
     },
 
     {
+      "folke/edgy.nvim", -- Create predefined window layouts
+      event = "VeryLazy",
+      init = function()
+        vim.opt.laststatus = 3
+        vim.opt.splitkeep = "screen"
+      end,
+      config = function()
+        require("baphled.config.edgy")
+      end
+    },
+
+    {
       'akinsho/bufferline.nvim',
       dependencies = 'nvim-tree/nvim-web-devicons',
       config = function()
