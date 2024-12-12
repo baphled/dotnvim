@@ -190,15 +190,6 @@ require("lazy").setup({
       end
     },
 
-    -- File tree
-    {
-      "nvim-tree/nvim-tree.lua",
-      event = 'VeryLazy',
-      config = function()
-        require("baphled.config.nvim-tree")
-      end
-    },
-
     -- File mapping
     {
       "ThePrimeagen/harpoon",
