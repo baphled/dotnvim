@@ -21,9 +21,11 @@ local function determine_theme()
   local startup_theme = "startup.evil"
 
   if string.find(vim.fn.getcwd(), "n-vyro") then
-    startup_theme = "chafa ~/.config/wallpaper/n-vyro-square.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+    startup_theme =
+    "chafa ~/.config/wallpaper/n-vyro-square.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
   else
-    startup_theme = "chafa ~/.config/wallpaper/boodah-avatar.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+    startup_theme =
+    "chafa ~/.config/wallpaper/boodah-avatar.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
   end
 
   return startup_theme
@@ -202,7 +204,8 @@ require("lazy").setup({
         "sindrets/diffview.nvim",
         'nvim-telescope/telescope-fzy-native.nvim',
         'nvim-telescope/telescope-media-files.nvim',
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
+        "debugloop/telescope-undo.nvim", -- Visualise undotree
       },
       event = 'VeryLazy',
       config = function()
