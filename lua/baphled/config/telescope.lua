@@ -15,8 +15,21 @@ telescope.setup {
       i = {
         ["<c-t>"] = trouble.open,
         ["<c-w>"] = "which_key",
+        ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+        ["<C-cr>"] = require("telescope-undo.actions").restore,
+        -- alternative defaults, for users whose terminals do questionable things with modified <cr>
+        ["<C-y>"] = require("telescope-undo.actions").yank_deletions,
+        ["<C-r>"] = require("telescope-undo.actions").restore,
       },
-      n = { ["<c-t>"] = trouble.open },
+      n = {
+        ["<c-t>"] = trouble.open,
+        ["y"] = require("telescope-undo.actions").yank_additions,
+        ["Y"] = require("telescope-undo.actions").yank_deletions,
+        ["u"] = require("telescope-undo.actions").restore,
+      },
     },
   },
 }
+
+require("telescope").load_extension("lazygit")
+require("telescope").load_extension("undo")
