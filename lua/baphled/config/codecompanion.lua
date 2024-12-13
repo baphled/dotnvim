@@ -5,18 +5,24 @@ require("codecompanion").setup({
 
     },
     inline = {
-      adapter = "copilot",
+      adapter = "ollama",
     },
   },
-  slash_command = {
-    ["files"] = {
-      callback = "strategies.chat.slash_commands.file",
-      description = "Insert a file",
-      opts = {
-        contains_code = true,
-        max_lines = 1000,
-        provider = "telescope",     -- default|telescope|mini_pick|fzf_lua
-      },
-    }
+  adapters = {
+    ollama = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        schema = {
+          model = {
+            default = "chevalblanc/claude-3-haiku:latest",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
   },
 })
