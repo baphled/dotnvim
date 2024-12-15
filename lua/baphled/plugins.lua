@@ -40,6 +40,9 @@ require("lazy").setup({
     -- Highlighting
     {
       'nvim-treesitter/nvim-treesitter',
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+      },
       priority = 1001, -- this plugin needs to run before anything else
       build = ":TSUpdate",
       config = function()
@@ -376,11 +379,9 @@ require("lazy").setup({
     --- LSP
 
     {
-      'VonHeikemen/lsp-zero.nvim',
-      branch = "v4.x",
+      'hrsh7th/nvim-cmp',
       dependencies = {
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-buffer' },
         { 'hrsh7th/cmp-path' },
         { 'saadparwaiz1/cmp_luasnip' },
@@ -395,10 +396,6 @@ require("lazy").setup({
         { 'L3MON4D3/LuaSnip' },
         { 'rafamadriz/friendly-snippets' },
       },
-      event = 'VeryLazy',
-      config = function()
-        require("baphled.config.lsp-zero")
-      end
     },
 
     ---- Mason
@@ -412,7 +409,7 @@ require("lazy").setup({
       },
       config = function()
         require("baphled.config.mason")
-        require("baphled.config.lsp-zero")
+        require("baphled.config.lsp")
       end
     },
 
