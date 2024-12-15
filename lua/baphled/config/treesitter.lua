@@ -30,6 +30,15 @@ local opts = {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = true,
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
   textobjects = {
     select = {
       enable = true,
@@ -38,6 +47,8 @@ local opts = {
       lookahead = true,
 
       keymaps = {
+        ["ad"] = { query = "@block.outer", desc = "Select outer part of a call block" },
+        ["id"] = { query = "@block.inner", desc = "Select inner part of a call block" },
         ["am"] = { query = "@call.outer", desc = "Select outer part of a call" },
         ["im"] = { query = "@call.inner", desc = "Select inner part of a call" },
         -- You can use the capture groups defined in textobjects.scm
