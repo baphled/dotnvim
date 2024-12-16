@@ -8,6 +8,11 @@ require("trouble").setup {
   background_colour = "#000000",
   height = 10,
   mode = "document_diagnostics",
+  preview = {
+    win = {
+      type = "float",
+    },
+  },
   include_declaration = {
     "definitions",
     "lsp_implementations",

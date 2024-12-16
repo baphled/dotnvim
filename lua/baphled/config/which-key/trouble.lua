@@ -16,22 +16,22 @@ which_key.add({
     desc = "Buffer Diagnostics (Trouble)",
   },
   {
-    "<leader>cs",
-    "<cmd>Trouble symbols toggle focus=false<cr>",
-    desc = "Symbols (Trouble)",
-  },
-  {
     "<leader>cl",
-    "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+    "<cmd>Trouble lsp toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_lsp }}<cr>",
     desc = "LSP Definitions / references / ... (Trouble)",
   },
   {
+    "<leader>cs",
+    "<cmd>Trouble symbols toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_symbols }}<cr>",
+    desc = "Symbols (Trouble)",
+  },
+  {
     "<leader>xl",
-    "<cmd>Trouble loclist toggle<cr>",
+    "<cmd>Trouble loclist toggle win.type=float<cr>",
     desc = "Location List (Trouble)",
   },
   {
- },
+  },
   {
     "<leader>xq",
     "<cmd>Trouble qflist toggle<cr>",

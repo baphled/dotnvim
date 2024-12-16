@@ -16,7 +16,6 @@ require("edgy").setup {
       end,
     },
     { ft = "qf", title = "QuickFix" },
-    { ft = "trouble", title = "Trouble" },
     {
       ft = "dap_repl",
       title = "DAP Repl",
@@ -43,5 +42,7 @@ require("edgy").setup {
   },
   right = {
     { ft = "neotest-summary", title = "Neotest Summary", size = { width = 0.2 } },
+    { ft = "trouble_symbols", title = "Symbols (Trouble)", size = { width = 0.3 } },
+    { ft = "trouble_lsp", title = "LSP (Trouble)", size = { width = 0.3 } },
   },
 }

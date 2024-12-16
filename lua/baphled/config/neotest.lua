@@ -22,6 +22,12 @@ else
 end
 
 require("neotest").setup({
+  quickfix = {
+    enable = true,
+    open = function()
+      vim.cmd("Trouble quickfix")
+    end,
+  },
   adapters = {
     require("neotest-rspec")({
       rspec_cmd = function()
