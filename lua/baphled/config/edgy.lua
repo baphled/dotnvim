@@ -16,6 +16,7 @@ require("edgy").setup {
       end,
     },
     { ft = "qf", title = "QuickFix" },
+    { ft = "trouble", title = "Trouble" },
     {
       ft = "dap_repl",
       title = "DAP Repl",
@@ -35,10 +36,10 @@ require("edgy").setup {
   },
   left = {
     { ft = "codecompanion",     title = "Code Companion",  size = { width = 0.3 } },
-    { ft = "dapui_watches",     title = "DAP Watches",     size = { width = 0.1 } },
-    { ft = "dapui_stacks",      title = "DAP Stacks",      size = { width = 0.1 } },
-    { ft = "dapui_breakpoints", title = "DAP Breakpoints", size = { width = 0.1 } },
-    { ft = "dapui_scopes",      title = "DAP Scopes",      size = { width = 0.1 } },
+    { ft = "dapui_watches",     title = "DAP Watches",     size = { width = 0.2 } },
+    { ft = "dapui_stacks",      title = "DAP Stacks",      size = { width = 0.2 } },
+    { ft = "dapui_breakpoints", title = "DAP Breakpoints", size = { width = 0.2 } },
+    { ft = "dapui_scopes",      title = "DAP Scopes",      size = { width = 0.2 } },
   },
   right = {
     { ft = "neotest-summary", title = "Neotest Summary", size = { width = 0.2 } },
