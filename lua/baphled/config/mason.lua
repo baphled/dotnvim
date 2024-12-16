@@ -41,7 +41,7 @@ require('mason-lspconfig').setup({
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
-            if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+            if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
               return
             end
           end
@@ -76,6 +76,12 @@ require('mason-lspconfig').setup({
 
     solargraph = function()
       require('lspconfig').solargraph.setup({
+        cmd = {
+          "bundle",
+          "exec",
+          "solargraph",
+          "stdio"
+        },
         capabilities = capabilities,
         settings = {
           solargraph = {
@@ -121,6 +127,14 @@ require('mason-lspconfig').setup({
     ruby_lsp = function()
       require('lspconfig').ruby_lsp.setup({
         capabilities = capabilities,
+        init_options = {
+          rubyVersionManager = "rvm",
+          enabledFeatures = {
+            hover = true,
+            diagnostics = true,
+            completion = true,
+          },
+        },
         commands = {
           FormatRuby = {
             function()
@@ -141,7 +155,7 @@ require('mason-lspconfig').setup({
         capabilities = capabilities,
         init_options = {
           vue = {
-            hybridMode = false,
+            hybridMode = true,
           },
         },
       })
