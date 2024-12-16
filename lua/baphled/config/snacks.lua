@@ -58,7 +58,7 @@ require("snacks").setup({
     min_size = 2,
     -- try to expand the scope to this size
     max_size = nil,
-    edge = true,    -- include the edge of the scope (typically the line above and below with smaller indent)
+    edge = true,      -- include the edge of the scope (typically the line above and below with smaller indent)
     siblings = false, -- expand single line scopes with single line siblings
     -- what buffers to attach to
     filter = function(buf)
@@ -198,6 +198,15 @@ require("snacks").setup({
 
       },
       { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", cwd = true, indent = 2, padding = 1 },
+      {
+        pane = 2,
+        icon = " ",
+        title = "Projects",
+        section = "projects",
+        cwd = true,
+        indent = 2,
+        padding = 1
+      },
       function()
         local in_git = Snacks.git.get_root() ~= nil
         local cmds = {
