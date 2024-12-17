@@ -226,10 +226,10 @@ require("obsidian").setup({
     -- Define how various check-boxes are displayed
     checkboxes = {
       -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-      [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-      ["x"] = { char = "", hl_group = "ObsidianDone" },
-      [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-      ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+      [" "] = { char = "󰄱 ", hl_group = "ObsidianTodo" },
+      ["x"] = { char = " ", hl_group = "ObsidianDone" },
+      [">"] = { char = " ", hl_group = "ObsidianRightArrow" },
+      ["~"] = { char = "󰰱 ", hl_group = "ObsidianTilde" },
       -- Replace the above with this if you don't have a patched font:
       -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
       -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
@@ -237,8 +237,11 @@ require("obsidian").setup({
       -- You can also add more custom ones...
     },
     -- Use bullet marks for non-checkbox lists.
-    bullets = { char = "•", hl_group = "ObsidianBullet" },
-    external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+    bullets = {
+      ["-"] = { char = "• ", hl_group = "ObsidianBullet" },
+      ["*"] = { char = "• ", hl_group = "ObsidianBullet" }
+    },
+    external_link_icon = { char = "  ", hl_group = "ObsidianExtLinkIcon" },
     -- Replace the above with this if you don't have a patched font:
     -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
     reference_text = { hl_group = "ObsidianRefText" },
