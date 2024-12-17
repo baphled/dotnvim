@@ -97,7 +97,7 @@ require('mason-lspconfig').setup({
             formatting = true,
             rename = true,
             useBundler = true,
-            autoformat = false,
+            autoformat = true,
             autocomplete = true,
           }
         }
@@ -128,11 +128,25 @@ require('mason-lspconfig').setup({
       require('lspconfig').ruby_lsp.setup({
         capabilities = capabilities,
         init_options = {
-          rubyVersionManager = "rvm",
           enabledFeatures = {
-            hover = true,
-            diagnostics = true,
+            codeActions = true,
+            codeLens = true,
             completion = true,
+            definition = true,
+            diagnostics = true,
+            documentHighlights = true,
+            documentLink = true,
+            documentSymbols = true,
+            foldingRanges = true,
+            formatting = true,
+            hover = true,
+            inlayHint = true,
+            onTypeFormatting = true,
+            selectionRanges = true,
+            semanticHighlighting = true,
+            signatureHelp = true,
+            typeHierarchy = true,
+            workspaceSymbol = true,
           },
         },
         commands = {
