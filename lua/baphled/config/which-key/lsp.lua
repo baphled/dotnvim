@@ -15,13 +15,10 @@ which_key.add({
   },
   {
     mode = "n",
-    { "<F2>",  "<cmd>lua vim.lsp.buf.rename()<cr>",      desc = "Rename" },
-    { "<F3>",  "<cmd>lua vim.lsp.buf.definition()<cr>",  desc = "Find Definition" },
-    { "<F4>",  "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Find Code Actions" },
-    { "<C-k>", "<cmd>lua vim.lsp.buf.hover()<cr>",       desc = "Hover" },
-    { "[d",    "<cmd>vim.diagnostic.goto_prev()<cr>",    desc = "Goto Previous Definition" },
-    { "]d",    "<cmd>vim.diagnostic.goto_next()<cr>",    desc = "Goto Next Definition" },
-    { "K",     "<cmd>lua vim.lsp.buf.hover()<cr>",       desc = "Hover" },
+    { "<F2>",  "<cmd>lua vim.lsp.buf.rename()<cr>",   desc = "Rename" },
+    { "[d",    "<cmd>vim.diagnostic.goto_prev()<cr>", desc = "Goto Previous Definition" },
+    { "]d",    "<cmd>vim.diagnostic.goto_next()<cr>", desc = "Goto Next Definition" },
+    { "<C-k>", "<cmd>lua vim.lsp.buf.hover()<cr>",    desc = "Hover" },
     {
       "<leader>f",
       function()
@@ -32,6 +29,7 @@ which_key.add({
       end,
       desc = "Format"
     },
+    { "ga", "<cmd>lua vim.lsp.buf.code_action()<cr>",     desc = "Find Code Actions" },
     { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>",     desc = "Find Declaration" },
     { "gf", "<cmd>Telescope lsp_definitions<cr>",         desc = "Find Definition" },
     { "gi", "<cmd>Trouble lsp_implementations<cr>",       desc = "List Implementation" },
