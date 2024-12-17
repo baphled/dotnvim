@@ -37,5 +37,15 @@ which_key.add({
     { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Find Document Diagnostics" },
     { "gr", "<cmd>Telescope lsp_references<cr>",          desc = "Find Declaration" },
     { "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>",  desc = "Find Document Symbols" },
+    {
+      "gl",
+      "<cmd>Trouble lsp toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_lsp }}<cr>",
+      desc = "LSP Definitions / references / ... (Trouble)",
+    },
+    {
+      "gs",
+      "<cmd>Trouble symbols toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_symbols }}<cr>",
+      desc = "Symbols (Trouble)",
+    },
   }
 })
