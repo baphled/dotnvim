@@ -76,12 +76,6 @@ require('mason-lspconfig').setup({
 
     solargraph = function()
       require('lspconfig').solargraph.setup({
-        cmd = {
-          "bundle",
-          "exec",
-          "solargraph",
-          "stdio"
-        },
         capabilities = capabilities,
         root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
         settings = {
