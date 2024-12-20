@@ -35,14 +35,15 @@ require("edgy").setup {
   },
   left = {
     { ft = "codecompanion",     title = "Code Companion",  size = { width = 0.3 } },
+    { ft = "neotest-summary", title = "Neotest Summary", size = { width = 0.2 } },
     { ft = "dapui_watches",     title = "DAP Watches",     size = { width = 0.2 } },
     { ft = "dapui_stacks",      title = "DAP Stacks",      size = { width = 0.2 } },
     { ft = "dapui_breakpoints", title = "DAP Breakpoints", size = { width = 0.2 } },
     { ft = "dapui_scopes",      title = "DAP Scopes",      size = { width = 0.2 } },
+    { ft = "query",      title = "Treesitter Query",      size = { width = 0.3 } },
   },
   right = {
-    { ft = "neotest-summary", title = "Neotest Summary", size = { width = 0.2 } },
-    { ft = "trouble_symbols", title = "Symbols (Trouble)", size = { width = 0.3 } },
-    { ft = "trouble_lsp", title = "LSP (Trouble)", size = { width = 0.3 } },
+    { ft = "trouble_symbols", title = "Symbols (Trouble)", size = { width = 0.2 } },
+    { ft = "trouble_lsp", title = "LSP (Trouble)", size = { width = 0.2 } },
   },
 }
