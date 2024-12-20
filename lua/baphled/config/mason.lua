@@ -83,6 +83,7 @@ require('mason-lspconfig').setup({
           "stdio"
         },
         capabilities = capabilities,
+        root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
         settings = {
           solargraph = {
             ignore = {
@@ -91,14 +92,18 @@ require('mason-lspconfig').setup({
               "tmp/**",
               ".bundle/**",
             },
-            definitions = true,
-            diagnostics = true,
-            completion = true,
-            formatting = true,
-            rename = true,
-            useBundler = true,
-            autoformat = true,
             autocomplete = true,
+            autoformat = true,
+            completion = true,
+            definitions = false,
+            diagnostic = true,
+            diagnostics = true,
+            folding = true,
+            formatting = true,
+            references = true,
+            rename = true,
+            symbols = true,
+            useBundler = true,
           }
         }
       })
@@ -131,9 +136,9 @@ require('mason-lspconfig').setup({
           enabledFeatures = {
             codeActions = true,
             codeLens = true,
-            completion = true,
+            completion = false,
             definition = true,
-            diagnostics = true,
+            diagnostics = false,
             documentHighlights = true,
             documentLink = true,
             documentSymbols = true,
