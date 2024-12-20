@@ -5,6 +5,16 @@ require("other-nvim").setup({
     "rails",
     -- ruby
     {
+      pattern = "spec/support/matchers/(.*).rb$",
+      target = "spec/matchers/%1_spec.rb",
+      context = "matchers",
+    },
+    {
+      pattern = "spec/matchers/(.*)_spec.rb$",
+      target = "spec/support/matchers/%1.rb",
+      context = "matchers",
+    },
+    {
       pattern = "lib/(.*).rb$",
       target = "spec/%1_spec.rb",
       context = "spec",
