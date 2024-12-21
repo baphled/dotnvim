@@ -21,6 +21,7 @@ require("edgy").setup {
       title = "DAP Repl",
       size = { height = 20 },
     },
+    { ft = "trouble_quickfix", title = "QuickFix (Trouble)", size = { height = 10 } },
   },
   top = {
     {
@@ -31,7 +32,7 @@ require("edgy").setup {
         return vim.bo[buf].buftype == "help"
       end,
     },
-    { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
+    { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 10 } },
   },
   left = {
     { ft = "codecompanion",     title = "Code Companion",  size = { width = 0.3 } },
