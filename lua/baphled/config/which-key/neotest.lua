@@ -86,4 +86,19 @@ which_key.add({
     end,
     desc = "Test Watch",
   },
+  {
+    "[",
+    function()
+      require("neotest").jump.prev({ status = "failed" })
+    end,
+    desc = "Jump to Previous Failed Test",
+
+  },
+  {
+    "]",
+    function()
+      require("neotest").jump.next({ status = "failed" })
+    end,
+    desc = "Jump to Next Failed Test",
+  }
 })

@@ -25,7 +25,7 @@ require("neotest").setup({
   quickfix = {
     enable = true,
     open = function()
-      vim.cmd("Trouble quickfix")
+      vim.cmd("Trouble quickfix win = { bo = { filetype = trouble_quickfix } }")
     end,
   },
   adapters = {

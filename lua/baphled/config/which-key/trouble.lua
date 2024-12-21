@@ -24,7 +24,7 @@ which_key.add({
   },
   {
     "<leader>xq",
-    "<cmd>Trouble qflist toggle<cr>",
+    "<cmd>Trouble qflist toggle win = { bo = { filetype = trouble_quickfix } }<cr>",
     desc = "Quickfix List (Trouble)",
   },
 })
