@@ -29,23 +29,42 @@ which_key.add({
       end,
       desc = "Format"
     },
-    { "ga", "<cmd>lua vim.lsp.buf.code_action()<cr>",     desc = "Find Code Actions" },
-    { "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>",     desc = "Find Declaration" },
-    { "gf", "<cmd>Telescope lsp_definitions<cr>",         desc = "Find Definition" },
-    { "gi", "<cmd>Trouble lsp_implementations<cr>",       desc = "List Implementation" },
-    { "gl", "<cmd>lua vim.diagnostic.open_float()<cr>",   desc = "Find Document Diagnostics" },
-    { "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Find Document Diagnostics" },
-    { "gr", "<cmd>Telescope lsp_references<cr>",          desc = "Find Declaration" },
-    { "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>",  desc = "Find Document Symbols" },
+    { "ga",    "<cmd>lua vim.lsp.buf.code_action()<cr>",     desc = "Find Code Actions" },
+    { "gD",    "<cmd>lua vim.lsp.buf.declaration()<cr>",     desc = "Find Declaration" },
+    { "gf",    "<cmd>Telescope lsp_definitions<cr>",         desc = "Find Definition" },
+    { "gi",    "<cmd>Trouble lsp_implementations<cr>",       desc = "List Implementation" },
+    { "gl",    "<cmd>lua vim.diagnostic.open_float()<cr>",   desc = "Find Document Diagnostics" },
+    { "go",    "<cmd>lua vim.lsp.buf.type_definition()<cr>", desc = "Find Document Diagnostics" },
+    { "<M-l>", "<cmd>Telescope lsp_references<cr>",          desc = "Find Declaration", },
+    { "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<cr>",  desc = "Find Document Symbols", },
     {
-      "gl",
+      "<C-l>",
       "<cmd>Trouble lsp toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_lsp }}<cr>",
       desc = "LSP Definitions / references / ... (Trouble)",
     },
     {
-      "gs",
+      "<C-s>",
       "<cmd>Trouble symbols toggle focus=false  win = { type = split, position=right, bo = { filetype = trouble_symbols }}<cr>",
       desc = "Symbols (Trouble)",
     },
   }
+})
+
+which_key.add({
+  {
+    "<M-l>",
+    "<cmd>Telescope lsp_references<cr>",
+    desc = "Find Declaration",
+    mode = "i",
+    nowait = false,
+    remap = false
+  },
+  {
+    "<M-s>",
+    "<cmd>lua vim.lsp.buf.signature_help()<cr>",
+    desc = "Find Document Symbols",
+    mode = "i",
+    nowait = false,
+    remap = false
+  },
 })
