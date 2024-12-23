@@ -2,28 +2,28 @@ local which_key = require("which-key")
 
 which_key.add({
   {
-    "<F10>",
+    "dso",
     "<cmd>lua require('dap').step_out()<cr>",
     desc = "DAP Step Out",
     nowait = false,
     remap = false
   },
   {
-    "<F7>",
+    "dc",
     "<cmd>lua require('dap').continue()<cr>",
     desc = "DAP Continue",
     nowait = false,
     remap = false
   },
   {
-    "<F8>",
+    "dss",
     "<cmd>lua require('dap').step_over()<cr>",
     desc = "DAP Step Over",
     nowait = false,
     remap = false
   },
   {
-    "<F9>",
+    "dsi",
     "<cmd>lua require('dap').step_into()<cr>",
     desc = "DAP Step Into",
     nowait = false,
@@ -40,16 +40,6 @@ which_key.add({
     "<leader>b",
     "<cmd>lua require('dap').toggle_breakpoint()<cr>",
     desc = "Toggle Breakpoint",
-    nowait = false,
-    remap = false
-  },
-  {
-    "C-D",
-    function()
-      require('dap').continue()
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
-    end,
-    desc = "Start",
     nowait = false,
     remap = false
   },
