@@ -71,3 +71,6 @@ vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 
 -- Disable mouse
 vim.opt.mouse = ""
+
+-- Set conceallevel for markdown
+vim.opt_local.conceallevel = 2
