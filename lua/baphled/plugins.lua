@@ -444,16 +444,6 @@ require("lazy").setup({
 
     --- Language Specific
 
-    ---- Dart
-    {
-      'akinsho/flutter-tools.nvim',
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'stevearc/dressing.nvim', -- optional for vim.ui.select
-      },
-      event = 'VeryLazy',
-    },
-
     ---- Ruby
     {
       'mihyaeru21/nvim-lspconfig-bundler',
