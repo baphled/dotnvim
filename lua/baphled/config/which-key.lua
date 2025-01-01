@@ -9,6 +9,10 @@ which_key.setup({
   triggers = {
     { "<auto>", mode = "nixsotc" },
     { "<leader>", mode = "nixsotc" },
+    { "<localleader>", mode = "nixsotc" },
+    { "<M-a>", mode = "n" },
+    { "<C-w>", mode = "n" },
+    { "d", mode = "n" },
     { "t", mode = "n" },
     { "f", mode = "n" },
     { "g", mode = "n" },
