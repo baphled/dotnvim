@@ -130,14 +130,14 @@ require('mason-lspconfig').setup({
           enabledFeatures = {
             codeActions = true,
             codeLens = true,
-            completion = false,
+            completion = true,
             definition = true,
-            diagnostics = false,
+            diagnostics = true,
             documentHighlights = true,
             documentLink = true,
             documentSymbols = true,
             foldingRanges = true,
-            formatting = true,
+            formatting = 'auto',
             hover = true,
             inlayHint = true,
             onTypeFormatting = true,
@@ -159,6 +159,16 @@ require('mason-lspconfig').setup({
             description = "Format using ruby-lsp",
           },
         },
+      })
+    end,
+
+    sorbet = function()
+      require('lspconfig').sorbet.setup({
+        capabilities = capabilities,
+        cmd = { "bundle", "exec", "srb", "tc", "--lsp", "--disable-watchman" },
+        rootPatterns = { "sorbet/config" },
+        filetypes = { "ruby" },
+        root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
       })
     end,
 
