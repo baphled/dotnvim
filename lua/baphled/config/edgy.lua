@@ -24,14 +24,6 @@ require("edgy").setup {
     { ft = "trouble_quickfix", title = "QuickFix (Trouble)", size = { height = 10 } },
   },
   top = {
-    {
-      ft = "help",
-      size = { height = 20 },
-      -- only show help buffers
-      filter = function(buf)
-        return vim.bo[buf].buftype == "help"
-      end,
-    },
     { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 10 } },
   },
   left = {
