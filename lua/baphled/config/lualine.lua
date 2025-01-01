@@ -132,6 +132,9 @@ require('lualine').setup {
     },
     lualine_x = {
       {
+        'git',
+      },
+      {
         'branch',
         icons_enabled = true, -- displays file format icon if set to true
         color = { fg = colors.black, bg = colors.blue },
