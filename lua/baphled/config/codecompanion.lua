@@ -13,13 +13,7 @@ require("codecompanion").setup({
       return require("codecompanion.adapters").extend("ollama", {
         schema = {
           model = {
-            default = "chevalblanc/claude-3-haiku:latest",
-          },
-          num_ctx = {
-            default = 16384,
-          },
-          num_predict = {
-            default = -1,
+            default = "deepseek-coder:6.7b",
           },
         },
       })
