@@ -30,6 +30,13 @@ which_key.add({
     remap = false
   },
   {
+    "<leader>dt",
+    "<cmd>DapVirtualTextToggle<cr>",
+    desc = "DAP Step Into",
+    nowait = false,
+    remap = false
+  },
+  {
     "<leader>B",
     "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
     desc = "Set Breakpoint",
