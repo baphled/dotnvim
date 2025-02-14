@@ -22,6 +22,7 @@ require("edgy").setup {
       size = { height = 20 },
     },
     { ft = "trouble_quickfix", title = "QuickFix (Trouble)", size = { height = 10 } },
+    { ft = "trouble", title = "Trouble", size = { height = 10 } },
   },
   top = {
     { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 10 } },
