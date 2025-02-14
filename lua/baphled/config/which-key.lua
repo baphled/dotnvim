@@ -16,5 +16,7 @@ which_key.setup({
     { "t", mode = "n" },
     { "f", mode = "n" },
     { "g", mode = "n" },
+    { "]", mode = "n" },
+    { "[", mode = "n" },
   },
 })
