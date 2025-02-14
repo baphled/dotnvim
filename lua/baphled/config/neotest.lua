@@ -24,9 +24,12 @@ end
 require("neotest").setup({
   quickfix = {
     enable = true,
-    open = function()
-      vim.cmd("Trouble quickfix win = { bo = { filetype = trouble_quickfix } }")
-    end,
+  },
+  floating = {
+    border = "rounded",
+    max_height = 0.8,
+    max_width = 0.8,
+    options = {}
   },
   adapters = {
     require("neotest-rspec")({
