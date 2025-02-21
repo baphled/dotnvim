@@ -93,6 +93,15 @@ require("lazy").setup({
 
     -- UI
 
+    {
+      "3rd/diagram.nvim",
+      dependencies = {
+        "3rd/image.nvim",
+      },
+      config = function()
+        require("baphled.config.diagram")
+      end
+    },
     ---
     {
       "folke/noice.nvim",
