@@ -18,6 +18,14 @@ require("obsidian").setup({
       name = "Colledge",
       path = "~/vaults/Colledge",
     },
+    {
+      name = "FullSpektrum®",
+      path = "~/vaults/FullSpektrum®",
+    },
+    {
+      name = "AnniMi",
+      path = "~/vaults/AnniMi",
+    },
   },
 
   -- Optional, if you keep notes in a specific subdirectory of your vault.
