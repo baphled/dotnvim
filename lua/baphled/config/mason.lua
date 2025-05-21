@@ -10,8 +10,8 @@ local capabilities = vim.tbl_deep_extend("force",
 )
 
 local mason_registry = require("mason-registry")
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path() ..
-"/node_modules/@vue/language-server"
+local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+local vue_language_server_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 
 require('mason-lspconfig').setup({
   ensure_installed = {
