@@ -187,8 +187,8 @@ require('mason-lspconfig').setup({
     end,
 
     --- Vue
-    volar = function()
-      require('lspconfig').volar.setup({
+    vue_ls = function()
+      require('lspconfig').vue_ls.setup({
         capabilities = capabilities,
         init_options = {
           vue = {
