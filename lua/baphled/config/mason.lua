@@ -29,7 +29,7 @@ require('mason-lspconfig').setup({
     'rust_analyzer',
     'solargraph',
     'ts_ls',
-    'volar',
+    'vue_ls',
   },
   handlers = {
     function(server_name)
