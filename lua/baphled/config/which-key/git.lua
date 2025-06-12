@@ -73,6 +73,12 @@ which_key.add({
     remap = false
   },
   {
+    "<leader>gg",
+    group = "LazyGit",
+    nowait = false,
+    remap = false
+  },
+  {
     "<leader>gd",
     group = "Diff",
     nowait = false,
