@@ -407,6 +407,13 @@ require("lazy").setup({
       },
     },
 
+
+    {
+      "ravibrock/spellwarn.nvim",
+      event = "VeryLazy",
+      config = true,
+    },
+
     ---- Mason
     {
       'williamboman/mason.nvim',
