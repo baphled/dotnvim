@@ -7,14 +7,6 @@ cmp.setup({
   sources = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    {
-      name = "buffer",
-      option = {
-        get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
-        end,
-      },
-    },
     { name = "path" },
     { name = "emoji", insert = true },
     { name = "neorg" },

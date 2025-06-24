@@ -16,7 +16,7 @@ require('mason-lspconfig').setup({
     'rubocop',
     'ruby_lsp',
     'rust_analyzer',
-    'solargraph',
+    'sorbet',
     'ts_ls',
     'vue_ls',
   },

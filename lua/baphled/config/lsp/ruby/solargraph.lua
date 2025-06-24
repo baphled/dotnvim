@@ -7,23 +7,25 @@ local capabilities = vim.tbl_deep_extend("force",
 vim.lsp.config('solargraph', {
   capabilities = capabilities,
   settings = {
+    init_options = {
+      formatting = true,
+      useBundler = true,
+      logLevel = "debug",
+      ignore = { "node_modules/**", "vendor/**", "tmp/**", ".bundle/**" },
+    },
     solargraph = {
       autocomplete = false,
       autoformat = false,
       completion = false,
       definitions = false,
-      diagnostic = false,
       diagnostics = false,
       folding = false,
       formatting = false,
       hover = false,
-      ignore = { "node_modules/**", "vendor/**", "tmp/**", ".bundle/**" },
       references = true,
       rename = true,
       symbols = true,
-      useBundler = true
     }
   }
 })
 vim.lsp.enable('solargraph')
-
