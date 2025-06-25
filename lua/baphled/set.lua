@@ -51,7 +51,7 @@ vim.opt.foldlevel = 9
 vim.cmd [[ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif ]]
 
 -- Spell checking
-vim.opt.spelllang = "en_gb"
+vim.opt.spelllang = "en"
 vim.opt.spellfile = os.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add"
 vim.opt.spell = true
 
