@@ -248,14 +248,7 @@ require("lazy").setup({
       "yetone/avante.nvim",
       -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
       -- ⚠️ must add this setting! ! !
-      build = function()
-        -- conditionally use the correct build system for the current OS
-        if vim.fn.has("win32") == 1 then
-          return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-        else
-          return "make BUILD_FROM_SOURCE=true"
-        end
-      end,
+      build = "make BUILD_FROM_SOURCE=true",
       event = "VeryLazy",
       version = false, -- Never set this value to "*"! Never!
       config = function()
