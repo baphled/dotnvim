@@ -249,7 +249,7 @@ require("lazy").setup({
       "yetone/avante.nvim",
       -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
       -- ⚠️ must add this setting! ! !
-      build = "make BUILD_FROM_SOURCE=true",
+      build = "make",
       event = "VeryLazy",
       version = false, -- Never set this value to "*"! Never!
       config = function()
@@ -298,6 +298,7 @@ require("lazy").setup({
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
+      cmd = "MCPHub",                          -- lazy load
       build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
       config = function()
         require("baphled.config.mcphub")
@@ -367,7 +368,7 @@ require("lazy").setup({
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       ft = { "markdown" },
-      build = function() vim.fn["mkdp#util#install"]() end,
+      build = "cd app && npm install && git restore .",
     },
 
     {

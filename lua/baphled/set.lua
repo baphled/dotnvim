@@ -74,3 +74,5 @@ vim.opt.mouse = ""
 
 -- Set conceallevel for markdown
 vim.opt_local.conceallevel = 2
+
+vim.opt.laststatus = 3
