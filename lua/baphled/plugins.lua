@@ -295,6 +295,7 @@ require("lazy").setup({
 
     {
       "ravitemer/mcphub.nvim",
+      lazy = false,
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
