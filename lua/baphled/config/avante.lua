@@ -1,12 +1,13 @@
+require("avante_lib").load()
+
 require('avante').setup({
-  -- add any opts here
   -- for example
   -- system_prompt as function ensures LLM always has latest MCP server state
   -- This is evaluated for every message, even in existing chats
   system_prompt = function()
     local hub = require("mcphub").get_hub_instance()
     if hub and hub:is_ready() then
-      return hub:get_active_servers_prompt()       -- Generates prompt listing active tools
+      return hub:get_active_servers_prompt() -- Generates prompt listing active tools
     else
       return "Default system prompt."
     end
@@ -22,6 +23,7 @@ require('avante').setup({
     ollama = {
       endpoint = "http://localhost:11434",
       model = "deepseek-coder:6.7b",
+      disabled_tools = { "python" },
       max_tokens = 4096, -- Maximum tokens for Ollama
     },
     openai = {
@@ -31,7 +33,7 @@ require('avante').setup({
       max_tokens = 4096, -- Maximum tokens for Ollama
     },
   },
-  cursor_applying_provider = "ollama", -- The provider used for cursor applying
+  cursor_applying_provider = "copilot", -- The provider used for cursor applying
   dual_boost = {
     enabled = true,
     first_provider = "copilot", -- The first provider for dual boost
@@ -39,6 +41,10 @@ require('avante').setup({
     prompt =
     "Based on the two reference outputs below, generate a response that incorporates elements from both but reflects your own judgment and unique perspective. Do not provide any explanation, just give the response directly. Reference Output 1: [{{provider1_output}}], Reference Output 2: [{{provider2_output}}]",
     timeout = 60000, -- Timeout in milliseconds
+  },
+  rules = {
+    project_dir = '.avante/rules',         -- relative to project root, can also be an absolute path
+    global_dir = '~/.config/avante/rules', -- absolute path
   },
   behaviour = {
     --- ... existing behaviours
@@ -80,11 +86,50 @@ require('avante').setup({
       endpoint = "http://localhost:11434", -- The Embedding API endpoint for Ollama
       api_key = "",                        -- Ollama typically does not require an API key
       model = "nomic-embed-text:latest",   -- The Embedding model name (e.g., "nomic-embed-text")
-      extra = nil,
+      extra = {
+        embed_batch_size = 10
+      },
     },
     web_search_engine = {
       provider = "tavily", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
       proxy = nil,         -- proxy support, e.g., http://127.0.0.1:7890
     }
+  },
+  windows = {
+    ---@type "right" | "left" | "top" | "bottom"
+    position = "right", -- the position of the sidebar
+    wrap = true,        -- similar to vim.o.wrap
+    width = 30,         -- default % based on available width
+    sidebar_header = {
+      enabled = true,   -- true, false to enable/disable the header
+      align = "center", -- left, center, right for title
+      rounded = true,
+    },
+    spinner = {
+      editing = { "⡀", "⠄", "⠂", "⠁", "⠈", "⠐", "⠠", "⢀", "⣀", "⢄", "⢂", "⢁", "⢈", "⢐", "⢠", "⣠", "⢤", "⢢", "⢡", "⢨", "⢰", "⣰", "⢴", "⢲", "⢱", "⢸", "⣸", "⢼", "⢺", "⢹", "⣹", "⢽", "⢻", "⣻", "⢿", "⣿" },
+      generating = { "·", "✢", "✳", "∗", "✻", "✽" }, -- Spinner characters for the 'generating' state
+      thinking = { "🤯", "🙄" }, -- Spinner characters for the 'thinking' state
+    },
+    input = {
+      provider = "snacks",
+      provider_opts = {
+        -- Additional snacks.input options
+        title = "Avante Input",
+        icon = "💬",
+      },
+      height = 20,   -- Adjusted height for longer prompts and tokens
+      position = "bottom", -- Adjusted position for the input box
+    },
+    edit = {
+      border = "rounded",
+      start_insert = false, -- Start insert mode when opening the edit window
+    },
+    ask = {
+      floating = false,    -- Open the 'AvanteAsk' prompt in a floating window
+      start_insert = true, -- Start insert mode when opening the ask window
+      border = "rounded",
+      ---@type "ours" | "theirs"
+      focus_on_apply = "ours", -- which diff to focus after applying
+    },
   },
 })

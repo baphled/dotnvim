@@ -253,7 +253,6 @@ require("lazy").setup({
       event = "VeryLazy",
       version = false, -- Never set this value to "*"! Never!
       config = function()
-        require("avante_lib").load()
         require("baphled.config.avante")
       end,
       dependencies = {
@@ -262,7 +261,6 @@ require("lazy").setup({
         --- The below dependencies are optional,
         "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
         "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-        "folke/snacks.nvim",             -- for input provider snacks
         "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
         "zbirenbaum/copilot.lua",        -- for providers='copilot'
         {
