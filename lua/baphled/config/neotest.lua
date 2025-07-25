@@ -32,6 +32,7 @@ require("neotest").setup({
     options = {}
   },
   adapters = {
+    require("nvim-ginkgo"),
     require("neotest-rspec")({
       rspec_cmd = function()
         return vim.iter({

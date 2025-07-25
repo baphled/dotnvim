@@ -143,6 +143,17 @@ require("other-nvim").setup({
       target = "/tests/unit/%1.spec.js",
       context = "spec",
     },
+    -- GoLang
+    {
+      pattern = "/(.*)/(.*).js$",
+      target = "/%1/%2_test.js",
+      context = "test",
+    },
+    {
+      pattern = "/(.*)/(.*)_test.js",
+      target = "/%1/%2.js$",
+      context = "test",
+    },
   }
 })
 

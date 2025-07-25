@@ -483,6 +483,7 @@ require("lazy").setup({
         "olimorris/neotest-rspec",
         "nvim-neotest/neotest-jest",
         "alfaix/neotest-gtest",
+        "nvim-contrib/nvim-ginkgo",
         "nvim-lua/plenary.nvim",
         "nvim-neotest/nvim-nio",
         "antoinemadec/FixCursorHold.nvim",
