@@ -18,6 +18,9 @@ require('avante').setup({
       require("mcphub.extensions.avante").mcp_tool(),
     }
   end,
+  ---@alias Mode "agentic" | "legacy"
+  ---@type Mode
+  mode = "agentic",
   provider = "copilot",
   providers = {
     ollama = {
@@ -46,9 +49,10 @@ require('avante').setup({
     project_dir = '.avante/rules',         -- relative to project root, can also be an absolute path
     global_dir = '~/.config/avante/rules', -- absolute path
   },
+  override_prompt_dir = vim.fn.expand("~/.config/nvim/avante/rules"),
   behaviour = {
     --- ... existing behaviours
-    auto_suggestions = false,
+    auto_suggestions = true,
     auto_set_highlight_group = true,                        -- Automatically set the highlight group for Avante
     auto_set_keymaps = true,                                -- Automatically set keymaps for Avante
     auto_apply_diff_after_generation = false,               -- Automatically apply the diff after generation
@@ -71,7 +75,7 @@ require('avante').setup({
     },
   },
   rag_service = {                          -- RAG service configuration
-    enabled = false,                       -- Enables the RAG service
+    enabled = true,                       -- Enables the RAG service
     host_mount = os.getenv("HOME"),        -- Host mount path for the RAG service (Docker will mount this path)
     runner = "nix",                        -- The runner for the RAG service (can use docker or nix)
     llm = {                                -- Configuration for the Language Model (LLM) used by the RAG service
@@ -117,7 +121,7 @@ require('avante').setup({
         title = "Avante Input",
         icon = "💬",
       },
-      height = 20,   -- Adjusted height for longer prompts and tokens
+      height = 20,         -- Adjusted height for longer prompts and tokens
       position = "bottom", -- Adjusted position for the input box
     },
     edit = {

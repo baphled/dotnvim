@@ -233,19 +233,6 @@ require("lazy").setup({
 
     -- AI
     {
-      "olimorris/codecompanion.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        -- The following are optional:
-        { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
-      },
-      config = function()
-        require("baphled.config.codecompanion")
-      end
-    },
-
-    {
       "yetone/avante.nvim",
       -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
       -- ⚠️ must add this setting! ! !
