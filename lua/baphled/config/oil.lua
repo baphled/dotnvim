@@ -32,7 +32,7 @@ require("oil").setup({
   skip_confirm_for_simple_edits = false,
   -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
   -- (:help prompt_save_on_select_new_entry)
-  prompt_save_on_select_new_entry = true,
+  prompt_save_on_select_new_entry = false,
   -- Oil will automatically delete hidden buffers after this delay
   -- You can set the delay to false to disable cleanup entirely
   -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
