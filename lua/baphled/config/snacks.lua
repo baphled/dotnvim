@@ -2,11 +2,9 @@ local function determine_theme()
   local startup_theme = "startup.evil"
 
   if string.find(vim.fn.getcwd(), "n-vyro") then
-    startup_theme =
-    "chafa ~/.config/wallpaper/n-vyro-square.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+    startup_theme = "cat ~/.config/nvim/images/n-vyro-square.chafa"
   else
-    startup_theme =
-    "chafa ~/.config/wallpaper/boodah-avatar.png --format symbols --symbols vhalf --size 60x20 --stretch; sleep .1"
+    startup_theme = "cat ~/.config/nvim/images/boodah.chafa"
   end
 
   return startup_theme
