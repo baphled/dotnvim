@@ -1,17 +1,6 @@
 require("avante_lib").load()
 
 require('avante').setup({
-  -- for example
-  -- system_prompt as function ensures LLM always has latest MCP server state
-  -- This is evaluated for every message, even in existing chats
-  system_prompt = function()
-    local hub = require("mcphub").get_hub_instance()
-    if hub and hub:is_ready() then
-      return hub:get_active_servers_prompt() -- Generates prompt listing active tools
-    else
-      return "Default system prompt."
-    end
-  end,
   -- Using function prevents requiring mcphub before it's loaded
   custom_tools = function()
     return {
@@ -21,13 +10,30 @@ require('avante').setup({
   ---@alias Mode "agentic" | "legacy"
   ---@type Mode
   mode = "agentic",
-  provider = "copilot",
+  provider = "ollama",
   providers = {
-    ollama = {
+    coder = {
+      __inherited_from = "ollama", -- Inherit from the ollama provider
       endpoint = "http://localhost:11434",
       model = "deepseek-coder:6.7b",
-      disabled_tools = { "python" },
-      max_tokens = 4096, -- Maximum tokens for Ollama
+      is_env_set = function()
+        return true
+      end,
+    },
+    ollama = {
+      __inherited_from = "ollama", -- Inherit from the ollama provider
+      endpoint = "http://localhost:11434",
+      model = "deepseek-r1:latest",
+      model_names = {
+        "deepseek-r1:latest", -- The default model for the ollama provider
+        "deepseek-coder:6.7b", -- Coder model for ollama
+        "llama3.2:latest", -- Llama 3.2 model
+        "gemma3:latest", -- Gemma 3 model
+        "qwen2.5:7b-instruct", -- Qwen model
+      },
+      is_env_set = function()
+        return true
+      end,
     },
     openai = {
       endpoint = "https://api.openai.com/v1",
