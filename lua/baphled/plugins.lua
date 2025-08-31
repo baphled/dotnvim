@@ -618,6 +618,9 @@ require("lazy").setup({
       end
     },
 
+    --- Security
+    { 'mrjones2014/op.nvim',             run = 'make install' },
+
     --- Novelty
 
     ---- Silly little visual games
