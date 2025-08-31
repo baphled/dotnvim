@@ -12,39 +12,33 @@ require('avante').setup({
   mode = "agentic",
   provider = "ollama",
   providers = {
-    coder = {
-      __inherited_from = "ollama", -- Inherit from the ollama provider
-      endpoint = "http://localhost:11434",
-      model = "deepseek-coder:6.7b",
-      is_env_set = function()
-        return true
-      end,
-    },
     ollama = {
-      __inherited_from = "ollama", -- Inherit from the ollama provider
-      endpoint = "http://localhost:11434",
+      __inherited_from = "openai", -- Inherit from the ollama provider
+      endpoint = "http://localhost:11434/v1",
       model = "deepseek-r1:latest",
       model_names = {
-        "deepseek-r1:latest", -- The default model for the ollama provider
+        "deepseek-r1:8b",      -- The default model for the ollama provider
         "deepseek-coder:6.7b", -- Coder model for ollama
-        "llama3.2:latest", -- Llama 3.2 model
-        "gemma3:latest", -- Gemma 3 model
+        "llama3.2:latest",     -- Llama 3.2 model
+        "gemma3:latest",       -- Gemma 3 model
         "qwen2.5:7b-instruct", -- Qwen model
+      },
+      extra_request_body = {
+        temperature = 0.2, -- Default temperature for OpenAI models
+        streaming = true,  -- Enable streaming responses
+        options = {
+          num_ctx = 8194,
+          num_batch = 24
+        }
       },
       is_env_set = function()
         return true
       end,
     },
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o",  -- The model name to use with this provider
-      api_key_name = "AVANTE_OPENAI_API_KEY",
-      max_tokens = 4096, -- Maximum tokens for Ollama
-    },
   },
   cursor_applying_provider = "copilot", -- The provider used for cursor applying
   dual_boost = {
-    enabled = true,
+    enabled = false,
     first_provider = "copilot", -- The first provider for dual boost
     second_provider = "openai", -- The second provider for dual boost
     prompt =
@@ -58,7 +52,7 @@ require('avante').setup({
   override_prompt_dir = vim.fn.expand("~/.config/nvim/avante/rules"),
   behaviour = {
     --- ... existing behaviours
-    auto_suggestions = true,
+    auto_suggestions = false,
     auto_set_highlight_group = true,                        -- Automatically set the highlight group for Avante
     auto_set_keymaps = true,                                -- Automatically set keymaps for Avante
     auto_apply_diff_after_generation = false,               -- Automatically apply the diff after generation
@@ -81,7 +75,7 @@ require('avante').setup({
     },
   },
   rag_service = {                          -- RAG service configuration
-    enabled = true,                       -- Enables the RAG service
+    enabled = true,                        -- Enables the RAG service
     host_mount = os.getenv("HOME"),        -- Host mount path for the RAG service (Docker will mount this path)
     runner = "nix",                        -- The runner for the RAG service (can use docker or nix)
     llm = {                                -- Configuration for the Language Model (LLM) used by the RAG service
