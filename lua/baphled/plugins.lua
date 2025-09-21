@@ -493,6 +493,7 @@ require("lazy").setup({
         "nvim-contrib/nvim-ginkgo",
         "nvim-lua/plenary.nvim",
         "nvim-neotest/nvim-nio",
+        "nvim-neotest/neotest-plenary",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons"
