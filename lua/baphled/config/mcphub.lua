@@ -1,5 +1,5 @@
 require("mcphub").setup({
-  auto_approve = true, -- Automatically approve all tool calls
+  auto_approve = false, -- Automatically approve all tool calls
   extensions = {
     avante = {
       enabled = true,
