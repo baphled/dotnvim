@@ -365,6 +365,19 @@ require("lazy").setup({
     },
 
     {
+      "baphled/md_nav.nvim",
+      config = function()
+        require("md_nav").setup {
+          max_depth = 4,     -- H2..H4 in TOC (set 6 for H2..H6)
+          footer_levels = { 2 }, -- Back-to-Top under H2 only; {} to disable; {2,3} to include H3
+          create_frontmatter = true,
+          prettify_h1 = true,
+          debounce_ms = 200,
+        }
+      end
+    },
+
+    {
       "vhyrro/luarocks.nvim",
       priority = 1001, -- this plugin needs to run before anything else
       opts = {
