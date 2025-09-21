@@ -9,9 +9,7 @@ require("trouble").setup {
   height = 10,
   mode = "document_diagnostics",
   preview = {
-    win = {
-      type = "float",
-    },
+    enabled = false,
   },
   include_declaration = {
     "definitions",
