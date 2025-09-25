@@ -43,12 +43,20 @@ require("neotest").setup({
         }):flatten():totable()
       end,
     }),
-    require('neotest-jest')({
-      jestCommand = jestCommand,
-      jestConfig = "jest.config.js",
-      env = { CI = true },
-      cwd = function(path)
-        return vim.fn.getcwd()
+    require("neotest-jest")({
+      -- Run jest directly, not via npm
+      jestCommand = "npx jest",
+      -- Always start from your project root
+      cwd = function(_) return vim.fn.getcwd() end,
+      -- Be explicit about the config file
+      jestConfigFile = "jest.config.js",
+      -- Keep stdout clean so the JSON is parseable
+      jestArguments = function(args)
+        table.insert(args, "--ci")        -- non-interactive, stable output
+        table.insert(args, "--coverage")        -- non-interactive, stable output
+        table.insert(args, "--runInBand") -- (optional) avoids worker interleave noise
+        table.insert(args, "--silent")    -- suppress console.log/error that can corrupt JSON parsing
+        return args
       end,
     }),
   },
