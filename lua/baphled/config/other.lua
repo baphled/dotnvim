@@ -154,6 +154,18 @@ require("other-nvim").setup({
       target = "/%1/%2.js$",
       context = "test",
     },
+
+    -- Lua
+    {
+      pattern = "/lua/(.*).lua$",
+      target = "/spec/%1_spec.lua",
+      context = "spec",
+    },
+    {
+      pattern = "/spec/(.*)_spec.lua$",
+      target = "/lua/%1.lua",
+      context = "src",
+    },
   }
 })
 
