@@ -1,4 +1,4 @@
-require("coverage").setup({
+local config = require("coverage").setup({
   auto_reload = true,
   signs = {
     -- use your own highlight groups or text markers
@@ -75,23 +75,13 @@ end
 --
 -- Load coverage if the current file is supported
 --
-local function load_coverage_if_supported()
-  local language = is_supported_filetype()
+local function load_coverage(config)
   local coverage = require("coverage")
-  local coverage_config = require("coverage.config")
 
-  if language == nil then
-    return
-  end
+  local success, _ = pcall(coverage.load, true)
 
-  local language_found = coverage_config.opts.lang[language]
-
-  if language_found and coverage_lookup(language_found.coverage_file) then
-    local success, _result = pcall(coverage.load, true)
-
-    if success then
-      coverage.show()
-    end
+  if success then
+    coverage.show()
   end
 end
 
@@ -106,5 +96,5 @@ end
 autocmd({ 'BufRead', 'BufWritePost' }, {
   group = CoverageGroup,
   pattern = "*",
-  callback = load_coverage_if_supported,
+  callback = load_coverage,
 })
