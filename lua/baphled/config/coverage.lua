@@ -5,6 +5,11 @@ require("coverage").setup({
     covered = { hl = "CoverageCovered", text = "▎" },
     uncovered = { hl = "CoverageUncovered", text = "▎" },
   },
+  lang = {
+    lua = {
+      coverage_file = (vim.loop.cwd() .. "/coverage/luacov.report.out"),
+    },
+  },
 })
 
 local augroup = vim.api.nvim_create_augroup
@@ -98,7 +103,7 @@ end
 -- This is useful when you have a test runner that generates
 -- coverage files in the current directory
 --
-autocmd({'BufRead', 'BufWritePost'}, {
+autocmd({ 'BufRead', 'BufWritePost' }, {
   group = CoverageGroup,
   pattern = "*",
   callback = load_coverage_if_supported,
