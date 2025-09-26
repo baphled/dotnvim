@@ -169,6 +169,15 @@ which_key.add({
     nowait = false,
     remap = false
   },
+  {
+    "<leader>gtl",
+    function()
+      vim.cmd('Gitsigns toggle_linehl')
+    end,
+    desc = "Toggle Line Highlight",
+    nowait = false,
+    remap = false
+  },
   { "<leader>gp", desc = "Push",    nowait = false, remap = false },
   {
     "<leader>gpf",
