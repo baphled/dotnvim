@@ -1,7 +1,7 @@
 local mocha = require("catppuccin.palettes").get_palette "mocha"
 
 require('bufferline').setup {
-  highlights = require("catppuccin.groups.integrations.bufferline").get_theme {
+  highlights = require("catppuccin.special.bufferline").get_theme {
     styles = { "italic", "bold" },
     custom = {
       mocha = {
