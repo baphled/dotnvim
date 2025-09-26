@@ -14,9 +14,11 @@ require("baphled.config.which-key.other")
 
 require("baphled.config.which-key.common")
 require("baphled.config.which-key.snacks")
+require("baphled.config.which-key.flash")
 require("baphled.config.which-key.tab")
-require("baphled.config.which-key.spell")
 require("baphled.config.which-key.cloak")
+
+require("baphled.config.which-key.spell")
 require("baphled.config.which-key.session")
 require("baphled.config.which-key.harpoon")
 require("baphled.config.which-key.spectre")
