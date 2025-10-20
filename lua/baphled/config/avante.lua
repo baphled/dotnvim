@@ -12,6 +12,18 @@ require('avante').setup({
   mode = "agentic",
   provider = "ollama",
   providers = {
+    claude = {
+      __inherited_from = "claude-haiku", -- Inherit from the claude provider
+      model = "claude-3-5-haiku-20241022", -- The default model for the claude provider
+      thinking = {
+        type = "enabled",
+        budget_tokens = 2048,
+      },
+       extra_request_body = {
+        max_tokens = 8192,
+        temperature = 1,
+      },
+    },
     ollama = {
       __inherited_from = "openai", -- Inherit from the ollama provider
       endpoint = "http://localhost:11434/v1",
