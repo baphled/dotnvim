@@ -10,6 +10,14 @@ which_key.add({
     remap = false
   },
   {
+    "<leader>sw",
+    "<cmd>Spellwarn toggle<cr>",
+    desc = "Spellwarn toggle",
+    nowait = false,
+    mode = "n",
+    remap = false
+  },
+  {
     "]s",
     "<cmd>normal! ]s<cr>",
     desc = "Next misspelled word",
