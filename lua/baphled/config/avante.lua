@@ -13,7 +13,7 @@ require('avante').setup({
   provider = "ollama",
   providers = {
     claude = {
-      __inherited_from = "claude-haiku", -- Inherit from the claude provider
+      __inherited_from = "claude", -- Inherit from the claude provider
       model = "claude-3-5-haiku-20241022", -- The default model for the claude provider
       thinking = {
         type = "enabled",
@@ -27,6 +27,7 @@ require('avante').setup({
     ollama = {
       __inherited_from = "openai", -- Inherit from the ollama provider
       endpoint = "http://localhost:11434/v1",
+      api_key = "", -- Ollama typically does not require an API key
       model = "deepseek-r1:latest",
       model_names = {
         "deepseek-r1:8b",      -- The default model for the ollama provider
@@ -72,6 +73,7 @@ require('avante').setup({
     enable_cursor_planning_mode = true,                     -- enable cursor planning mode!
     use_cwd_as_project_root = true,                         -- use the current working directory as the project root
     auto_focus_on_diff_view = true,                         -- automatically focus on the diff view when opening a file with changes
+    auto_approve_tool_permissions = false,                  -- Default: auto-approve all tools (no prompts)
   },
   prompt_logger = {                                         -- logs prompts to disk (timestamped, for replay/debugging)
     enabled = true,                                         -- toggle logging entirely
