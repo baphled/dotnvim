@@ -65,7 +65,7 @@ which_key.add({
   {
     "<leader>ha",
     function()
-      harpoon:list():append()
+      harpoon:list():add()
     end,
     desc = "Append Current File to Harpoon",
     nowait = false,
