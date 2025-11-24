@@ -19,12 +19,12 @@ require("obsidian").setup({
       path = "~/vaults/Colledge",
     },
     {
-      name = "FullSpektrum®",
-      path = "~/vaults/FullSpektrum®",
+      name = "Book Of YoNix",
+      path = "~/vaults/Book Of YoNix",
     },
     {
-      name = "AnniMi",
-      path = "~/vaults/AnniMi",
+      name = "Boodah Cooks",
+      path = "~/vaults/Boodah Cooks",
     },
   },
 
