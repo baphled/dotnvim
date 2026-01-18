@@ -67,7 +67,7 @@ vim.o.timeoutlen = 300
 
 vim.o.conceallevel = 2
 
-vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
+vim.g.python3_host_prog=vim.fn.expand("~/.pyenv/versions/3.11.9/bin/python3")
 
 -- Disable mouse
 vim.opt.mouse = ""

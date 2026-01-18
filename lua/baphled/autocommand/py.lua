@@ -5,7 +5,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if string.match(e.file, ".otter.") then
       return
     end
-    if require("molten.status").initialized() == "Molten" then -- this is kinda a hack...
+    -- Only check molten status if the plugin is available
+    local ok, molten_status = pcall(require, "molten.status")
+    local is_molten = false
+    if ok then
+      local status_ok, status = pcall(molten_status.initialized)
+      is_molten = status_ok and status == "Molten"
+    end
+    
+    if is_molten then
       vim.fn.MoltenUpdateOption("virt_lines_off_by_1", false)
       vim.fn.MoltenUpdateOption("virt_text_output", false)
     else
@@ -22,7 +30,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
     if string.match(e.file, ".otter.") then
       return
     end
-    if require("molten.status").initialized() == "Molten" then
+    -- Only check molten status if the plugin is available
+    local ok, molten_status = pcall(require, "molten.status")
+    local is_molten = false
+    if ok then
+      local status_ok, status = pcall(molten_status.initialized)
+      is_molten = status_ok and status == "Molten"
+    end
+    
+    if is_molten then
       vim.fn.MoltenUpdateOption("virt_lines_off_by_1", true)
       vim.fn.MoltenUpdateOption("virt_text_output", true)
     else

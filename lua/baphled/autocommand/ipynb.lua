@@ -43,8 +43,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = { "*.ipynb" },
     callback = function()
-        if require("molten.status").initialized() == "Molten" then
-            vim.cmd("MoltenExportOutput!")
+        local ok, molten_status = pcall(require, "molten.status")
+        if ok then
+            local status_ok, status = pcall(molten_status.initialized)
+            if status_ok and status == "Molten" then
+                vim.cmd("MoltenExportOutput!")
+            end
         end
     end,
 })
