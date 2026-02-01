@@ -240,49 +240,13 @@ require("lazy").setup({
 
     -- AI
     {
-      "yetone/avante.nvim",
-      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-      -- ⚠️ must add this setting! ! !
-      build = "make",
-      event = "VeryLazy",
-      version = false, -- Never set this value to "*"! Never!
-      config = function()
-        require("baphled.config.avante")
-      end,
+      "NickvanDyke/opencode.nvim",
       dependencies = {
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-        "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-        "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",        -- for providers='copilot'
-        {
-          -- support for image pasting
-          "HakonHarnes/img-clip.nvim",
-          event = "VeryLazy",
-          opts = {
-            -- recommended settings
-            default = {
-              embed_image_as_base64 = false,
-              prompt_for_file_name = false,
-              drag_and_drop = {
-                insert_mode = true,
-              },
-              -- required for Windows users
-              use_absolute_path = true,
-            },
-          },
-        },
-        {
-          -- Make sure to set this up properly if you have lazy=true
-          'MeanderingProgrammer/render-markdown.nvim',
-          opts = {
-            file_types = { "markdown", "Avante" },
-          },
-          ft = { "markdown", "Avante" },
-        },
+        { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
       },
+      config = function()
+        require("baphled.config.opencode")
+      end,
     },
 
     {
@@ -368,7 +332,7 @@ require("lazy").setup({
       "baphled/md_nav.nvim",
       config = function()
         require("md_nav").setup {
-          max_depth = 4,     -- H2..H4 in TOC (set 6 for H2..H6)
+          max_depth = 4,         -- H2..H4 in TOC (set 6 for H2..H6)
           footer_levels = { 2 }, -- Back-to-Top under H2 only; {} to disable; {2,3} to include H3
           create_frontmatter = true,
           prettify_h1 = true,

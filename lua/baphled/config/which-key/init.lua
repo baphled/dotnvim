@@ -28,3 +28,5 @@ require("baphled.config.which-key.molten")
 require("baphled.config.which-key.quarto")
 
 require("baphled.config.which-key.ruby")
+
+require("baphled.config.which-key.opencode")

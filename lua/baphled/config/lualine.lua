@@ -39,13 +39,8 @@ require('lualine').setup {
     component_separators = { right = '' } or { left = '' },
     section_separators = { right = '' } or { left = '' },
     disabled_filetypes = {
-      winbar = {
-        "Avante",
-        "AvanteInput",
-        "AvanteTodos",
-        "AvanteSelectedFiles"
-      }
-    }, -- Assuming 'Avante' is the filetype for avante.nvim buffers
+      winbar = {}
+    },
     buffers_color = {
       -- Same values as the general color option can be used here.
       active = 'lualine_{section}_normal',     -- Color for active buffer.

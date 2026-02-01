@@ -1,11 +1,6 @@
 require("mcphub").setup({
   auto_approve = false, -- Automatically approve all tool calls
-  extensions = {
-    avante = {
-      enabled = true,
-      make_slash_commands = true
-    }
-  },
+  extensions = {},
   log = {
     level = vim.log.levels.WARN,             -- Adjust verbosity (DEBUG, INFO, WARN, ERROR)
     to_file = true,                          -- Log to ~/.local/state/nvim/mcphub.log
