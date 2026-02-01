@@ -1,3 +1,6 @@
+-- Load Python3 host configuration first
+require("baphled.python3_host")
+
 require("baphled.set")
 require("baphled.motions")
 require("baphled.autocommand")
