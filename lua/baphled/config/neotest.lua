@@ -33,6 +33,7 @@ require("neotest").setup({
   },
   adapters = {
     require("nvim-ginkgo"),
+    require("baphled.adapters.neotest-godog")(),
     require("neotest-plenary"),
     require("neotest-rspec")({
       rspec_cmd = function()
