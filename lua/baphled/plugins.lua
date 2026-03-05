@@ -338,19 +338,6 @@ require("lazy").setup({
     },
 
     {
-      "baphled/md_nav.nvim",
-      config = function()
-        require("md_nav").setup {
-          max_depth = 4,         -- H2..H4 in TOC (set 6 for H2..H6)
-          footer_levels = { 2 }, -- Back-to-Top under H2 only; {} to disable; {2,3} to include H3
-          create_frontmatter = true,
-          prettify_h1 = true,
-          debounce_ms = 200,
-        }
-      end
-    },
-
-    {
       "vhyrro/luarocks.nvim",
       priority = 1001, -- this plugin needs to run before anything else
       opts = {
@@ -479,6 +466,7 @@ require("lazy").setup({
         "nvim-contrib/nvim-ginkgo",
         "nvim-lua/plenary.nvim",
         "nvim-neotest/nvim-nio",
+        "nvim-neotest/neotest-go",
         "nvim-neotest/neotest-plenary",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
