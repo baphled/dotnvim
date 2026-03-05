@@ -33,3 +33,4 @@ telescope.setup {
 
 require("telescope").load_extension("lazygit")
 require("telescope").load_extension("undo")
+require('telescope').load_extension('git_worktree')

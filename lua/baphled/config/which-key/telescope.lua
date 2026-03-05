@@ -44,5 +44,10 @@ which_key.add({
     end,
     desc = "Find String"
   },
-  { "fx", "<cmd>Telescope commands<cr>", desc = "Find Command" }
+  {
+    "fW",
+    "<cmd>Telescope git_worktree<cr>",
+    desc = "Find Git Worktree"
+  },
+  { "fx", "<cmd>Telescope commands<cr>", desc = "Find Command" },
 })

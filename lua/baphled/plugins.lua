@@ -73,6 +73,15 @@ require("lazy").setup({
 
     },
 
+    {
+      'polarmutex/git-worktree.nvim',
+      version = '^2',
+      dependencies = { "nvim-lua/plenary.nvim" },
+      config = function()
+        require("baphled.config.git-worktree")
+      end
+    },
+
     ---- Improved quickfix window
     {
       "folke/trouble.nvim",
