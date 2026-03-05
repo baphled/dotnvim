@@ -44,6 +44,9 @@ require("neotest").setup({
         }):flatten():totable()
       end,
     }),
+    require("neotest-go")({
+      args = { "-count=1", "-coverprofile=coverage.out" },
+    }),
     require("neotest-jest")({
       -- Run jest directly, not via npm
       jestCommand = "npx jest",
